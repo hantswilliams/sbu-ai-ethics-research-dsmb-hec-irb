@@ -28,9 +28,10 @@ RUN cat requirements.webapp.txt requirements.code.txt | sort -u > requirements.t
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the shared module and application code
+# Copy the shared module, research materials, and application code
 COPY shared/ /app/shared/
 COPY webapp/ /app/webapp/
+COPY research/ /app/research/
 
 # Make port 5005 available to the world outside this container
 EXPOSE 5005

@@ -34,3 +34,12 @@ Google     2.75  NaN      1
 2025-07-15 11:27:19,658 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
 2025-07-15 11:27:19,703 - evaluation_analysis - INFO - Comprehensive evaluation report saved to /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/evaluation_results/evaluation_report.html
 2025-07-15 11:27:19,703 - evaluation_analysis - INFO - Evaluation analysis completed successfully
+2025-07-15 11:43:59,800 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-15 11:43:59,800 - evaluation_analysis - INFO - Using supabase database
+2025-07-15 11:44:00,267 - evaluation_analysis - INFO - Loaded 12 responses from database
+2025-07-15 11:44:00,667 - evaluation_analysis - ERROR - Error executing query: SSL connection has been closed unexpectedly
+
+2025-07-15 11:44:00,671 - evaluation_analysis - INFO - Loaded 0 evaluations from database
+2025-07-15 11:44:00,672 - evaluation_analysis - WARNING - No evaluations found in database
+2025-07-15 11:44:00,672 - evaluation_analysis - WARNING - No data available for report generation
+2025-07-15 11:44:00,672 - evaluation_analysis - INFO - Evaluation analysis completed successfully

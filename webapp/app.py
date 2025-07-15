@@ -222,6 +222,9 @@ def evaluate(case_id, scenario_filename):
     if 'evaluator_id' not in session:
         return redirect(url_for('index'))
     
+    # Set up logging for this function
+    logger = logging.getLogger(__name__)
+    
     # First try to read scenario content directly from file
     scenario_path = BASE_PATH / "research" / "scenarios" / scenario_filename
     case_content = None
@@ -230,39 +233,13 @@ def evaluate(case_id, scenario_filename):
         try:
             with open(scenario_path, 'r') as f:
                 case_content = f.read()
-            logger = logging.getLogger(__name__)
             logger.info(f"Successfully read scenario content from file: {scenario_path}")
         except Exception as e:
-            print(f"Error reading scenario file: {e}")
+            logger.error(f"Error reading scenario file: {e}")
             case_content = f"Error: Could not read scenario file. {str(e)}"
     else:
-        # If file doesn't exist, check if it's in the cases table as fallback
-        conn = get_db_connection()
-        cursor = conn.cursor()
-        
-        try:
-            if db_adapter.type == "sqlite":
-                cursor.execute('''
-                SELECT content 
-                FROM cases 
-                WHERE case_id = ? AND filename = ?
-                ''', (case_id, scenario_filename))
-            else:
-                cursor.execute('''
-                SELECT content 
-                FROM cases 
-                WHERE case_id = %s AND filename = %s
-                ''', (case_id, scenario_filename))
-            case = cursor.fetchone()
-            
-            if case:
-                case_content = case['content']
-                print(f"Retrieved scenario content from database")
-            else:
-                case_content = f"Error: Scenario file not found at {scenario_path} and no record in database"
-        except Exception as e:
-            print(f"Error checking database for scenario: {e}")
-            case_content = f"Error: Could not retrieve scenario content. {str(e)}"
+        logger.error(f"Scenario file not found at {scenario_path}")
+        case_content = "Error: Scenario file not found. Please check if the file exists in the research/scenarios directory."
     
     # Try to read the ethics committee discussion file
     discussion_content = None
@@ -273,14 +250,13 @@ def evaluate(case_id, scenario_filename):
         try:
             with open(discussion_path, 'r') as f:
                 discussion_content = f.read()
-            logger = logging.getLogger(__name__)
             logger.info(f"Successfully read discussion content from file: {discussion_path}")
         except Exception as e:
-            print(f"Error reading discussion file: {e}")
+            logger.error(f"Error reading discussion file: {e}")
             discussion_content = f"Error: Could not read discussion file. {str(e)}"
     else:
-        discussion_content = "Ethics committee discussion not available for this scenario."
-        logger.warning(f"Discussion file not found at {discussion_path}")
+        logger.info(f"No discussion file found at {discussion_path}")
+        discussion_content = "No ethics committee discussion available for this scenario yet."
     
     # Get a random response for this case that hasn't been evaluated by this evaluator
     conn = get_db_connection()

@@ -48,7 +48,8 @@ venv/
 
 # Data directories (if you don't want to include them)
 data/
-research/
+research/*
+!research/scenarios/
 
 # Documentation
 docs/
