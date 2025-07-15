@@ -1,0 +1,4 @@
+The Case
+The patient, an elderly man whose wife had predeceased him, was admitted to the ICU following a stroke at home. In his critically ill condition, he was unable to make his own health care decisions. The attending physician advised the patient’s daughter, his health care proxy agent, that he was unlikely to survive much longer.
+
+Later that day, the daughter informed the attending that she wanted to preserve some of her father’s sperm for future use, as a male heir would be required for their family to retain the patient’s estate in their home country. The daughter did not provide any evidence of the patient’s own wishes in this regard, nor did she specify for whose use the sperm was intended. Uncertain how to respond, the attending paged the Ethics Service for advice.

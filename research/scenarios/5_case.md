@@ -1,0 +1,8 @@
+The Case
+The patient was admitted to the intensive care unit with end-stage cancer. He was in considerable pain, as evidenced by his own account of discomfort, as well as his grimaces, calling out when touched and through other nonverbal signals. The patient and his wife had a close and loving relationship. She was clearly devoted to him and spent her days by his bedside.
+
+Early in the patient’s hospitalization, he willingly accepted pain treatment, although his wife sometimes tried to talk him out of it. As time passed, the patient’s mental status declined, and the care team determined that he lacked decisional capacity. His wife was his designated health care proxy agent and assumed responsibility for medical decisions.
+
+Despite the patient’s obvious distress, the wife refused to let the care team administer adequate pain medication to her husband. She gave various reasons for declining it. One was her concern about the sedative side effects – she cherished her husband’s company and wanted him to be alert and able to interact with her. Another was her strong religious faith, which led her to believe that God wouldn’t let her husband die.
+
+Caregivers at the bedside were distressed by the patient’s suffering and the wife’s reluctance to treat it. The care team requested an ethics consultation to address the wife’s refusal of pain medication and to provide guidance for the staff.
