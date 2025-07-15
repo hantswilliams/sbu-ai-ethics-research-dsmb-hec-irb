@@ -17,7 +17,6 @@ Options:
 import os
 import json
 import time
-import sqlite3
 import argparse
 from datetime import datetime
 from pathlib import Path
@@ -27,6 +26,12 @@ from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv()
+
+# Import database adapter
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from shared.db_adapter import get_db_adapter
 
 # Third-party packages for API access
 import openai
@@ -55,7 +60,7 @@ class AIEthicsProcessor:
             gemini_api_key: Google Gemini API key (if None, will look for GEMINI_API_KEY env var)
             claude_api_key: Anthropic Claude API key (if None, will look for CLAUDE_API_KEY env var)
             grok_api_key: GROK API key (if None, will look for GROK_API_KEY env var)
-            db_path: Custom path to SQLite database (if None, will look for DB_PATH env var or use default)
+            db_path: Custom path to database (if None, will use the configured adapter)
         """
         # Set base path
         if base_path is None:
@@ -70,17 +75,9 @@ class AIEthicsProcessor:
         self._init_grok(grok_api_key)
         
         # Setup database
-        if db_path is None:
-            db_path = os.environ.get("DB_PATH")
-        
-        if db_path:
-            self.db_path = Path(db_path)
-        else:
-            self.db_path = self.base_path / "data" / "results.db"
-            
-        os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
-        logger.info(f"Database will be stored at {self.db_path}")
-        self._init_database()
+        self.db_adapter = get_db_adapter()
+        self.db_adapter.init_db()
+        logger.info(f"Using {self.db_adapter.type} database")
         
         # Load prompt template
         self.prompt_template = self._load_prompt_template()
@@ -157,40 +154,9 @@ class AIEthicsProcessor:
             self.grok_api_key = None
 
     def _init_database(self):
-        """Initialize SQLite database"""
-        conn = sqlite3.connect(self.db_path)
-        cursor = conn.cursor()
-        
-        # Create tables if they don't exist
-        cursor.execute('''
-        CREATE TABLE IF NOT EXISTS responses (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            case_id TEXT,
-            scenario_filename TEXT,
-            vendor TEXT,
-            model TEXT,
-            model_version TEXT,
-            iteration INTEGER,
-            timestamp TEXT,
-            prompt TEXT,
-            full_response TEXT,
-            recommended_decision TEXT,
-            alternative_decision TEXT,
-            least_recommended_decision TEXT,
-            processing_time REAL
-        )
-        ''')
-        
-        # Check if scenario_filename column exists, if not add it
-        cursor.execute("PRAGMA table_info(responses)")
-        columns = [info[1] for info in cursor.fetchall()]
-        if 'scenario_filename' not in columns:
-            logger.info("Adding scenario_filename column to responses table")
-            cursor.execute("ALTER TABLE responses ADD COLUMN scenario_filename TEXT")
-        
-        conn.commit()
-        conn.close()
-        logger.info(f"Database initialized at {self.db_path}")
+        """Initialize the database"""
+        # Database is now handled by the adapter
+        pass
 
     def _load_prompt_template(self):
         """Load the prompt template from the research/prompt directory"""
@@ -392,15 +358,10 @@ class AIEthicsProcessor:
         """Save a response to the database"""
         decisions = self._extract_decisions(response)
         
-        conn = sqlite3.connect(self.db_path)
-        cursor = conn.cursor()
+        conn = self.db_adapter.get_connection()
         
-        cursor.execute('''
-        INSERT INTO responses (
-            case_id, scenario_filename, vendor, model, model_version, iteration, timestamp, prompt, full_response, 
-            recommended_decision, alternative_decision, least_recommended_decision, processing_time
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ''', (
+        response_id = self.db_adapter.insert_response(
+            conn,
             case_id,
             scenario_filename, 
             vendor,
@@ -414,10 +375,9 @@ class AIEthicsProcessor:
             decisions["alternative"],
             decisions["least_recommended"],
             processing_time
-        ))
+        )
         
-        conn.commit()
-        conn.close()
+        self.db_adapter.close_connection(conn)
         logger.info(f"Saved response for case {case_id} ({scenario_filename}), {vendor} {model} ({model_version}), iteration {iteration}")
 
     def process_case(self, case, model="all", iterations=1):
@@ -520,52 +480,6 @@ class AIEthicsProcessor:
                     logger.warning("Attempting to use fallback for GROK...")
                     # Use the fallback method if the GROK API fails
                     self.fallback_for_grok(case_id, scenario_filename, i, full_prompt)
-        
-        # This duplicate block has been removed since Claude processing is already handled above
-        
-        # This duplicate block has been removed since GROK processing is already handled above
-        
-        if model in ["claude", "both"] and self.claude_client:
-            for i in range(1, iterations + 1):
-                logger.info(f"Running Claude iteration {i}/{iterations} for case {case_id}")
-                try:
-                    response, processing_time, model_name, model_version = self.query_claude(full_prompt)
-                    self.save_response(
-                        case_id=case_id,
-                        scenario_filename=scenario_filename,
-                        vendor="Anthropic",
-                        model=model_name, 
-                        model_version=model_version,
-                        iteration=i, 
-                        prompt=full_prompt, 
-                        response=response, 
-                        processing_time=processing_time
-                    )
-                    # Add delay to avoid rate limits
-                    time.sleep(2)
-                except Exception as e:
-                    logger.error(f"Error in Claude processing: {e}")
-        
-        if model in ["grok", "both"] and self.grok_api_key:
-            for i in range(1, iterations + 1):
-                logger.info(f"Running GROK iteration {i}/{iterations} for case {case_id}")
-                try:
-                    response, processing_time, model_name, model_version = self.query_grok(full_prompt)
-                    self.save_response(
-                        case_id=case_id,
-                        scenario_filename=scenario_filename,
-                        vendor="GROK",
-                        model=model_name, 
-                        model_version=model_version,
-                        iteration=i, 
-                        prompt=full_prompt, 
-                        response=response, 
-                        processing_time=processing_time
-                    )
-                    # Add delay to avoid rate limits
-                    time.sleep(2)
-                except Exception as e:
-                    logger.error(f"Error in GROK processing: {e}")
 
     def process_all_cases(self, model="all", iterations=1):
         """Process all available cases"""
@@ -576,7 +490,7 @@ class AIEthicsProcessor:
 
     def generate_summary_stats(self):
         """Generate summary statistics from the database"""
-        conn = sqlite3.connect(self.db_path)
+        conn = self.db_adapter.get_connection()
         cursor = conn.cursor()
         
         # Count by vendor
@@ -603,24 +517,44 @@ class AIEthicsProcessor:
         cursor.execute("SELECT vendor, model, AVG(processing_time) FROM responses GROUP BY vendor, model")
         model_avg_times = cursor.fetchall()
         
-        conn.close()
+        self.db_adapter.close_connection(conn)
+        
+        # Convert to dictionaries based on adapter type
+        if self.db_adapter.type == "sqlite":
+            vendor_counts_dict = dict(vendor_counts)
+            case_counts_dict = dict(case_counts)
+            scenario_counts_dict = dict(scenario_counts) if scenario_counts else {}
+            vendor_avg_times_dict = dict(vendor_avg_times)
+            model_counts_list = model_counts
+            model_avg_times_list = model_avg_times
+        else:
+            # PostgreSQL returns dictionaries, we need to extract the values
+            vendor_counts_dict = {row['vendor']: row['count'] for row in vendor_counts}
+            case_counts_dict = {row['case_id']: row['count'] for row in case_counts}
+            scenario_counts_dict = {row['scenario_filename']: row['count'] for row in scenario_counts} if scenario_counts else {}
+            vendor_avg_times_dict = {row['vendor']: row['avg'] for row in vendor_avg_times}
+            model_counts_list = [(row['vendor'], row['model'], row['count']) for row in model_counts]
+            model_avg_times_list = [(row['vendor'], row['model'], row['avg']) for row in model_avg_times]
+        
+        # Calculate total count
+        total_count = sum(vendor_counts_dict.values())
         
         logger.info("Summary Statistics:")
-        logger.info(f"Total responses: {sum(count for _, count in vendor_counts)}")
-        logger.info(f"By vendor: {vendor_counts}")
-        logger.info(f"By model: {model_counts}")
-        logger.info(f"By case: {case_counts}")
-        logger.info(f"By scenario: {scenario_counts}")
-        logger.info(f"Average processing times by vendor: {vendor_avg_times}")
-        logger.info(f"Average processing times by model: {model_avg_times}")
+        logger.info(f"Total responses: {total_count}")
+        logger.info(f"By vendor: {vendor_counts_dict}")
+        logger.info(f"By model: {model_counts_list}")
+        logger.info(f"By case: {case_counts_dict}")
+        logger.info(f"By scenario: {scenario_counts_dict}")
+        logger.info(f"Average processing times by vendor: {vendor_avg_times_dict}")
+        logger.info(f"Average processing times by model: {model_avg_times_list}")
         
         return {
-            "vendor_counts": dict(vendor_counts),
-            "model_counts": {f"{vendor}_{model}": count for vendor, model, count in model_counts},
-            "case_counts": dict(case_counts),
-            "scenario_counts": dict(scenario_counts) if scenario_counts else {},
-            "vendor_avg_times": dict(vendor_avg_times),
-            "model_avg_times": {f"{vendor}_{model}": time for vendor, model, time in model_avg_times}
+            "vendor_counts": vendor_counts_dict,
+            "model_counts": {f"{vendor}_{model}": count for vendor, model, count in model_counts_list},
+            "case_counts": case_counts_dict,
+            "scenario_counts": scenario_counts_dict,
+            "vendor_avg_times": vendor_avg_times_dict,
+            "model_avg_times": {f"{vendor}_{model}": time for vendor, model, time in model_avg_times_list}
         }
 
     def fallback_for_grok(self, case_id, scenario_filename, iteration, prompt):
@@ -662,21 +596,28 @@ class AIEthicsProcessor:
 
     def cleanup_database(self):
         """Clean up the database by fixing incorrect vendor names"""
-        conn = sqlite3.connect(self.db_path)
+        conn = self.db_adapter.get_connection()
         cursor = conn.cursor()
         
         # Update any "Claude" vendor entries to "Anthropic"
-        cursor.execute('''
-        UPDATE responses 
-        SET vendor = "Anthropic" 
-        WHERE vendor = "Claude"
-        ''')
+        if self.db_adapter.type == "sqlite":
+            cursor.execute('''
+            UPDATE responses 
+            SET vendor = "Anthropic" 
+            WHERE vendor = "Claude"
+            ''')
+        else:
+            cursor.execute('''
+            UPDATE responses 
+            SET vendor = 'Anthropic' 
+            WHERE vendor = 'Claude'
+            ''')
         
         rows_affected = cursor.rowcount
         conn.commit()
-        conn.close()
+        self.db_adapter.close_connection(conn)
         
-        logger.info(f"Cleaned up database: {rows_affected} Claude entries updated to Anthropic")
+        logger.info(f"Database cleanup complete: {rows_affected} rows updated (Claude -> Anthropic)")
         return rows_affected
 
 

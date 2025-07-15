@@ -708,3 +708,16 @@
 2025-07-15 09:40:39,586 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 09:40:39] "GET /evaluate/1/1_case.md HTTP/1.1" 200 -
 2025-07-15 09:41:30,768 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator admin3@stonybrook.edu (ID: 3)
 2025-07-15 09:41:30,771 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 09:41:30] "GET /dashboard HTTP/1.1" 200 -
+2025-07-15 09:56:07,900 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/app.py', reloading
+2025-07-15 09:56:07,940 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 09:56:08,181 - ai_ethics_webapp.db - INFO - Using SQLite database at /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/results.db
+2025-07-15 09:56:08,182 - ai_ethics_webapp.db - INFO - SQLite database initialized
+2025-07-15 09:56:08,184 - ai_ethics_webapp - INFO - Cases table does not exist - will use scenario files from the filesystem
+2025-07-15 09:56:08,184 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-15 09:56:08,191 - werkzeug - WARNING -  * Debugger is active!
+2025-07-15 09:56:08,204 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-15 09:56:20,635 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/app.py', reloading
+2025-07-15 09:56:20,660 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 09:56:20,867 - ai_ethics_webapp.db - INFO - Using SQLite database at /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/results.db
+2025-07-15 09:56:20,868 - ai_ethics_webapp.db - INFO - SQLite database initialized
+2025-07-15 09:56:20,870 - ai_ethics_webapp - INFO - Database initialization handled by adapter

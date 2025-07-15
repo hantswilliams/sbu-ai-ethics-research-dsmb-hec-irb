@@ -10,7 +10,6 @@ Usage:
 """
 
 import os
-import sqlite3
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -18,6 +17,11 @@ from pathlib import Path
 import logging
 import argparse
 from dotenv import load_dotenv
+
+# Add shared module to path
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from shared.db_adapter import get_db_adapter
 
 # Load environment variables from .env file
 load_dotenv()
@@ -34,13 +38,12 @@ logging.basicConfig(
 logger = logging.getLogger("evaluation_analysis")
 
 class EvaluationAnalyzer:
-    def __init__(self, base_path=None, db_path=None):
+    def __init__(self, base_path=None):
         """
         Initialize the Evaluation Analyzer
         
         Args:
             base_path: Path to the project root
-            db_path: Custom path to SQLite database (if None, will look for DB_PATH env var or use default)
         """
         # Set base path
         if base_path is None:
@@ -48,20 +51,10 @@ class EvaluationAnalyzer:
         else:
             self.base_path = Path(base_path)
         
-        # Database path
-        if db_path is None:
-            db_path = os.environ.get("DB_PATH")
-        
-        if db_path:
-            self.db_path = Path(db_path)
-        else:
-            self.db_path = self.base_path / "data" / "results.db"
+        # Initialize database adapter
+        self.db_adapter = get_db_adapter()
+        logger.info(f"Using {self.db_adapter.type} database")
             
-        if not os.path.exists(self.db_path):
-            raise FileNotFoundError(f"Database not found at {self.db_path}")
-            
-        logger.info(f"Using database at {self.db_path}")
-        
         # Output directory for visualizations
         self.output_dir = self.base_path / "data" / "evaluation_results"
         os.makedirs(self.output_dir, exist_ok=True)
@@ -84,31 +77,39 @@ class EvaluationAnalyzer:
             self.df = pd.DataFrame()
             logger.warning("No evaluations found in database")
 
-    def _load_responses(self):
-        """Load responses data from SQLite database"""
-        conn = sqlite3.connect(self.db_path)
+    def _fetch_query(self, query):
+        """Execute a query and return results as a pandas DataFrame"""
+        conn = self.db_adapter.get_connection()
         try:
-            df = pd.read_sql_query("SELECT * FROM responses", conn)
-            logger.info(f"Loaded {len(df)} responses from database")
-            return df
-        except sqlite3.OperationalError as e:
-            logger.error(f"Error loading responses: {e}")
+            cursor = conn.cursor()
+            cursor.execute(query)
+            columns = [desc[0] for desc in cursor.description]
+            data = cursor.fetchall()
+            
+            # Convert dict rows to list of values in same order as columns
+            if self.db_adapter.type == "supabase":
+                data = [[row[col] for col in columns] for row in data]
+                
+            return pd.DataFrame(data, columns=columns)
+        except Exception as e:
+            logger.error(f"Error executing query: {e}")
             return pd.DataFrame()
         finally:
             conn.close()
 
+    def _load_responses(self):
+        """Load responses data from database"""
+        query = "SELECT * FROM responses"
+        df = self._fetch_query(query)
+        logger.info(f"Loaded {len(df)} responses from database")
+        return df
+
     def _load_evaluations(self):
-        """Load evaluations data from SQLite database"""
-        conn = sqlite3.connect(self.db_path)
-        try:
-            df = pd.read_sql_query("SELECT * FROM evaluations", conn)
-            logger.info(f"Loaded {len(df)} evaluations from database")
-            return df
-        except sqlite3.OperationalError as e:
-            logger.error(f"Error loading evaluations: {e}")
-            return pd.DataFrame()
-        finally:
-            conn.close()
+        """Load evaluations data from database"""
+        query = "SELECT * FROM evaluations"
+        df = self._fetch_query(query)
+        logger.info(f"Loaded {len(df)} evaluations from database")
+        return df
 
     def generate_basic_stats(self):
         """Generate basic statistics about the evaluations"""
@@ -467,12 +468,12 @@ class EvaluationAnalyzer:
 
 def main():
     parser = argparse.ArgumentParser(description='Analyze AI ethics evaluations')
-    parser.add_argument('--db-path', type=str, default=None,
-                        help='Custom path to SQLite database')
+    parser.add_argument('--base-path', type=str, default=None,
+                        help='Custom path to project root directory')
     args = parser.parse_args()
     
     try:
-        analyzer = EvaluationAnalyzer(db_path=args.db_path)
+        analyzer = EvaluationAnalyzer(base_path=args.base_path)
         analyzer.generate_comprehensive_report()
         logger.info("Evaluation analysis completed successfully")
     except Exception as e:

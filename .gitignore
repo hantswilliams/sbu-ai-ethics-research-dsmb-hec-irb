@@ -1,3 +1,6 @@
 # secret / env files
 .env
 
+# virtual environment
+venv/
+.venv/

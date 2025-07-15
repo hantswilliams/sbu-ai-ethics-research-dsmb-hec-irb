@@ -1,0 +1,36 @@
+2025-07-15 11:25:40,757 - evaluation_analysis - ERROR - Error in analysis: EvaluationAnalyzer.__init__() got an unexpected keyword argument 'db_path'
+2025-07-15 11:25:50,496 - evaluation_analysis - ERROR - Error in analysis: EvaluationAnalyzer.__init__() got an unexpected keyword argument 'db_path'
+2025-07-15 11:26:17,215 - evaluation_analysis - ERROR - Error in analysis: EvaluationAnalyzer.__init__() got an unexpected keyword argument 'db_path'
+2025-07-15 11:27:17,747 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-15 11:27:17,747 - evaluation_analysis - INFO - Using supabase database
+2025-07-15 11:27:18,335 - evaluation_analysis - INFO - Loaded 12 responses from database
+2025-07-15 11:27:18,727 - evaluation_analysis - INFO - Loaded 2 evaluations from database
+2025-07-15 11:27:18,738 - evaluation_analysis - INFO - Loaded 2 evaluations from database
+2025-07-15 11:27:18,747 - evaluation_analysis - INFO - Evaluations by evaluator:
+evaluator_id
+3    2
+dtype: int64
+2025-07-15 11:27:18,747 - evaluation_analysis - INFO - Evaluations by scenario:
+case_id  scenario_filename  iteration
+1        1_case.md          1            2
+dtype: int64
+2025-07-15 11:27:18,752 - evaluation_analysis - INFO - Average scores by vendor:
+          relevance_score            ... coherence_score          
+                     mean std count  ...            mean std count
+vendor                               ...                          
+Anthropic             2.0 NaN     1  ...             1.0 NaN     1
+Google                4.0 NaN     1  ...             3.0 NaN     1
+
+[2 rows x 12 columns]
+2025-07-15 11:27:18,753 - evaluation_analysis - INFO - Overall average by vendor:
+           mean  std  count
+vendor                     
+Anthropic  1.75  NaN      1
+Google     2.75  NaN      1
+2025-07-15 11:27:19,125 - evaluation_analysis - INFO - Score distribution plots saved
+2025-07-15 11:27:19,390 - evaluation_analysis - INFO - Vendor comparison plots saved
+2025-07-15 11:27:19,642 - evaluation_analysis - INFO - Model comparison plots saved
+2025-07-15 11:27:19,656 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-15 11:27:19,658 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-15 11:27:19,703 - evaluation_analysis - INFO - Comprehensive evaluation report saved to /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/evaluation_results/evaluation_report.html
+2025-07-15 11:27:19,703 - evaluation_analysis - INFO - Evaluation analysis completed successfully

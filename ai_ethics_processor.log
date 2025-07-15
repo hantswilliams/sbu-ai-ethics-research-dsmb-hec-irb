@@ -478,3 +478,230 @@
 2025-07-15 09:05:38,987 - ai_ethics - INFO - Average processing times by vendor: [('Anthropic', 32.11049294471741), ('GROK', 15.308090925216675), ('Google', 16.973388195037842), ('OpenAI', 27.810884952545166)]
 2025-07-15 09:05:38,987 - ai_ethics - INFO - Average processing times by model: [('Anthropic', 'claude-3-opus-20240229', 32.11049294471741), ('GROK', 'grok-3-mini', 15.308090925216675), ('Google', 'gemini-1.5-pro', 16.973388195037842), ('OpenAI', 'gpt-4.1-mini', 27.810884952545166)]
 2025-07-15 09:05:38,987 - ai_ethics - INFO - Processing completed successfully
+2025-07-15 10:07:19,373 - ai_ethics - INFO - OpenAI client initialized with model gpt-4.1-mini
+2025-07-15 10:07:19,373 - ai_ethics - INFO - Google Gemini client initialized with model gemini-1.5-pro
+2025-07-15 10:07:19,597 - ai_ethics - INFO - Anthropic Claude client initialized with model claude-3-opus-20240229
+2025-07-15 10:07:19,597 - ai_ethics - INFO - GROK client initialized with model grok-3-mini
+2025-07-15 10:07:19,597 - ai_ethics.db - INFO - Using Supabase PostgreSQL database at https://eigtivpuaudjkdadajfb.supabase.co
+2025-07-15 10:07:19,598 - ai_ethics.db - ERROR - psycopg2 package not installed. Please install with 'pip install psycopg2-binary'
+2025-07-15 10:07:19,598 - ai_ethics - ERROR - Error in main execution: psycopg2 package is required for Supabase PostgreSQL support
+2025-07-15 10:09:13,221 - ai_ethics - INFO - OpenAI client initialized with model gpt-4.1-mini
+2025-07-15 10:09:13,221 - ai_ethics - INFO - Google Gemini client initialized with model gemini-1.5-pro
+2025-07-15 10:09:13,334 - ai_ethics - INFO - Anthropic Claude client initialized with model claude-3-opus-20240229
+2025-07-15 10:09:13,334 - ai_ethics - INFO - GROK client initialized with model grok-3-mini
+2025-07-15 10:09:13,334 - ai_ethics.db - INFO - Using SQLite database at /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/results.db
+2025-07-15 10:09:13,337 - ai_ethics.db - INFO - SQLite database initialized
+2025-07-15 10:09:13,337 - ai_ethics - INFO - Using sqlite database
+2025-07-15 10:09:13,337 - ai_ethics - INFO - Loaded prompt template from /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/prompt/prompt_v1.md
+2025-07-15 10:09:13,337 - ai_ethics - INFO - Found 3 case files
+2025-07-15 10:09:13,337 - ai_ethics - INFO - Starting processing of 3 cases with all model(s), 1 iteration(s) each
+2025-07-15 10:09:13,338 - ai_ethics - INFO - Processing case 1 (1_case.md) with model(s): all
+2025-07-15 10:09:13,338 - ai_ethics - INFO - Running OpenAI iteration 1/1 for case 1
+2025-07-15 10:09:54,423 - ai_ethics - INFO - OpenAI client initialized with model gpt-4.1-mini
+2025-07-15 10:09:54,423 - ai_ethics - INFO - Google Gemini client initialized with model gemini-1.5-pro
+2025-07-15 10:09:54,536 - ai_ethics - INFO - Anthropic Claude client initialized with model claude-3-opus-20240229
+2025-07-15 10:09:54,536 - ai_ethics - INFO - GROK client initialized with model grok-3-mini
+2025-07-15 10:09:54,536 - ai_ethics.db - INFO - Using Supabase PostgreSQL database at https://eigtivpuaudjkdadajfb.supabase.co
+2025-07-15 10:09:56,981 - ai_ethics - ERROR - Error in main execution: could not translate host name "https://eigtivpuaudjkdadajfb.supabase.co" to address: nodename nor servname provided, or not known
+
+2025-07-15 10:11:57,665 - ai_ethics - INFO - OpenAI client initialized with model gpt-4.1-mini
+2025-07-15 10:11:57,665 - ai_ethics - INFO - Google Gemini client initialized with model gemini-1.5-pro
+2025-07-15 10:11:57,781 - ai_ethics - INFO - Anthropic Claude client initialized with model claude-3-opus-20240229
+2025-07-15 10:11:57,781 - ai_ethics - INFO - GROK client initialized with model grok-3-mini
+2025-07-15 10:11:57,781 - ai_ethics.db - INFO - Using Supabase PostgreSQL database at https://eigtivpuaudjkdadajfb.supabase.co
+2025-07-15 10:11:57,861 - ai_ethics - ERROR - Error in main execution: could not translate host name "https://eigtivpuaudjkdadajfb.supabase.co" to address: nodename nor servname provided, or not known
+
+2025-07-15 10:12:10,835 - ai_ethics - INFO - OpenAI client initialized with model gpt-4.1-mini
+2025-07-15 10:12:10,836 - ai_ethics - INFO - Google Gemini client initialized with model gemini-1.5-pro
+2025-07-15 10:12:10,945 - ai_ethics - INFO - Anthropic Claude client initialized with model claude-3-opus-20240229
+2025-07-15 10:12:10,945 - ai_ethics - INFO - GROK client initialized with model grok-3-mini
+2025-07-15 10:12:10,945 - ai_ethics.db - INFO - Using Supabase PostgreSQL database at https://eigtivpuaudjkdadajfb.supabase.co
+2025-07-15 10:12:10,980 - ai_ethics - ERROR - Error in main execution: could not translate host name "https://eigtivpuaudjkdadajfb.supabase.co" to address: nodename nor servname provided, or not known
+
+2025-07-15 10:14:04,464 - ai_ethics - INFO - OpenAI client initialized with model gpt-4.1-mini
+2025-07-15 10:14:04,464 - ai_ethics - INFO - Google Gemini client initialized with model gemini-1.5-pro
+2025-07-15 10:14:04,660 - ai_ethics - INFO - Anthropic Claude client initialized with model claude-3-opus-20240229
+2025-07-15 10:14:04,660 - ai_ethics - INFO - GROK client initialized with model grok-3-mini
+2025-07-15 10:14:04,661 - ai_ethics.db - INFO - Using Supabase PostgreSQL database at eigtivpuaudjkdadajfb.supabase.co
+2025-07-15 10:16:34,739 - ai_ethics - ERROR - Error in main execution: connection to server at "eigtivpuaudjkdadajfb.supabase.co" (104.18.38.10), port 5432 failed: Operation timed out
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "eigtivpuaudjkdadajfb.supabase.co" (172.64.149.246), port 5432 failed: Operation timed out
+	Is the server running on that host and accepting TCP/IP connections?
+
+2025-07-15 10:20:44,072 - ai_ethics - INFO - OpenAI client initialized with model gpt-4.1-mini
+2025-07-15 10:20:44,073 - ai_ethics - INFO - Google Gemini client initialized with model gemini-1.5-pro
+2025-07-15 10:20:45,011 - ai_ethics - INFO - Anthropic Claude client initialized with model claude-3-opus-20240229
+2025-07-15 10:20:45,012 - ai_ethics - INFO - GROK client initialized with model grok-3-mini
+2025-07-15 10:20:45,012 - ai_ethics.db - INFO - Using Supabase PostgreSQL database at eigtivpuaudjkdadajfb.supabase.co
+2025-07-15 10:20:45,145 - ai_ethics.db - INFO - Connecting to Supabase PostgreSQL using connection string format
+2025-07-15 10:24:30,889 - ai_ethics - INFO - OpenAI client initialized with model gpt-4.1-mini
+2025-07-15 10:24:30,890 - ai_ethics - INFO - Google Gemini client initialized with model gemini-1.5-pro
+2025-07-15 10:24:31,518 - ai_ethics - INFO - Anthropic Claude client initialized with model claude-3-opus-20240229
+2025-07-15 10:24:31,518 - ai_ethics - INFO - GROK client initialized with model grok-3-mini
+2025-07-15 10:24:31,519 - ai_ethics.db - INFO - Using Supabase PostgreSQL database with project: eigtivpuaudjkdadajfb.supabase.co
+2025-07-15 10:24:31,610 - ai_ethics.db - INFO - Connecting to Supabase PostgreSQL at db.eigtivpuaudjkdadajfb.supabase.co
+2025-07-15 10:24:31,667 - ai_ethics - ERROR - Error in main execution: could not translate host name "db.eigtivpuaudjkdadajfb.supabase.co" to address: nodename nor servname provided, or not known
+
+2025-07-15 10:24:54,701 - ai_ethics - INFO - OpenAI client initialized with model gpt-4.1-mini
+2025-07-15 10:24:54,701 - ai_ethics - INFO - Google Gemini client initialized with model gemini-1.5-pro
+2025-07-15 10:24:55,029 - ai_ethics - INFO - Anthropic Claude client initialized with model claude-3-opus-20240229
+2025-07-15 10:24:55,030 - ai_ethics - INFO - GROK client initialized with model grok-3-mini
+2025-07-15 10:24:55,031 - ai_ethics.db - INFO - Using Supabase PostgreSQL database with project: eigtivpuaudjkdadajfb
+2025-07-15 10:24:55,121 - ai_ethics.db - INFO - Connecting to Supabase PostgreSQL at db.eigtivpuaudjkdadajfb
+2025-07-15 10:24:55,176 - ai_ethics - ERROR - Error in main execution: could not translate host name "db.eigtivpuaudjkdadajfb" to address: nodename nor servname provided, or not known
+
+2025-07-15 10:26:54,383 - ai_ethics - INFO - OpenAI client initialized with model gpt-4.1-mini
+2025-07-15 10:26:54,383 - ai_ethics - INFO - Google Gemini client initialized with model gemini-1.5-pro
+2025-07-15 10:26:54,499 - ai_ethics - INFO - Anthropic Claude client initialized with model claude-3-opus-20240229
+2025-07-15 10:26:54,499 - ai_ethics - INFO - GROK client initialized with model grok-3-mini
+2025-07-15 10:26:54,500 - ai_ethics.db - INFO - Using Supabase PostgreSQL database with project: eigtivpuaudjkdadajfb
+2025-07-15 10:26:54,526 - ai_ethics.db - INFO - Connecting to Supabase PostgreSQL at db.eigtivpuaudjkdadajfb.supabase.co
+2025-07-15 10:26:54,579 - ai_ethics - ERROR - Error in main execution: could not translate host name "db.eigtivpuaudjkdadajfb.supabase.co" to address: nodename nor servname provided, or not known
+
+2025-07-15 10:28:36,726 - ai_ethics - INFO - OpenAI client initialized with model gpt-4.1-mini
+2025-07-15 10:28:36,728 - ai_ethics - INFO - Google Gemini client initialized with model gemini-1.5-pro
+2025-07-15 10:28:37,130 - ai_ethics - INFO - Anthropic Claude client initialized with model claude-3-opus-20240229
+2025-07-15 10:28:37,131 - ai_ethics - INFO - GROK client initialized with model grok-3-mini
+2025-07-15 10:28:37,131 - ai_ethics.db - INFO - Using Supabase PostgreSQL database with project: eigtivpuaudjkdadajfb
+2025-07-15 10:28:37,195 - ai_ethics.db - INFO - Attempting to connect to Supabase PostgreSQL using host: eigtivpuaudjkdadajfb
+2025-07-15 10:28:37,287 - ai_ethics.db - WARNING - Parameter-based connection failed: could not translate host name "eigtivpuaudjkdadajfb" to address: nodename nor servname provided, or not known
+
+2025-07-15 10:28:37,288 - ai_ethics.db - INFO - Trying connection string approach...
+2025-07-15 10:28:37,288 - ai_ethics.db - INFO - Connecting with connection string to Supabase PostgreSQL
+2025-07-15 10:28:37,292 - ai_ethics.db - ERROR - All connection attempts failed. Parameter error: could not translate host name "eigtivpuaudjkdadajfb" to address: nodename nor servname provided, or not known
+, Connection string error: could not translate host name "eigtivpuaudjkdadajfb" to address: nodename nor servname provided, or not known
+
+2025-07-15 10:28:37,292 - ai_ethics - ERROR - Error in main execution: Could not connect to Supabase: could not translate host name "eigtivpuaudjkdadajfb" to address: nodename nor servname provided, or not known
+
+2025-07-15 10:33:15,737 - ai_ethics - INFO - OpenAI client initialized with model gpt-4.1-mini
+2025-07-15 10:33:15,737 - ai_ethics - INFO - Google Gemini client initialized with model gemini-1.5-pro
+2025-07-15 10:33:15,851 - ai_ethics - INFO - Anthropic Claude client initialized with model claude-3-opus-20240229
+2025-07-15 10:33:15,851 - ai_ethics - INFO - GROK client initialized with model grok-3-mini
+2025-07-15 10:33:15,851 - ai_ethics.db - INFO - Using Supabase PostgreSQL database with host: eigtivpuaudjkdadajfb
+2025-07-15 10:33:15,877 - ai_ethics.db - WARNING - Parameter-based connection failed: 'SupabaseAdapter' object has no attribute 'supabase_hostname'
+2025-07-15 10:33:15,877 - ai_ethics - ERROR - Error in main execution: 'SupabaseAdapter' object has no attribute 'supabase_hostname'
+2025-07-15 10:35:00,463 - ai_ethics - INFO - OpenAI client initialized with model gpt-4.1-mini
+2025-07-15 10:35:00,463 - ai_ethics - INFO - Google Gemini client initialized with model gemini-1.5-pro
+2025-07-15 10:35:00,722 - ai_ethics - INFO - Anthropic Claude client initialized with model claude-3-opus-20240229
+2025-07-15 10:35:00,723 - ai_ethics - INFO - GROK client initialized with model grok-3-mini
+2025-07-15 10:35:00,723 - ai_ethics.db - INFO - Using Supabase PostgreSQL database with host: eigtivpuaudjkdadajfb
+2025-07-15 10:35:00,775 - ai_ethics.db - INFO - Attempting to resolve hostname: eigtivpuaudjkdadajfb
+2025-07-15 10:35:00,780 - ai_ethics.db - WARNING - Could not resolve hostname eigtivpuaudjkdadajfb: [Errno 8] nodename nor servname provided, or not known
+2025-07-15 10:35:00,781 - ai_ethics.db - INFO - Trying direct IP connection to 104.18.38.10
+2025-07-15 10:36:34,040 - ai_ethics - INFO - OpenAI client initialized with model gpt-4.1-mini
+2025-07-15 10:36:34,040 - ai_ethics - INFO - Google Gemini client initialized with model gemini-1.5-pro
+2025-07-15 10:36:34,154 - ai_ethics - INFO - Anthropic Claude client initialized with model claude-3-opus-20240229
+2025-07-15 10:36:34,154 - ai_ethics - INFO - GROK client initialized with model grok-3-mini
+2025-07-15 10:36:34,154 - ai_ethics.db - INFO - Using Supabase PostgreSQL database with host: db.eigtivpuaudjkdadajfb.supabase.co
+2025-07-15 10:36:34,181 - ai_ethics.db - INFO - Attempting to resolve hostname: db.eigtivpuaudjkdadajfb.supabase.co
+2025-07-15 10:36:34,221 - ai_ethics.db - WARNING - Could not resolve hostname db.eigtivpuaudjkdadajfb.supabase.co: [Errno 8] nodename nor servname provided, or not known
+2025-07-15 10:36:34,222 - ai_ethics.db - INFO - Attempting to resolve hostname: db.eigtivpuaudjkdadajfb-pooler.supabase.co
+2025-07-15 10:36:34,270 - ai_ethics.db - WARNING - Could not resolve hostname db.eigtivpuaudjkdadajfb-pooler.supabase.co: [Errno 8] nodename nor servname provided, or not known
+2025-07-15 10:36:34,270 - ai_ethics.db - INFO - Trying direct IP connection to 104.18.38.10
+2025-07-15 10:37:22,962 - ai_ethics - INFO - OpenAI client initialized with model gpt-4.1-mini
+2025-07-15 10:37:22,962 - ai_ethics - INFO - Google Gemini client initialized with model gemini-1.5-pro
+2025-07-15 10:37:23,076 - ai_ethics - INFO - Anthropic Claude client initialized with model claude-3-opus-20240229
+2025-07-15 10:37:23,076 - ai_ethics - INFO - GROK client initialized with model grok-3-mini
+2025-07-15 10:37:23,076 - ai_ethics.db - INFO - Using Supabase PostgreSQL database with host: eigtivpuaudjkdadajfb.supabase.co
+2025-07-15 10:37:23,103 - ai_ethics.db - INFO - Attempting to resolve hostname: eigtivpuaudjkdadajfb.supabase.co
+2025-07-15 10:37:23,146 - ai_ethics.db - INFO - Successfully resolved eigtivpuaudjkdadajfb.supabase.co to 172.64.149.246
+2025-07-15 10:37:23,146 - ai_ethics.db - INFO - Attempting to connect to Supabase PostgreSQL using host: eigtivpuaudjkdadajfb.supabase.co
+2025-07-15 10:56:29,361 - ai_ethics - WARNING - OpenAI API key not found. OpenAI functionality will be disabled.
+2025-07-15 10:56:29,362 - ai_ethics - WARNING - Google Gemini API key not found. Gemini functionality will be disabled.
+2025-07-15 10:56:29,427 - ai_ethics - WARNING - Claude API key not found. Claude functionality will be disabled.
+2025-07-15 10:56:29,427 - ai_ethics - WARNING - GROK API key not found. GROK functionality will be disabled.
+2025-07-15 10:56:29,427 - ai_ethics.db - INFO - Using SQLite database at /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/results.db
+2025-07-15 10:56:29,429 - ai_ethics.db - INFO - SQLite database initialized
+2025-07-15 10:56:29,429 - ai_ethics - INFO - Using sqlite database
+2025-07-15 10:56:29,430 - ai_ethics - INFO - Loaded prompt template from /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/prompt/prompt_v1.md
+2025-07-15 10:56:29,430 - ai_ethics - INFO - Found 3 case files
+2025-07-15 10:56:29,430 - ai_ethics - INFO - Starting processing of 3 cases with all model(s), 1 iteration(s) each
+2025-07-15 10:56:29,430 - ai_ethics - INFO - Processing case 1 (1_case.md) with model(s): all
+2025-07-15 10:56:29,431 - ai_ethics - INFO - Processing case 2 (2_case.md) with model(s): all
+2025-07-15 10:56:29,431 - ai_ethics - INFO - Processing case 3 (3_case.md) with model(s): all
+2025-07-15 10:56:29,431 - ai_ethics - INFO - Completed processing all cases
+2025-07-15 10:56:29,432 - ai_ethics - INFO - Summary Statistics:
+2025-07-15 10:56:29,432 - ai_ethics - INFO - Total responses: 4
+2025-07-15 10:56:29,432 - ai_ethics - INFO - By vendor: {'Anthropic': 1, 'GROK': 1, 'Google': 1, 'OpenAI': 1}
+2025-07-15 10:56:29,432 - ai_ethics - INFO - By model: [<sqlite3.Row object at 0x107bfe860>, <sqlite3.Row object at 0x108056050>, <sqlite3.Row object at 0x108056260>, <sqlite3.Row object at 0x108055d80>]
+2025-07-15 10:56:29,432 - ai_ethics - INFO - By case: {'1': 4}
+2025-07-15 10:56:29,432 - ai_ethics - INFO - By scenario: {'1_case.md': 4}
+2025-07-15 10:56:29,432 - ai_ethics - INFO - Average processing times by vendor: {'Anthropic': 32.11049294471741, 'GROK': 15.308090925216675, 'Google': 16.973388195037842, 'OpenAI': 27.810884952545166}
+2025-07-15 10:56:29,432 - ai_ethics - INFO - Average processing times by model: [<sqlite3.Row object at 0x108056080>, <sqlite3.Row object at 0x1080561d0>, <sqlite3.Row object at 0x108056230>, <sqlite3.Row object at 0x1080562f0>]
+2025-07-15 10:56:29,432 - ai_ethics - INFO - Processing completed successfully
+2025-07-15 10:57:52,843 - ai_ethics - WARNING - OpenAI API key not found. OpenAI functionality will be disabled.
+2025-07-15 10:57:52,843 - ai_ethics - WARNING - Google Gemini API key not found. Gemini functionality will be disabled.
+2025-07-15 10:57:52,912 - ai_ethics - WARNING - Claude API key not found. Claude functionality will be disabled.
+2025-07-15 10:57:52,912 - ai_ethics - WARNING - GROK API key not found. GROK functionality will be disabled.
+2025-07-15 10:57:52,912 - ai_ethics.db - ERROR - Missing Supabase configuration. Please set SUPABASE_URL and SUPABASE_KEY in .env file
+2025-07-15 10:57:52,912 - ai_ethics - ERROR - Error in main execution: Missing Supabase configuration
+2025-07-15 10:58:13,864 - ai_ethics - INFO - OpenAI client initialized with model gpt-4.1-mini
+2025-07-15 10:58:13,864 - ai_ethics - INFO - Google Gemini client initialized with model gemini-1.5-pro
+2025-07-15 10:58:13,936 - ai_ethics - INFO - Anthropic Claude client initialized with model claude-3-opus-20240229
+2025-07-15 10:58:13,936 - ai_ethics - INFO - GROK client initialized with model grok-3-mini
+2025-07-15 10:58:13,937 - ai_ethics - ERROR - Error in main execution: SupabaseAdapter.__init__() takes 1 positional argument but 4 were given
+2025-07-15 11:00:12,931 - ai_ethics - INFO - OpenAI client initialized with model gpt-4.1-mini
+2025-07-15 11:00:12,932 - ai_ethics - INFO - Google Gemini client initialized with model gemini-1.5-pro
+2025-07-15 11:00:13,093 - ai_ethics - INFO - Anthropic Claude client initialized with model claude-3-opus-20240229
+2025-07-15 11:00:13,093 - ai_ethics - INFO - GROK client initialized with model grok-3-mini
+2025-07-15 11:00:13,093 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-15 11:00:20,268 - ai_ethics.db - INFO - Supabase PostgreSQL database initialized
+2025-07-15 11:00:20,272 - ai_ethics - INFO - Using supabase database
+2025-07-15 11:00:20,276 - ai_ethics - INFO - Loaded prompt template from /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/prompt/prompt_v1.md
+2025-07-15 11:00:20,281 - ai_ethics - INFO - Found 3 case files
+2025-07-15 11:00:20,281 - ai_ethics - INFO - Starting processing of 3 cases with all model(s), 1 iteration(s) each
+2025-07-15 11:00:20,281 - ai_ethics - INFO - Processing case 1 (1_case.md) with model(s): all
+2025-07-15 11:00:20,281 - ai_ethics - INFO - Running OpenAI iteration 1/1 for case 1
+2025-07-15 11:00:45,643 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 11:00:46,071 - ai_ethics - INFO - Saved response for case 1 (1_case.md), OpenAI gpt-4.1-mini (gpt-4.1-mini-2025-04-14), iteration 1
+2025-07-15 11:00:48,072 - ai_ethics - INFO - Running Gemini iteration 1/1 for case 1
+2025-07-15 11:01:05,247 - ai_ethics - INFO - Saved response for case 1 (1_case.md), Google gemini-1.5-pro (gemini-1.5-pro), iteration 1
+2025-07-15 11:01:07,253 - ai_ethics - INFO - Running Claude iteration 1/1 for case 1
+2025-07-15 11:01:44,166 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-15 11:01:44,702 - ai_ethics - INFO - Saved response for case 1 (1_case.md), Anthropic claude-3-opus-20240229 (claude-3-opus-20240229), iteration 1
+2025-07-15 11:01:46,707 - ai_ethics - INFO - Running GROK iteration 1/1 for case 1
+2025-07-15 11:02:02,415 - ai_ethics - INFO - Saved response for case 1 (1_case.md), GROK grok-3-mini (grok-3-mini), iteration 1
+2025-07-15 11:02:04,421 - ai_ethics - INFO - Processing case 2 (2_case.md) with model(s): all
+2025-07-15 11:02:04,421 - ai_ethics - INFO - Running OpenAI iteration 1/1 for case 2
+2025-07-15 11:02:26,005 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 11:02:26,353 - ai_ethics - INFO - Saved response for case 2 (2_case.md), OpenAI gpt-4.1-mini (gpt-4.1-mini-2025-04-14), iteration 1
+2025-07-15 11:02:28,360 - ai_ethics - INFO - Running Gemini iteration 1/1 for case 2
+2025-07-15 11:02:41,988 - ai_ethics - INFO - Saved response for case 2 (2_case.md), Google gemini-1.5-pro (gemini-1.5-pro), iteration 1
+2025-07-15 11:02:43,998 - ai_ethics - INFO - Running Claude iteration 1/1 for case 2
+2025-07-15 11:03:12,126 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-15 11:03:12,550 - ai_ethics - INFO - Saved response for case 2 (2_case.md), Anthropic claude-3-opus-20240229 (claude-3-opus-20240229), iteration 1
+2025-07-15 11:03:14,555 - ai_ethics - INFO - Running GROK iteration 1/1 for case 2
+2025-07-15 11:03:29,535 - ai_ethics - INFO - Saved response for case 2 (2_case.md), GROK grok-3-mini (grok-3-mini), iteration 1
+2025-07-15 11:03:31,542 - ai_ethics - INFO - Processing case 3 (3_case.md) with model(s): all
+2025-07-15 11:03:31,542 - ai_ethics - INFO - Running OpenAI iteration 1/1 for case 3
+2025-07-15 11:03:49,386 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 11:03:49,771 - ai_ethics - INFO - Saved response for case 3 (3_case.md), OpenAI gpt-4.1-mini (gpt-4.1-mini-2025-04-14), iteration 1
+2025-07-15 11:03:51,772 - ai_ethics - INFO - Running Gemini iteration 1/1 for case 3
+2025-07-15 11:04:06,137 - ai_ethics - INFO - Saved response for case 3 (3_case.md), Google gemini-1.5-pro (gemini-1.5-pro), iteration 1
+2025-07-15 11:04:08,140 - ai_ethics - INFO - Running Claude iteration 1/1 for case 3
+2025-07-15 11:04:10,263 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 529 "
+2025-07-15 11:04:10,266 - anthropic._base_client - INFO - Retrying request to /v1/messages in 0.407186 seconds
+2025-07-15 11:04:12,058 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 529 "
+2025-07-15 11:04:12,067 - anthropic._base_client - INFO - Retrying request to /v1/messages in 0.778926 seconds
+2025-07-15 11:04:13,651 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 529 "
+2025-07-15 11:04:13,653 - ai_ethics - ERROR - Error querying Claude: Error code: 529 - {'type': 'error', 'error': {'type': 'overloaded_error', 'message': 'Overloaded'}}
+2025-07-15 11:04:13,653 - ai_ethics - ERROR - Error in Claude processing: Error code: 529 - {'type': 'error', 'error': {'type': 'overloaded_error', 'message': 'Overloaded'}}
+2025-07-15 11:04:13,653 - ai_ethics - INFO - Running GROK iteration 1/1 for case 3
+2025-07-15 11:04:33,039 - ai_ethics - INFO - Saved response for case 3 (3_case.md), GROK grok-3-mini (grok-3-mini), iteration 1
+2025-07-15 11:04:35,045 - ai_ethics - INFO - Completed processing all cases
+2025-07-15 11:04:35,497 - ai_ethics - ERROR - Error in main execution: tuple indices must be integers or slices, not str
+2025-07-15 11:13:36,418 - ai_ethics - INFO - OpenAI client initialized with model gpt-4.1-mini
+2025-07-15 11:13:36,418 - ai_ethics - INFO - Google Gemini client initialized with model gemini-1.5-pro
+2025-07-15 11:13:36,498 - ai_ethics - INFO - Anthropic Claude client initialized with model claude-3-opus-20240229
+2025-07-15 11:13:36,499 - ai_ethics - INFO - GROK client initialized with model grok-3-mini
+2025-07-15 11:13:36,499 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-15 11:13:37,030 - ai_ethics.db - INFO - Supabase PostgreSQL database initialized
+2025-07-15 11:13:37,031 - ai_ethics - INFO - Using supabase database
+2025-07-15 11:13:37,033 - ai_ethics - INFO - Loaded prompt template from /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/prompt/prompt_v1.md
+2025-07-15 11:13:37,034 - ai_ethics - INFO - Found 3 case files
+2025-07-15 11:13:37,034 - ai_ethics - INFO - Starting processing of 3 cases with all model(s), 1 iteration(s) each
+2025-07-15 11:13:37,035 - ai_ethics - INFO - Processing case 1 (1_case.md) with model(s): all
+2025-07-15 11:13:37,035 - ai_ethics - INFO - Running OpenAI iteration 1/1 for case 1
+2025-07-15 11:13:52,729 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 11:13:53,143 - ai_ethics - INFO - Saved response for case 1 (1_case.md), OpenAI gpt-4.1-mini (gpt-4.1-mini-2025-04-14), iteration 1
+2025-07-15 11:13:55,146 - ai_ethics - INFO - Running Gemini iteration 1/1 for case 1

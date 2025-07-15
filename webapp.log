@@ -1,0 +1,215 @@
+2025-07-15 11:14:04,099 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-15 11:14:04,470 - ai_ethics.db - INFO - Supabase PostgreSQL database initialized
+2025-07-15 11:14:04,479 - ai_ethics_webapp - INFO - Database initialization handled by adapter
+2025-07-15 11:14:04,507 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://172.17.8.190:5005
+2025-07-15 11:14:04,507 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-15 11:14:04,552 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 11:14:04,668 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-15 11:14:05,010 - ai_ethics.db - INFO - Supabase PostgreSQL database initialized
+2025-07-15 11:14:05,011 - ai_ethics_webapp - INFO - Database initialization handled by adapter
+2025-07-15 11:14:05,016 - werkzeug - WARNING -  * Debugger is active!
+2025-07-15 11:14:05,030 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-15 11:14:06,697 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:14:06] "GET / HTTP/1.1" 200 -
+2025-07-15 11:14:13,095 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:14:13] "[35m[1mPOST /signin HTTP/1.1[0m" 500 -
+2025-07-15 11:14:13,140 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:14:13] "GET /signin?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-07-15 11:14:13,140 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:14:13] "GET /signin?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-07-15 11:14:13,152 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:14:13] "GET /signin?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-07-15 11:14:13,159 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:14:13] "[36mGET /signin?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-07-15 11:15:16,313 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/shared/db_adapter.py', reloading
+2025-07-15 11:15:16,351 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 11:15:16,525 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-15 11:16:46,255 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-15 11:16:46,779 - ai_ethics.db - INFO - Supabase PostgreSQL database initialized
+2025-07-15 11:16:46,784 - ai_ethics_webapp - INFO - Database initialization handled by adapter
+2025-07-15 11:16:46,804 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://172.17.8.190:5005
+2025-07-15 11:16:46,804 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-15 11:16:46,809 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 11:16:46,929 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-15 11:16:47,316 - ai_ethics.db - INFO - Supabase PostgreSQL database initialized
+2025-07-15 11:16:47,321 - ai_ethics_webapp - INFO - Database initialization handled by adapter
+2025-07-15 11:16:47,336 - werkzeug - WARNING -  * Debugger is active!
+2025-07-15 11:16:47,352 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-15 11:16:49,057 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:16:49] "GET / HTTP/1.1" 200 -
+2025-07-15 11:16:54,543 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:16:54] "[35m[1mPOST /signin HTTP/1.1[0m" 500 -
+2025-07-15 11:16:54,586 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:16:54] "[36mGET /signin?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-07-15 11:16:54,587 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:16:54] "[36mGET /signin?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-07-15 11:16:54,602 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:16:54] "[36mGET /signin?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-07-15 11:17:26,525 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/shared/db_adapter.py', reloading
+2025-07-15 11:17:26,580 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 11:17:26,757 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-15 11:17:27,129 - ai_ethics.db - INFO - Supabase PostgreSQL database initialized
+2025-07-15 11:17:27,131 - ai_ethics_webapp - INFO - Database initialization handled by adapter
+2025-07-15 11:17:27,138 - werkzeug - WARNING -  * Debugger is active!
+2025-07-15 11:17:27,151 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-15 11:17:30,744 - ai_ethics_webapp - INFO - Existing evaluator signed in: admin5@stonybrook.edu (ID: 1)
+2025-07-15 11:17:30,746 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:17:30] "[32mPOST /signin HTTP/1.1[0m" 302 -
+2025-07-15 11:17:31,200 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator admin5@stonybrook.edu (ID: 1)
+2025-07-15 11:17:31,220 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:17:31] "GET /dashboard HTTP/1.1" 200 -
+2025-07-15 11:17:45,817 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_case.md
+2025-07-15 11:17:45,817 - __main__ - INFO - Successfully read discussion content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_discussion.md
+2025-07-15 11:17:46,118 - __main__ - ERROR - Error querying responses: syntax error at or near "AND"
+LINE 4:         WHERE case_id = ? AND scenario_filename = ?
+                                  ^
+
+2025-07-15 11:17:46,121 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:17:46] "[32mGET /evaluate/1/1_case.md HTTP/1.1[0m" 302 -
+2025-07-15 11:17:46,578 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator admin5@stonybrook.edu (ID: 1)
+2025-07-15 11:17:46,581 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:17:46] "GET /dashboard HTTP/1.1" 200 -
+2025-07-15 11:17:51,701 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_case.md
+2025-07-15 11:17:51,702 - __main__ - INFO - Successfully read discussion content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_discussion.md
+2025-07-15 11:17:52,004 - __main__ - ERROR - Error querying responses: syntax error at or near "AND"
+LINE 4:         WHERE case_id = ? AND scenario_filename = ?
+                                  ^
+
+2025-07-15 11:17:52,005 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:17:52] "[32mGET /evaluate/1/1_case.md HTTP/1.1[0m" 302 -
+2025-07-15 11:17:52,454 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator admin5@stonybrook.edu (ID: 1)
+2025-07-15 11:17:52,458 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:17:52] "GET /dashboard HTTP/1.1" 200 -
+2025-07-15 11:17:56,117 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/shared/db_adapter.py', reloading
+2025-07-15 11:17:56,177 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 11:17:56,442 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-15 11:17:56,860 - ai_ethics.db - INFO - Supabase PostgreSQL database initialized
+2025-07-15 11:17:56,862 - ai_ethics_webapp - INFO - Database initialization handled by adapter
+2025-07-15 11:17:56,873 - werkzeug - WARNING -  * Debugger is active!
+2025-07-15 11:17:56,895 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-15 11:18:00,535 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-15 11:18:00,956 - ai_ethics.db - INFO - Supabase PostgreSQL database initialized
+2025-07-15 11:18:00,960 - ai_ethics_webapp - INFO - Database initialization handled by adapter
+2025-07-15 11:18:00,973 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://172.17.8.190:5005
+2025-07-15 11:18:00,974 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-15 11:18:00,983 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 11:18:01,183 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-15 11:18:01,585 - ai_ethics.db - INFO - Supabase PostgreSQL database initialized
+2025-07-15 11:18:01,593 - ai_ethics_webapp - INFO - Database initialization handled by adapter
+2025-07-15 11:18:01,604 - werkzeug - WARNING -  * Debugger is active!
+2025-07-15 11:18:01,634 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-15 11:18:03,617 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:18:03] "GET / HTTP/1.1" 200 -
+2025-07-15 11:18:08,782 - ai_ethics_webapp - INFO - New evaluator created: admin7@stonybrook.edu (ID: 2)
+2025-07-15 11:18:08,785 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:18:08] "[32mPOST /signin HTTP/1.1[0m" 302 -
+2025-07-15 11:18:09,253 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator admin7@stonybrook.edu (ID: 2)
+2025-07-15 11:18:09,266 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:18:09] "GET /dashboard HTTP/1.1" 200 -
+2025-07-15 11:18:10,675 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_case.md
+2025-07-15 11:18:10,676 - __main__ - INFO - Successfully read discussion content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_discussion.md
+2025-07-15 11:18:10,983 - __main__ - ERROR - Error querying responses: syntax error at or near "AND"
+LINE 4:         WHERE case_id = ? AND scenario_filename = ?
+                                  ^
+
+2025-07-15 11:18:10,985 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:18:10] "[32mGET /evaluate/1/1_case.md HTTP/1.1[0m" 302 -
+2025-07-15 11:18:11,402 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator admin7@stonybrook.edu (ID: 2)
+2025-07-15 11:18:11,405 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:18:11] "GET /dashboard HTTP/1.1" 200 -
+2025-07-15 11:19:37,907 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/app.py', reloading
+2025-07-15 11:19:37,933 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 11:19:38,095 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-15 11:19:38,875 - ai_ethics.db - INFO - Supabase PostgreSQL database initialized
+2025-07-15 11:19:38,879 - ai_ethics_webapp - INFO - Database initialization handled by adapter
+2025-07-15 11:19:38,892 - werkzeug - WARNING -  * Debugger is active!
+2025-07-15 11:19:38,909 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-15 11:19:53,411 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/app.py', reloading
+2025-07-15 11:19:53,437 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 11:19:53,600 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-15 11:19:54,079 - ai_ethics.db - INFO - Supabase PostgreSQL database initialized
+2025-07-15 11:19:54,085 - ai_ethics_webapp - INFO - Database initialization handled by adapter
+2025-07-15 11:19:54,098 - werkzeug - WARNING -  * Debugger is active!
+2025-07-15 11:19:54,115 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-15 11:20:10,612 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-15 11:20:11,117 - ai_ethics.db - INFO - Supabase PostgreSQL database initialized
+2025-07-15 11:20:11,121 - ai_ethics_webapp - INFO - Database initialization handled by adapter
+2025-07-15 11:20:11,143 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://172.17.8.190:5005
+2025-07-15 11:20:11,143 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-15 11:20:11,149 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 11:20:11,266 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-15 11:20:11,752 - ai_ethics.db - INFO - Supabase PostgreSQL database initialized
+2025-07-15 11:20:11,758 - ai_ethics_webapp - INFO - Database initialization handled by adapter
+2025-07-15 11:20:11,768 - werkzeug - WARNING -  * Debugger is active!
+2025-07-15 11:20:11,782 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-15 11:20:15,568 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator admin7@stonybrook.edu (ID: 2)
+2025-07-15 11:20:15,588 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:20:15] "GET /dashboard HTTP/1.1" 200 -
+2025-07-15 11:20:17,733 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_case.md
+2025-07-15 11:20:17,734 - __main__ - INFO - Successfully read discussion content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_discussion.md
+2025-07-15 11:20:18,397 - __main__ - ERROR - Error querying responses: syntax error at or near "WHERE"
+LINE 5:             WHERE r.case_id = ? AND r.scenario_filename = ? 
+                    ^
+
+2025-07-15 11:20:18,399 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:20:18] "[32mGET /evaluate/1/1_case.md HTTP/1.1[0m" 302 -
+2025-07-15 11:20:19,000 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator admin7@stonybrook.edu (ID: 2)
+2025-07-15 11:20:19,003 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:20:19] "GET /dashboard HTTP/1.1" 200 -
+2025-07-15 11:20:32,492 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/app.py', reloading
+2025-07-15 11:20:32,512 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 11:20:32,665 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-15 11:20:33,125 - ai_ethics.db - INFO - Supabase PostgreSQL database initialized
+2025-07-15 11:20:33,129 - ai_ethics_webapp - INFO - Database initialization handled by adapter
+2025-07-15 11:20:33,144 - werkzeug - WARNING -  * Debugger is active!
+2025-07-15 11:20:33,161 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-15 11:21:18,443 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-15 11:21:19,344 - ai_ethics.db - INFO - Supabase PostgreSQL database initialized
+2025-07-15 11:21:19,346 - ai_ethics_webapp - INFO - Database initialization handled by adapter
+2025-07-15 11:21:19,361 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://172.17.8.190:5005
+2025-07-15 11:21:19,361 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-15 11:21:19,367 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 11:21:19,502 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-15 11:21:21,282 - ai_ethics.db - INFO - Supabase PostgreSQL database initialized
+2025-07-15 11:21:21,286 - ai_ethics_webapp - INFO - Database initialization handled by adapter
+2025-07-15 11:21:21,295 - werkzeug - WARNING -  * Debugger is active!
+2025-07-15 11:21:21,312 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-15 11:21:22,785 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:21:22] "GET / HTTP/1.1" 200 -
+2025-07-15 11:21:30,065 - ai_ethics_webapp - INFO - New evaluator created: test99@stonybrook.edu (ID: 3)
+2025-07-15 11:21:30,068 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:21:30] "[32mPOST /signin HTTP/1.1[0m" 302 -
+2025-07-15 11:21:30,661 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator test99@stonybrook.edu (ID: 3)
+2025-07-15 11:21:30,668 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:21:30] "GET /dashboard HTTP/1.1" 200 -
+2025-07-15 11:21:32,234 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_case.md
+2025-07-15 11:21:32,234 - __main__ - INFO - Successfully read discussion content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_discussion.md
+2025-07-15 11:21:32,658 - __main__ - ERROR - Error querying responses: syntax error at or near "WHERE"
+LINE 5:             WHERE r.case_id = ? AND r.scenario_filename = ? 
+                    ^
+
+2025-07-15 11:21:32,659 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:21:32] "[32mGET /evaluate/1/1_case.md HTTP/1.1[0m" 302 -
+2025-07-15 11:21:33,182 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator test99@stonybrook.edu (ID: 3)
+2025-07-15 11:21:33,184 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:21:33] "GET /dashboard HTTP/1.1" 200 -
+2025-07-15 11:22:12,887 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/app.py', reloading
+2025-07-15 11:22:12,919 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 11:22:13,086 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-15 11:22:13,641 - ai_ethics.db - INFO - Supabase PostgreSQL database initialized
+2025-07-15 11:22:13,644 - ai_ethics_webapp - INFO - Database initialization handled by adapter
+2025-07-15 11:22:13,655 - werkzeug - WARNING -  * Debugger is active!
+2025-07-15 11:22:13,669 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-15 11:22:26,218 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator test99@stonybrook.edu (ID: 3)
+2025-07-15 11:22:26,237 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:22:26] "GET /dashboard HTTP/1.1" 200 -
+2025-07-15 11:22:27,005 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_case.md
+2025-07-15 11:22:27,006 - __main__ - INFO - Successfully read discussion content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_discussion.md
+2025-07-15 11:22:27,453 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:22:27] "GET /evaluate/1/1_case.md HTTP/1.1" 200 -
+2025-07-15 11:22:35,368 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/app.py', reloading
+2025-07-15 11:22:35,396 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 11:22:35,574 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-15 11:22:36,070 - ai_ethics.db - INFO - Supabase PostgreSQL database initialized
+2025-07-15 11:22:36,073 - ai_ethics_webapp - INFO - Database initialization handled by adapter
+2025-07-15 11:22:36,083 - werkzeug - WARNING -  * Debugger is active!
+2025-07-15 11:22:36,098 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-15 11:22:46,034 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:22:46] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
+2025-07-15 11:22:46,552 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator test99@stonybrook.edu (ID: 3)
+2025-07-15 11:22:46,568 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:22:46] "GET /dashboard HTTP/1.1" 200 -
+2025-07-15 11:22:51,652 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_case.md
+2025-07-15 11:22:51,652 - __main__ - INFO - Successfully read discussion content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_discussion.md
+2025-07-15 11:22:52,078 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:22:52] "GET /evaluate/1/1_case.md HTTP/1.1" 200 -
+2025-07-15 11:22:59,575 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:22:59] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
+2025-07-15 11:23:00,187 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator test99@stonybrook.edu (ID: 3)
+2025-07-15 11:23:00,191 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 11:23:00] "GET /dashboard HTTP/1.1" 200 -
+2025-07-15 11:25:08,961 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/analyze_evaluations.py', reloading
+2025-07-15 11:25:08,991 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 11:25:09,159 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-15 11:25:09,740 - ai_ethics.db - INFO - Supabase PostgreSQL database initialized
+2025-07-15 11:25:09,743 - ai_ethics_webapp - INFO - Database initialization handled by adapter
+2025-07-15 11:25:09,755 - werkzeug - WARNING -  * Debugger is active!
+2025-07-15 11:25:09,770 - werkzeug - INFO -  * Debugger PIN: 652-794-124

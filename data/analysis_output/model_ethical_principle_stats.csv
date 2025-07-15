@@ -1,7 +1,7 @@
 ,,autonomy_mentions,autonomy_mentions,autonomy_mentions,beneficence_mentions,beneficence_mentions,beneficence_mentions,non-maleficence_mentions,non-maleficence_mentions,non-maleficence_mentions,justice_mentions,justice_mentions,justice_mentions
 ,,mean,std,sum,mean,std,sum,mean,std,sum,mean,std,sum
 vendor,model,,,,,,,,,,,,
-Anthropic,claude-3-opus-20240229,2.0,,2,3.0,,3,2.0,,2,0.0,,0
-GROK,grok-3-mini,9.0,,9,11.0,,11,8.0,,8,11.0,,11
-Google,gemini-1.5-pro,4.0,,4,3.0,,3,2.0,,2,0.0,,0
-OpenAI,gpt-4.1-mini,4.0,,4,5.0,,5,4.0,,4,2.0,,2
+Anthropic,claude-3-opus-20240229,3.5,0.7071067811865476,7,3.0,1.4142135623730951,6,1.5,0.7071067811865476,3,2.5,2.1213203435596424,5
+GROK,grok-3-mini,9.666666666666666,1.1547005383792517,29,10.333333333333334,3.5118845842842465,31,7.333333333333333,0.5773502691896257,22,9.0,0.0,27
+Google,gemini-1.5-pro,3.6666666666666665,2.516611478423583,11,5.0,2.6457513110645907,15,3.6666666666666665,0.5773502691896257,11,1.0,1.0,3
+OpenAI,gpt-4.1-mini,4.75,1.707825127659933,19,6.5,1.9148542155126762,26,5.25,1.707825127659933,21,3.5,1.2909944487358056,14

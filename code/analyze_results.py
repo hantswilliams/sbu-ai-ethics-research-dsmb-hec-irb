@@ -2,7 +2,7 @@
 """
 AI Ethics Research - Analysis Script
 
-This script analyzes the responses stored in the SQLite database and generates
+This script analyzes the responses stored in the database and generates
 insights and visualizations.
 
 Usage:
@@ -10,7 +10,6 @@ Usage:
 """
 
 import os
-import sqlite3
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -24,6 +23,12 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
+# Import database adapter
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from shared.db_adapter import get_db_adapter
+
 # Setup logging
 logging.basicConfig(
     level=logging.INFO,
@@ -36,34 +41,23 @@ logging.basicConfig(
 logger = logging.getLogger("analysis")
 
 class ResultsAnalyzer:
-    def __init__(self, base_path=None, db_path=None):
+    def __init__(self, base_path=None):
         """
         Initialize the Results Analyzer
         
         Args:
             base_path: Path to the project root
-            db_path: Custom path to SQLite database (if None, will look for DB_PATH env var or use default)
         """
         # Set base path
         if base_path is None:
             self.base_path = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         else:
             self.base_path = Path(base_path)
-        
-        # Database path
-        if db_path is None:
-            db_path = os.environ.get("DB_PATH")
-        
-        if db_path:
-            self.db_path = Path(db_path)
-        else:
-            self.db_path = self.base_path / "data" / "results.db"
             
-        if not os.path.exists(self.db_path):
-            raise FileNotFoundError(f"Database not found at {self.db_path}")
+        # Get the database adapter
+        self.db_adapter = get_db_adapter()
+        logger.info(f"Using {self.db_adapter.type} database")
             
-        logger.info(f"Using database at {self.db_path}")
-        
         # Output directory for visualizations
         self.output_dir = self.base_path / "data" / "analysis_output"
         os.makedirs(self.output_dir, exist_ok=True)
@@ -72,12 +66,30 @@ class ResultsAnalyzer:
         self.df = self._load_data()
         logger.info(f"Loaded {len(self.df)} responses from database")
 
+    def _fetch_query(self, query):
+        """Execute a query and return results as a pandas DataFrame"""
+        conn = self.db_adapter.get_connection()
+        try:
+            cursor = conn.cursor()
+            cursor.execute(query)
+            columns = [desc[0] for desc in cursor.description]
+            data = cursor.fetchall()
+            
+            # Convert dict rows to list of values in same order as columns
+            if self.db_adapter.type == "supabase":
+                data = [[row[col] for col in columns] for row in data]
+                
+            return pd.DataFrame(data, columns=columns)
+        except Exception as e:
+            logger.error(f"Error executing query: {e}")
+            return pd.DataFrame()
+        finally:
+            self.db_adapter.close_connection(conn)
+
     def _load_data(self):
-        """Load data from SQLite database into a pandas DataFrame"""
-        conn = sqlite3.connect(self.db_path)
-        df = pd.read_sql_query("SELECT * FROM responses", conn)
-        conn.close()
-        return df
+        """Load data from database into a pandas DataFrame"""
+        query = "SELECT * FROM responses"
+        return self._fetch_query(query)
 
     def generate_basic_stats(self):
         """Generate basic statistics about the responses"""
@@ -609,12 +621,12 @@ class ResultsAnalyzer:
         }
 def main():
     parser = argparse.ArgumentParser(description='Analyze AI ethics responses')
-    parser.add_argument('--db-path', type=str, default=None,
-                        help='Custom path to SQLite database')
+    parser.add_argument('--base-path', type=str, default=None,
+                        help='Base path for the project')
     args = parser.parse_args()
     
     try:
-        analyzer = ResultsAnalyzer(db_path=args.db_path)
+        analyzer = ResultsAnalyzer(base_path=args.base_path)
         analyzer.generate_comprehensive_report()
         logger.info("Analysis completed successfully")
     except Exception as e:

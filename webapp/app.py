@@ -10,7 +10,6 @@ Usage:
 """
 
 import os
-import sqlite3
 import uuid
 import random
 import logging
@@ -33,12 +32,21 @@ logging.basicConfig(
 )
 logger = logging.getLogger("ai_ethics_webapp")
 
+# Import the database adapter
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from shared.db_adapter import get_db_adapter
+
 app = Flask(__name__)
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", str(uuid.uuid4()))
 
 # Set base path
 BASE_PATH = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-DB_PATH = os.environ.get("DB_PATH", BASE_PATH / "data" / "results.db")
+
+# Initialize database adapter
+db_adapter = get_db_adapter()
+db_adapter.init_db()
 
 # Add context processor for all templates
 @app.context_processor
@@ -48,66 +56,16 @@ def inject_globals():
     }
 
 def get_db_connection():
-    """Create a connection to the SQLite database"""
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    return conn
+    """Create a connection to the database using the configured adapter"""
+    return db_adapter.get_connection()
 
 def init_db():
     """Initialize the database with evaluation tables if they don't exist"""
-    conn = get_db_connection()
-    cursor = conn.cursor()
+    # The database is now initialized when the adapter is created
+    logger.info("Database initialization handled by adapter")
     
-    # Create evaluators table
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS evaluators (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        email TEXT,
-        created_at TEXT NOT NULL
-    )
-    ''')
-    
-    # Create evaluations table
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS evaluations (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        evaluator_id INTEGER NOT NULL,
-        response_id INTEGER NOT NULL,
-        case_id TEXT NOT NULL,
-        scenario_filename TEXT NOT NULL,
-        iteration INTEGER NOT NULL,
-        relevance_score INTEGER NOT NULL,
-        correctness_score INTEGER NOT NULL,
-        fluency_score INTEGER NOT NULL,
-        coherence_score INTEGER NOT NULL,
-        comments TEXT,
-        created_at TEXT NOT NULL,
-        FOREIGN KEY (evaluator_id) REFERENCES evaluators (id),
-        FOREIGN KEY (response_id) REFERENCES responses (id)
-    )
-    ''')
-    
-    # Check if iteration column exists in evaluations table, if not add it
-    cursor.execute("PRAGMA table_info(evaluations)")
-    columns = [info[1] for info in cursor.fetchall()]
-    if 'iteration' not in columns:
-        logger.info("Adding iteration column to evaluations table")
-        cursor.execute("ALTER TABLE evaluations ADD COLUMN iteration INTEGER DEFAULT 1")
-    
-    # Check if cases table exists, but don't create it if not - we'll use file system instead
-    # This is to maintain backward compatibility
-    cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='cases'")
-    table_exists = cursor.fetchone()
-    
-    if table_exists:
-        logger.info("Cases table exists - will be used as fallback if scenario files are not found")
-    else:
-        logger.info("Cases table does not exist - will use scenario files from the filesystem")
-    
-    conn.commit()
-    conn.close()
-    logger.info("Database initialized.")
+    # We can add any additional initialization logic here if needed
+    pass
 
 @app.route('/')
 def index():
@@ -137,17 +95,26 @@ def signin():
     cursor = conn.cursor()
     
     # Check if evaluator already exists with this email
-    cursor.execute('SELECT id FROM evaluators WHERE email = ?', (email,))
+    if db_adapter.type == "sqlite":
+        cursor.execute('SELECT id FROM evaluators WHERE email = ?', (email,))
+    else:
+        cursor.execute('SELECT id FROM evaluators WHERE email = %s', (email,))
     evaluator = cursor.fetchone()
     
     if evaluator:
         evaluator_id = evaluator['id']
         logger.info(f"Existing evaluator signed in: {email} (ID: {evaluator_id})")
     else:
-        cursor.execute('INSERT INTO evaluators (name, email, created_at) VALUES (?, ?, ?)',
-                      (name, email, datetime.now().isoformat()))
-        conn.commit()
-        evaluator_id = cursor.lastrowid
+        if db_adapter.type == "sqlite":
+            cursor.execute('INSERT INTO evaluators (name, email, created_at) VALUES (?, ?, ?)',
+                          (name, email, datetime.now().isoformat()))
+            conn.commit()
+            evaluator_id = cursor.lastrowid
+        else:
+            cursor.execute('INSERT INTO evaluators (name, email, created_at) VALUES (%s, %s, %s) RETURNING id',
+                          (name, email, datetime.now().isoformat()))
+            evaluator_id = cursor.fetchone()['id']
+            conn.commit()
         logger.info(f"New evaluator created: {email} (ID: {evaluator_id})")
     
     conn.close()
@@ -177,24 +144,40 @@ def dashboard():
     scenarios = cursor.fetchall()
     
     # Get completed evaluations for this evaluator
-    cursor.execute('''
-    SELECT DISTINCT r.case_id, r.scenario_filename, r.vendor, r.model  
-    FROM evaluations e
-    JOIN responses r ON e.response_id = r.id
-    WHERE e.evaluator_id = ?
-    ''', (session['evaluator_id'],))
+    if db_adapter.type == "sqlite":
+        cursor.execute('''
+        SELECT DISTINCT r.case_id, r.scenario_filename, r.vendor, r.model  
+        FROM evaluations e
+        JOIN responses r ON e.response_id = r.id
+        WHERE e.evaluator_id = ?
+        ''', (session['evaluator_id'],))
+    else:
+        cursor.execute('''
+        SELECT DISTINCT r.case_id, r.scenario_filename, r.vendor, r.model  
+        FROM evaluations e
+        JOIN responses r ON e.response_id = r.id
+        WHERE e.evaluator_id = %s
+        ''', (session['evaluator_id'],))
     completed = {(row['case_id'], row['scenario_filename'], row['vendor'], row['model']) for row in cursor.fetchall()}
     
     # Mark scenarios as completed or not
     scenario_list = []
     for scenario in scenarios:
         # Get all distinct vendor/model combinations for this case
-        cursor.execute('''
-        SELECT DISTINCT vendor, model
-        FROM responses
-        WHERE case_id = ? AND scenario_filename = ?
-        ORDER BY vendor, model
-        ''', (scenario['case_id'], scenario['scenario_filename']))
+        if db_adapter.type == "sqlite":
+            cursor.execute('''
+            SELECT DISTINCT vendor, model
+            FROM responses
+            WHERE case_id = ? AND scenario_filename = ?
+            ORDER BY vendor, model
+            ''', (scenario['case_id'], scenario['scenario_filename']))
+        else:
+            cursor.execute('''
+            SELECT DISTINCT vendor, model
+            FROM responses
+            WHERE case_id = %s AND scenario_filename = %s
+            ORDER BY vendor, model
+            ''', (scenario['case_id'], scenario['scenario_filename']))
         models = cursor.fetchall()
         
         # Count how many models this evaluator has already evaluated
@@ -258,11 +241,18 @@ def evaluate(case_id, scenario_filename):
         cursor = conn.cursor()
         
         try:
-            cursor.execute('''
-            SELECT content 
-            FROM cases 
-            WHERE case_id = ? AND filename = ?
-            ''', (case_id, scenario_filename))
+            if db_adapter.type == "sqlite":
+                cursor.execute('''
+                SELECT content 
+                FROM cases 
+                WHERE case_id = ? AND filename = ?
+                ''', (case_id, scenario_filename))
+            else:
+                cursor.execute('''
+                SELECT content 
+                FROM cases 
+                WHERE case_id = %s AND filename = %s
+                ''', (case_id, scenario_filename))
             case = cursor.fetchone()
             
             if case:
@@ -298,21 +288,36 @@ def evaluate(case_id, scenario_filename):
     
     try:
         # First, get all available models and vendors for this case
-        cursor.execute('''
-        SELECT DISTINCT vendor, model
-        FROM responses
-        WHERE case_id = ? AND scenario_filename = ?
-        ''', (case_id, scenario_filename))
+        if db_adapter.type == "sqlite":
+            cursor.execute('''
+            SELECT DISTINCT vendor, model
+            FROM responses
+            WHERE case_id = ? AND scenario_filename = ?
+            ''', (case_id, scenario_filename))
+        else:
+            cursor.execute('''
+            SELECT DISTINCT vendor, model
+            FROM responses
+            WHERE case_id = %s AND scenario_filename = %s
+            ''', (case_id, scenario_filename))
         
         available_models = cursor.fetchall()
         
         # Get all responses already evaluated by this evaluator for this case
-        cursor.execute('''
-        SELECT r.vendor, r.model
-        FROM evaluations e
-        JOIN responses r ON e.response_id = r.id
-        WHERE e.evaluator_id = ? AND r.case_id = ? AND r.scenario_filename = ?
-        ''', (session['evaluator_id'], case_id, scenario_filename))
+        if db_adapter.type == "sqlite":
+            cursor.execute('''
+            SELECT r.vendor, r.model
+            FROM evaluations e
+            JOIN responses r ON e.response_id = r.id
+            WHERE e.evaluator_id = ? AND r.case_id = ? AND r.scenario_filename = ?
+            ''', (session['evaluator_id'], case_id, scenario_filename))
+        else:
+            cursor.execute('''
+            SELECT r.vendor, r.model
+            FROM evaluations e
+            JOIN responses r ON e.response_id = r.id
+            WHERE e.evaluator_id = %s AND r.case_id = %s AND r.scenario_filename = %s
+            ''', (session['evaluator_id'], case_id, scenario_filename))
         
         evaluated_models = {(row['vendor'], row['model']) for row in cursor.fetchall()}
         
@@ -328,26 +333,48 @@ def evaluate(case_id, scenario_filename):
             vendor, model_name = random.choice(unevaluated_models)
             
             # Get a response for this vendor/model combination
-            cursor.execute('''
-            SELECT r.id, r.full_response, r.vendor, r.model, r.iteration 
-            FROM responses r
-            LEFT JOIN evaluations e ON r.id = e.response_id AND e.evaluator_id = ?
-            WHERE r.case_id = ? AND r.scenario_filename = ? 
-            AND r.vendor = ? AND r.model = ?
-            AND e.id IS NULL
-            ORDER BY RANDOM()
-            LIMIT 1
-            ''', (session['evaluator_id'], case_id, scenario_filename, vendor, model_name))
+            if db_adapter.type == "sqlite":
+                cursor.execute('''
+                SELECT r.id, r.full_response, r.vendor, r.model, r.iteration 
+                FROM responses r
+                LEFT JOIN evaluations e ON r.id = e.response_id AND e.evaluator_id = ?
+                WHERE r.case_id = ? AND r.scenario_filename = ? 
+                AND r.vendor = ? AND r.model = ?
+                AND e.id IS NULL
+                ORDER BY RANDOM()
+                LIMIT 1
+                ''', (session['evaluator_id'], case_id, scenario_filename, vendor, model_name))
+            else:
+                cursor.execute('''
+                SELECT r.id, r.full_response, r.vendor, r.model, r.iteration 
+                FROM responses r
+                LEFT JOIN evaluations e ON r.id = e.response_id AND e.evaluator_id = %s
+                WHERE r.case_id = %s AND r.scenario_filename = %s 
+                AND r.vendor = %s AND r.model = %s
+                AND e.id IS NULL
+                ORDER BY RANDOM()
+                LIMIT 1
+                ''', (session['evaluator_id'], case_id, scenario_filename, vendor, model_name))
         else:
             # If all models have been evaluated, check if there are any responses left
-            cursor.execute('''
-            SELECT r.id, r.full_response, r.vendor, r.model, r.iteration 
-            FROM responses r
-            LEFT JOIN evaluations e ON r.id = e.response_id AND e.evaluator_id = ?
-            WHERE r.case_id = ? AND r.scenario_filename = ? AND e.id IS NULL
-            ORDER BY RANDOM()
-            LIMIT 1
-            ''', (session['evaluator_id'], case_id, scenario_filename))
+            if db_adapter.type == "sqlite":
+                cursor.execute('''
+                SELECT r.id, r.full_response, r.vendor, r.model, r.iteration 
+                FROM responses r
+                LEFT JOIN evaluations e ON r.id = e.response_id AND e.evaluator_id = ?
+                WHERE r.case_id = ? AND r.scenario_filename = ? AND e.id IS NULL
+                ORDER BY RANDOM()
+                LIMIT 1
+                ''', (session['evaluator_id'], case_id, scenario_filename))
+            else:
+                cursor.execute('''
+                SELECT r.id, r.full_response, r.vendor, r.model, r.iteration 
+                FROM responses r
+                LEFT JOIN evaluations e ON r.id = e.response_id AND e.evaluator_id = %s
+                WHERE r.case_id = %s AND r.scenario_filename = %s AND e.id IS NULL
+                ORDER BY RANDOM()
+                LIMIT 1
+                ''', (session['evaluator_id'], case_id, scenario_filename))
         
         response = cursor.fetchone()
     except Exception as e:
@@ -396,17 +423,30 @@ def submit_evaluation():
     conn = get_db_connection()
     cursor = conn.cursor()
     
-    cursor.execute('''
-    INSERT INTO evaluations (
-        evaluator_id, response_id, case_id, scenario_filename, iteration,
-        relevance_score, correctness_score, fluency_score, coherence_score,
-        comments, created_at
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    ''', (
-        session['evaluator_id'], response_id, case_id, scenario_filename, iteration,
-        relevance_score, correctness_score, fluency_score, coherence_score,
-        comments, datetime.now().isoformat()
-    ))
+    if db_adapter.type == "sqlite":
+        cursor.execute('''
+        INSERT INTO evaluations (
+            evaluator_id, response_id, case_id, scenario_filename, iteration,
+            relevance_score, correctness_score, fluency_score, coherence_score,
+            comments, created_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ''', (
+            session['evaluator_id'], response_id, case_id, scenario_filename, iteration,
+            relevance_score, correctness_score, fluency_score, coherence_score,
+            comments, datetime.now().isoformat()
+        ))
+    else:
+        cursor.execute('''
+        INSERT INTO evaluations (
+            evaluator_id, response_id, case_id, scenario_filename, iteration,
+            relevance_score, correctness_score, fluency_score, coherence_score,
+            comments, created_at
+        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        ''', (
+            session['evaluator_id'], response_id, case_id, scenario_filename, iteration,
+            relevance_score, correctness_score, fluency_score, coherence_score,
+            comments, datetime.now()
+        ))
     
     conn.commit()
     conn.close()
