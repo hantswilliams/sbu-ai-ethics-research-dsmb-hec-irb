@@ -1,0 +1,7 @@
+,case_id,vendor,model,iterations,rec_consistent,alt_consistent,least_consistent,all_consistent
+0,1,Google,gemini-1.5-pro,3,False,False,False,False
+1,1,OpenAI,gpt-4.1-mini,3,False,False,False,False
+2,2,Google,gemini-1.5-pro,3,False,False,False,False
+3,2,OpenAI,gpt-4.1-mini,3,False,False,False,False
+4,3,Google,gemini-1.5-pro,3,False,False,False,False
+5,3,OpenAI,gpt-4.1-mini,3,False,False,False,False

@@ -1,0 +1,5 @@
+,autonomy_mentions,autonomy_mentions,autonomy_mentions,beneficence_mentions,beneficence_mentions,beneficence_mentions,non-maleficence_mentions,non-maleficence_mentions,non-maleficence_mentions,justice_mentions,justice_mentions,justice_mentions
+,mean,std,sum,mean,std,sum,mean,std,sum,mean,std,sum
+model,,,,,,,,,,,,
+gemini,4.15,1.5985190514644287,83,4.35,1.8431951662948314,87,2.95,1.2763022245616642,59,0.9,0.6407232755171874,18
+openai,6.111111111111111,2.204792759220492,55,5.777777777777778,1.7873008824606014,52,4.222222222222222,1.715938356831167,38,3.7777777777777777,1.2018504251546631,34

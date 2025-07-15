@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - AI Ethics Research Evaluation{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <div class="dashboard-header">
+        <h2>Welcome, <span class="email">{{ email.split('@')[0] }}<span class="stonybrook-domain">@stonybrook.edu</span></span></h2>
+        <a href="{{ url_for('logout') }}" class="btn btn-secondary">Sign Out</a>
+    </div>
+    
+    <div class="dashboard-content">
+        <h3>Scenarios to Evaluate</h3>
+        <p>Please select a scenario to evaluate. Each scenario will present you with a clinical ethics case and an AI-generated response for you to assess.</p>
+        
+        <ul class="scenario-list">
+            {% for scenario in scenarios %}
+            <li class="scenario-item {% if scenario.completed %}completed{% endif %}">
+                <div class="scenario-info">
+                    <strong>Case {{ scenario.case_id }}</strong>
+                    <span class="scenario-filename">{{ scenario.scenario_filename }}</span>
+                </div>
+                <div class="scenario-actions">
+                    {% if scenario.completed %}
+                    <span class="status-badge completed">Completed</span>
+                    {% else %}
+                    <a href="{{ url_for('evaluate', case_id=scenario.case_id, scenario_filename=scenario.scenario_filename) }}" class="btn">Evaluate</a>
+                    <span class="progress-indicator">Progress: {{ scenario.progress }}</span>
+                    {% endif %}
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        
+        {% if not scenarios %}
+        <p>No scenarios are currently available for evaluation.</p>
+        {% endif %}
+    </div>
+    
+    <div class="instructions">
+        <h3>Evaluation Instructions</h3>
+        <p>For each scenario:</p>
+        <ol>
+            <li><strong>Read the clinical case</strong> carefully to understand the ethical dilemma presented.</li>
+            <li><strong>Review the AI-generated response</strong> without knowing which AI model produced it (blind evaluation).</li>
+            <li><strong>Score the response</strong> on a scale of 1-5 for:
+                <ul>
+                    <li><strong>Relevance:</strong> How well the response addresses the specific ethical issue in the case.</li>
+                    <li><strong>Correctness:</strong> Accuracy of information and appropriateness of ethical reasoning.</li>
+                    <li><strong>Fluency:</strong> Clarity and readability of the text.</li>
+                    <li><strong>Coherence:</strong> Logical flow and consistency of the arguments presented.</li>
+                </ul>
+            </li>
+            <li><strong>Provide optional comments</strong> to explain your evaluation.</li>
+        </ol>
+    </div>
+</div>
+{% endblock %}

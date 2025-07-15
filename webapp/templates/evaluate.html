@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% block title %}Evaluate Response - AI Ethics Research{% endblock %}
+
+{% block content %}
+<div class="evaluation-page">
+    <div class="page-header">
+        <h2>Case Evaluation: Scenario {{ case_id }}</h2>
+        <p class="scenario-meta">File: {{ scenario_filename }}</p>
+        <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+    </div>
+    
+    <div class="evaluation-container">
+        <div class="case-content">
+            <h3>Clinical Ethics Scenario</h3>
+            <div class="case-text">
+                {{ case_content | safe }}
+            </div>
+        </div>
+        
+        <div class="ai-response">
+            <h3>AI Response</h3>
+            <div class="response-text">
+                {{ response.full_response | safe }}
+            </div>
+            <div class="response-meta">
+                <small>Response ID: {{ response.id }} | Iteration: {{ response.iteration }}</small>
+                <!-- Note: We're intentionally not showing which AI model generated this response -->
+            </div>
+        </div>
+    </div>
+    
+    <div class="evaluation-form">
+        <h3>Evaluation Form</h3>
+        <p>Please rate this AI response on the following criteria:</p>
+        
+        <form action="{{ url_for('submit_evaluation') }}" method="post">
+            <input type="hidden" name="response_id" value="{{ response.id }}">
+            <input type="hidden" name="case_id" value="{{ case_id }}">
+            <input type="hidden" name="scenario_filename" value="{{ scenario_filename }}">
+            <input type="hidden" name="iteration" value="{{ response.iteration }}">
+            
+            <div class="rating-group">
+                <h4>Relevance</h4>
+                <p>How well does the response address the specific ethical issue in the case?</p>
+                <div class="rating-options">
+                    {% for i in range(1, 6) %}
+                    <div class="rating-option">
+                        <input type="radio" id="relevance_{{ i }}" name="relevance_score" value="{{ i }}" required>
+                        <label for="relevance_{{ i }}">{{ i }}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="rating-labels">
+                    <span>Poor</span>
+                    <span>Excellent</span>
+                </div>
+            </div>
+            
+            <div class="rating-group">
+                <h4>Correctness</h4>
+                <p>How accurate is the information and appropriate is the ethical reasoning?</p>
+                <div class="rating-options">
+                    {% for i in range(1, 6) %}
+                    <div class="rating-option">
+                        <input type="radio" id="correctness_{{ i }}" name="correctness_score" value="{{ i }}" required>
+                        <label for="correctness_{{ i }}">{{ i }}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="rating-labels">
+                    <span>Poor</span>
+                    <span>Excellent</span>
+                </div>
+            </div>
+            
+            <div class="rating-group">
+                <h4>Fluency</h4>
+                <p>How clear and readable is the text?</p>
+                <div class="rating-options">
+                    {% for i in range(1, 6) %}
+                    <div class="rating-option">
+                        <input type="radio" id="fluency_{{ i }}" name="fluency_score" value="{{ i }}" required>
+                        <label for="fluency_{{ i }}">{{ i }}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="rating-labels">
+                    <span>Poor</span>
+                    <span>Excellent</span>
+                </div>
+            </div>
+            
+            <div class="rating-group">
+                <h4>Coherence</h4>
+                <p>How logical is the flow and consistency of the arguments presented?</p>
+                <div class="rating-options">
+                    {% for i in range(1, 6) %}
+                    <div class="rating-option">
+                        <input type="radio" id="coherence_{{ i }}" name="coherence_score" value="{{ i }}" required>
+                        <label for="coherence_{{ i }}">{{ i }}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="rating-labels">
+                    <span>Poor</span>
+                    <span>Excellent</span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="comments">Additional Comments (Optional):</label>
+                <textarea id="comments" name="comments" rows="4" placeholder="Please provide any additional feedback you have about this AI response..."></textarea>
+            </div>
+            
+            <button type="submit" class="btn">Submit Evaluation</button>
+        </form>
+    </div>
+</div>
+
+<style>
+    .rating-options {
+        display: flex;
+        justify-content: space-around;
+        margin: 10px 0;
+    }
+    
+    .rating-labels {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.9em;
+        color: #666;
+    }
+    
+    .case-text, .response-text {
+        white-space: pre-wrap;
+        line-height: 1.6;
+        max-height: 400px;
+        overflow-y: auto;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+    }
+</style>
+{% endblock %}

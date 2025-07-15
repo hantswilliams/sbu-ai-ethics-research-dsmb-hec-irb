@@ -1,0 +1,422 @@
+2025-07-14 17:03:40,992 - ai_ethics_webapp - INFO - Cases table exists - will be used as fallback if scenario files are not found
+2025-07-14 17:03:40,992 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-14 17:03:41,009 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.1.60:5005
+2025-07-14 17:03:41,009 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-14 17:03:41,013 - werkzeug - INFO -  * Restarting with stat
+2025-07-14 17:03:41,111 - ai_ethics_webapp - INFO - Cases table exists - will be used as fallback if scenario files are not found
+2025-07-14 17:03:41,111 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-14 17:03:41,113 - werkzeug - WARNING -  * Debugger is active!
+2025-07-14 17:03:41,121 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-14 17:03:51,798 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 17:03:51] "GET / HTTP/1.1" 200 -
+2025-07-14 17:03:51,846 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 17:03:51] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-07-14 17:03:51,847 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 17:03:51] "GET /static/js/script.js HTTP/1.1" 200 -
+2025-07-14 17:03:51,903 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 17:03:51] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-14 17:04:00,263 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 17:04:00] "[32mPOST /signin HTTP/1.1[0m" 302 -
+2025-07-14 17:04:00,269 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants will (ID: 4)
+2025-07-14 17:04:00,280 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 17:04:00] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 17:04:00,310 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 17:04:00] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 17:04:00,312 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 17:04:00] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 17:04:02,619 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_case.md
+2025-07-14 17:04:02,631 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 17:04:02] "GET /evaluate/1/1_case.md HTTP/1.1" 200 -
+2025-07-14 17:04:02,662 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 17:04:02] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 17:04:02,663 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 17:04:02] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 17:04:19,356 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 17:04:19] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
+2025-07-14 17:04:19,367 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants will (ID: 4)
+2025-07-14 17:04:19,374 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 17:04:19] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 17:04:19,459 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 17:04:19] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 17:04:19,470 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 17:04:19] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 17:04:21,905 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_case.md
+2025-07-14 17:04:21,912 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 17:04:21] "GET /evaluate/1/1_case.md HTTP/1.1" 200 -
+2025-07-14 17:04:21,966 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 17:04:21] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 17:04:21,971 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 17:04:21] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 18:49:44,964 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 18:49:44] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
+2025-07-14 18:49:44,972 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants will (ID: 4)
+2025-07-14 18:49:44,973 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 18:49:44] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 18:49:45,018 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 18:49:45] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 18:49:45,020 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 18:49:45] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 18:49:46,457 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_case.md
+2025-07-14 18:49:46,461 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 18:49:46] "GET /evaluate/1/1_case.md HTTP/1.1" 200 -
+2025-07-14 18:49:46,479 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 18:49:46] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 18:49:46,479 - werkzeug - INFO - 192.168.1.60 - - [14/Jul/2025 18:49:46] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 18:52:17,390 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/app.py', reloading
+2025-07-14 18:52:17,422 - werkzeug - INFO -  * Restarting with stat
+2025-07-14 18:52:17,599 - ai_ethics_webapp - INFO - Adding iteration column to evaluations table
+2025-07-14 18:52:17,600 - ai_ethics_webapp - INFO - Cases table exists - will be used as fallback if scenario files are not found
+2025-07-14 18:52:17,600 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-14 18:52:17,604 - werkzeug - WARNING -  * Debugger is active!
+2025-07-14 18:52:17,617 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-14 18:52:27,951 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/app.py', reloading
+2025-07-14 18:52:27,976 - werkzeug - INFO -  * Restarting with stat
+2025-07-14 18:52:28,118 - ai_ethics_webapp - INFO - Cases table exists - will be used as fallback if scenario files are not found
+2025-07-14 18:52:28,118 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-14 18:52:28,122 - werkzeug - WARNING -  * Debugger is active!
+2025-07-14 18:52:28,130 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-14 18:52:55,949 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/app.py', reloading
+2025-07-14 18:52:55,975 - werkzeug - INFO -  * Restarting with stat
+2025-07-14 18:52:56,149 - ai_ethics_webapp - INFO - Cases table exists - will be used as fallback if scenario files are not found
+2025-07-14 18:52:56,149 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-14 18:52:56,153 - werkzeug - WARNING -  * Debugger is active!
+2025-07-14 18:52:56,164 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-14 18:53:04,414 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/app.py', reloading
+2025-07-14 18:53:04,433 - werkzeug - INFO -  * Restarting with stat
+2025-07-14 18:53:04,568 - ai_ethics_webapp - INFO - Cases table exists - will be used as fallback if scenario files are not found
+2025-07-14 18:53:04,568 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-14 18:53:04,572 - werkzeug - WARNING -  * Debugger is active!
+2025-07-14 18:53:04,580 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-14 18:53:12,883 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/app.py', reloading
+2025-07-14 18:53:12,942 - werkzeug - INFO -  * Restarting with stat
+2025-07-14 18:53:13,167 - ai_ethics_webapp - INFO - Cases table exists - will be used as fallback if scenario files are not found
+2025-07-14 18:53:13,167 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-14 18:53:13,173 - werkzeug - WARNING -  * Debugger is active!
+2025-07-14 18:53:13,190 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-14 18:53:37,035 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/analyze_evaluations.py', reloading
+2025-07-14 18:53:37,110 - werkzeug - INFO -  * Restarting with stat
+2025-07-14 18:53:37,394 - ai_ethics_webapp - INFO - Cases table exists - will be used as fallback if scenario files are not found
+2025-07-14 18:53:37,394 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-14 18:53:37,410 - werkzeug - WARNING -  * Debugger is active!
+2025-07-14 18:53:37,437 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-14 18:53:50,948 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/analyze_evaluations.py', reloading
+2025-07-14 18:53:51,038 - werkzeug - INFO -  * Restarting with stat
+2025-07-14 18:53:51,320 - ai_ethics_webapp - INFO - Cases table exists - will be used as fallback if scenario files are not found
+2025-07-14 18:53:51,320 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-14 18:53:51,326 - werkzeug - WARNING -  * Debugger is active!
+2025-07-14 18:53:51,341 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-14 18:54:19,090 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/analyze_evaluations.py', reloading
+2025-07-14 18:54:19,123 - werkzeug - INFO -  * Restarting with stat
+2025-07-14 18:54:19,278 - ai_ethics_webapp - INFO - Cases table exists - will be used as fallback if scenario files are not found
+2025-07-14 18:54:19,278 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-14 18:54:19,282 - werkzeug - WARNING -  * Debugger is active!
+2025-07-14 18:54:19,291 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-14 18:54:39,951 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/app.py', reloading
+2025-07-14 18:54:39,983 - werkzeug - INFO -  * Restarting with stat
+2025-07-14 18:54:40,168 - ai_ethics_webapp - INFO - Cases table exists - will be used as fallback if scenario files are not found
+2025-07-14 18:54:40,169 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-14 18:54:40,175 - werkzeug - WARNING -  * Debugger is active!
+2025-07-14 18:54:40,190 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-14 18:55:13,172 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/analyze_evaluations.py', reloading
+2025-07-14 18:55:13,194 - werkzeug - INFO -  * Restarting with stat
+2025-07-14 18:55:13,360 - ai_ethics_webapp - INFO - Cases table exists - will be used as fallback if scenario files are not found
+2025-07-14 18:55:13,360 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-14 18:55:13,364 - werkzeug - WARNING -  * Debugger is active!
+2025-07-14 18:55:13,374 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-14 18:55:33,997 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/analyze_evaluations.py', reloading
+2025-07-14 18:55:34,023 - werkzeug - INFO -  * Restarting with stat
+2025-07-14 18:55:34,175 - ai_ethics_webapp - INFO - Cases table exists - will be used as fallback if scenario files are not found
+2025-07-14 18:55:34,175 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-14 18:55:34,179 - werkzeug - WARNING -  * Debugger is active!
+2025-07-14 18:55:34,189 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-14 19:02:50,680 - ai_ethics_webapp - INFO - Cases table does not exist - will use scenario files from the filesystem
+2025-07-14 19:02:50,681 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-14 19:02:50,713 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.1.60:5005
+2025-07-14 19:02:50,714 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-14 19:02:50,717 - werkzeug - INFO -  * Restarting with stat
+2025-07-14 19:02:50,888 - ai_ethics_webapp - INFO - Cases table does not exist - will use scenario files from the filesystem
+2025-07-14 19:02:50,888 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-14 19:02:50,891 - werkzeug - WARNING -  * Debugger is active!
+2025-07-14 19:02:50,899 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-14 19:02:53,773 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:02:53] "GET / HTTP/1.1" 200 -
+2025-07-14 19:02:53,895 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:02:53] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:02:53,896 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:02:53] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-07-14 19:03:00,149 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:00] "[32mPOST /signin HTTP/1.1[0m" 302 -
+2025-07-14 19:03:00,154 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants (ID: 1)
+2025-07-14 19:03:00,165 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:00] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:03:00,200 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:00] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:03:00,200 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:00] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:03:01,730 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:01] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-07-14 19:03:01,734 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:01] "GET / HTTP/1.1" 200 -
+2025-07-14 19:03:01,752 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:01] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:03:01,753 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:01] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:03:09,763 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:09] "[32mPOST /signin HTTP/1.1[0m" 302 -
+2025-07-14 19:03:09,775 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants (ID: 1)
+2025-07-14 19:03:09,777 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:09] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:03:09,814 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:09] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:03:09,815 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:09] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:03:11,564 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_case.md
+2025-07-14 19:03:11,580 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:11] "GET /evaluate/1/1_case.md HTTP/1.1" 200 -
+2025-07-14 19:03:11,605 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:11] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:03:11,606 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:11] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:03:27,275 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:27] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
+2025-07-14 19:03:27,280 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants (ID: 1)
+2025-07-14 19:03:27,281 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:27] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:03:27,336 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:27] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:03:27,344 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:27] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:03:29,067 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_case.md
+2025-07-14 19:03:29,070 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:29] "GET /evaluate/1/1_case.md HTTP/1.1" 200 -
+2025-07-14 19:03:29,088 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:29] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:03:29,094 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:29] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:03:37,547 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:37] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
+2025-07-14 19:03:37,556 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants (ID: 1)
+2025-07-14 19:03:37,557 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:37] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:03:37,596 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:37] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:03:37,596 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:37] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:03:38,813 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_case.md
+2025-07-14 19:03:38,817 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:38] "GET /evaluate/1/1_case.md HTTP/1.1" 200 -
+2025-07-14 19:03:38,834 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:38] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:03:38,837 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:38] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:03:46,217 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:46] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
+2025-07-14 19:03:46,223 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants (ID: 1)
+2025-07-14 19:03:46,224 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:46] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:03:46,259 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:46] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:03:46,263 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:46] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:03:47,823 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_case.md
+2025-07-14 19:03:47,825 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:47] "GET /evaluate/1/1_case.md HTTP/1.1" 200 -
+2025-07-14 19:03:47,858 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:47] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:03:47,859 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:47] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:03:56,952 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:56] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
+2025-07-14 19:03:56,961 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants (ID: 1)
+2025-07-14 19:03:56,962 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:56] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:03:57,008 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:57] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:03:57,009 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:57] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:03:58,330 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_case.md
+2025-07-14 19:03:58,332 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:58] "GET /evaluate/1/1_case.md HTTP/1.1" 200 -
+2025-07-14 19:03:58,366 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:58] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:03:58,367 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:03:58] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:04:07,929 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:07] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
+2025-07-14 19:04:07,936 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants (ID: 1)
+2025-07-14 19:04:07,937 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:07] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:04:07,982 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:07] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:04:07,984 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:07] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:04:09,229 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_case.md
+2025-07-14 19:04:09,231 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:09] "GET /evaluate/1/1_case.md HTTP/1.1" 200 -
+2025-07-14 19:04:09,269 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:09] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:04:09,269 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:09] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:04:11,110 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants (ID: 1)
+2025-07-14 19:04:11,111 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:11] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:04:11,133 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:11] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:04:11,138 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:11] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:04:12,062 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_case.md
+2025-07-14 19:04:12,064 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:12] "GET /evaluate/1/1_case.md HTTP/1.1" 200 -
+2025-07-14 19:04:12,074 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:12] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:04:12,091 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:12] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:04:19,127 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:19] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
+2025-07-14 19:04:19,141 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants (ID: 1)
+2025-07-14 19:04:19,143 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:19] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:04:19,222 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:19] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:04:19,227 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:19] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:04:21,216 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/2_case.md
+2025-07-14 19:04:21,228 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:21] "GET /evaluate/2/2_case.md HTTP/1.1" 200 -
+2025-07-14 19:04:21,287 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:21] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:04:21,298 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:21] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:04:28,571 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:28] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
+2025-07-14 19:04:28,579 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants (ID: 1)
+2025-07-14 19:04:28,583 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:28] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:04:28,671 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:28] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:04:28,672 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:28] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:04:29,967 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/2_case.md
+2025-07-14 19:04:29,984 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:29] "GET /evaluate/2/2_case.md HTTP/1.1" 200 -
+2025-07-14 19:04:30,048 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:30] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:04:30,051 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:30] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:04:36,286 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:36] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
+2025-07-14 19:04:36,294 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants (ID: 1)
+2025-07-14 19:04:36,296 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:36] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:04:36,389 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:36] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:04:36,395 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:36] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:04:37,769 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/2_case.md
+2025-07-14 19:04:37,776 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:37] "GET /evaluate/2/2_case.md HTTP/1.1" 200 -
+2025-07-14 19:04:37,823 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:37] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:04:37,830 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:37] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:04:45,054 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:45] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
+2025-07-14 19:04:45,062 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants (ID: 1)
+2025-07-14 19:04:45,065 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:45] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:04:45,162 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:45] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:04:45,164 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:45] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:04:46,731 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/2_case.md
+2025-07-14 19:04:46,736 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:46] "GET /evaluate/2/2_case.md HTTP/1.1" 200 -
+2025-07-14 19:04:46,795 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:46] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:04:46,797 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:46] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:04:56,290 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:56] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
+2025-07-14 19:04:56,297 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants (ID: 1)
+2025-07-14 19:04:56,298 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:56] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:04:56,369 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:56] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:04:56,369 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:56] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:04:57,721 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/2_case.md
+2025-07-14 19:04:57,723 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:57] "GET /evaluate/2/2_case.md HTTP/1.1" 200 -
+2025-07-14 19:04:57,744 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:57] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:04:57,758 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:04:57] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:05:05,586 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:05] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
+2025-07-14 19:05:05,590 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants (ID: 1)
+2025-07-14 19:05:05,591 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:05] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:05:05,633 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:05] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:05:05,633 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:05] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:05:07,293 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/2_case.md
+2025-07-14 19:05:07,295 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:07] "GET /evaluate/2/2_case.md HTTP/1.1" 200 -
+2025-07-14 19:05:07,328 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:07] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:05:07,328 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:07] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:05:15,255 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:15] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
+2025-07-14 19:05:15,263 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants (ID: 1)
+2025-07-14 19:05:15,268 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:15] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:05:15,310 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:15] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:05:15,312 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:15] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:05:16,758 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/3_case.md
+2025-07-14 19:05:16,761 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:16] "GET /evaluate/3/3_case.md HTTP/1.1" 200 -
+2025-07-14 19:05:16,783 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:16] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:05:16,792 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:16] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:05:23,645 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:23] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
+2025-07-14 19:05:23,654 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants (ID: 1)
+2025-07-14 19:05:23,655 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:23] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:05:23,695 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:23] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:05:23,696 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:23] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:05:24,678 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/3_case.md
+2025-07-14 19:05:24,680 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:24] "GET /evaluate/3/3_case.md HTTP/1.1" 200 -
+2025-07-14 19:05:24,707 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:24] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:05:24,712 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:24] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:05:31,577 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:31] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
+2025-07-14 19:05:31,583 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants (ID: 1)
+2025-07-14 19:05:31,585 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:31] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:05:31,631 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:31] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:05:31,631 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:31] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:05:33,280 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/3_case.md
+2025-07-14 19:05:33,281 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:33] "GET /evaluate/3/3_case.md HTTP/1.1" 200 -
+2025-07-14 19:05:33,316 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:33] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:05:33,316 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:33] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:05:40,932 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:40] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
+2025-07-14 19:05:40,937 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants (ID: 1)
+2025-07-14 19:05:40,938 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:40] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:05:40,952 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:40] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:05:40,952 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:40] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:05:42,461 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/3_case.md
+2025-07-14 19:05:42,462 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:42] "GET /evaluate/3/3_case.md HTTP/1.1" 200 -
+2025-07-14 19:05:42,487 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:42] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:05:42,497 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:42] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:05:51,572 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:51] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
+2025-07-14 19:05:51,579 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants (ID: 1)
+2025-07-14 19:05:51,580 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:51] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:05:51,612 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:51] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:05:51,615 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:51] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:05:53,566 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/3_case.md
+2025-07-14 19:05:53,568 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:53] "GET /evaluate/3/3_case.md HTTP/1.1" 200 -
+2025-07-14 19:05:53,597 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:53] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:05:53,598 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:05:53] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:06:01,191 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:01] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
+2025-07-14 19:06:01,196 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants (ID: 1)
+2025-07-14 19:06:01,198 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:01] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:06:01,237 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:01] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:06:01,238 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:01] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:06:02,610 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/3_case.md
+2025-07-14 19:06:02,612 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:02] "GET /evaluate/3/3_case.md HTTP/1.1" 200 -
+2025-07-14 19:06:02,650 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:02] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:06:02,650 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:02] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:06:09,796 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:09] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
+2025-07-14 19:06:09,805 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants (ID: 1)
+2025-07-14 19:06:09,806 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:09] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:06:09,859 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:09] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:06:09,859 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:09] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:06:15,592 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:15] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-07-14 19:06:15,599 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:15] "GET / HTTP/1.1" 200 -
+2025-07-14 19:06:15,638 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:15] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:06:15,642 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:15] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:06:20,450 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:20] "[32mPOST /signin HTTP/1.1[0m" 302 -
+2025-07-14 19:06:20,459 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants (ID: 1)
+2025-07-14 19:06:20,460 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:20] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:06:20,498 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:20] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:06:20,499 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:20] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:06:25,672 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:25] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-07-14 19:06:25,676 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:25] "GET / HTTP/1.1" 200 -
+2025-07-14 19:06:25,706 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:25] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:06:25,707 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:25] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:06:33,625 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:33] "[32mPOST /signin HTTP/1.1[0m" 302 -
+2025-07-14 19:06:33,633 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator test (ID: 2)
+2025-07-14 19:06:33,634 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:33] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:06:33,663 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:33] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:06:33,672 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:33] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:06:34,906 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_case.md
+2025-07-14 19:06:34,907 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:34] "GET /evaluate/1/1_case.md HTTP/1.1" 200 -
+2025-07-14 19:06:34,926 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:34] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:06:34,933 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:34] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:06:43,605 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:43] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
+2025-07-14 19:06:43,609 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator test (ID: 2)
+2025-07-14 19:06:43,610 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:43] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:06:43,661 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:43] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:06:43,662 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:43] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:06:45,391 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:45] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-07-14 19:06:45,395 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:45] "GET / HTTP/1.1" 200 -
+2025-07-14 19:06:45,419 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:45] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:06:45,419 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:45] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:06:49,620 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:49] "[32mPOST /signin HTTP/1.1[0m" 302 -
+2025-07-14 19:06:49,625 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants (ID: 1)
+2025-07-14 19:06:49,626 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:49] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:06:49,664 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:49] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:06:49,665 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:49] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:06:51,093 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:51] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-07-14 19:06:51,099 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:51] "GET / HTTP/1.1" 200 -
+2025-07-14 19:06:51,121 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:51] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:06:51,122 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:51] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:06:54,529 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:54] "[32mPOST /signin HTTP/1.1[0m" 302 -
+2025-07-14 19:06:54,538 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator test (ID: 2)
+2025-07-14 19:06:54,541 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:54] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:06:54,634 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:54] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:06:54,642 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:54] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:06:56,751 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:56] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-07-14 19:06:56,759 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:56] "GET / HTTP/1.1" 200 -
+2025-07-14 19:06:56,779 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:56] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:06:56,780 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:06:56] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:07:16,774 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/app.py', reloading
+2025-07-14 19:07:16,883 - werkzeug - INFO -  * Restarting with stat
+2025-07-14 19:07:17,255 - ai_ethics_webapp - INFO - Cases table does not exist - will use scenario files from the filesystem
+2025-07-14 19:07:17,255 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-14 19:07:17,262 - werkzeug - WARNING -  * Debugger is active!
+2025-07-14 19:07:17,281 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-14 19:08:39,773 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/app.py', reloading
+2025-07-14 19:08:39,914 - werkzeug - INFO -  * Restarting with stat
+2025-07-14 19:08:40,289 - ai_ethics_webapp - INFO - Cases table does not exist - will use scenario files from the filesystem
+2025-07-14 19:08:40,290 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-14 19:08:40,294 - werkzeug - WARNING -  * Debugger is active!
+2025-07-14 19:08:40,305 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-14 19:08:56,822 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/app.py', reloading
+2025-07-14 19:08:56,842 - werkzeug - INFO -  * Restarting with stat
+2025-07-14 19:08:57,035 - ai_ethics_webapp - INFO - Cases table does not exist - will use scenario files from the filesystem
+2025-07-14 19:08:57,035 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-14 19:08:57,046 - werkzeug - WARNING -  * Debugger is active!
+2025-07-14 19:08:57,065 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-14 19:09:24,184 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:09:24] "GET / HTTP/1.1" 200 -
+2025-07-14 19:09:24,228 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:09:24] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:09:24,229 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:09:24] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-07-14 19:09:25,668 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:09:25] "GET / HTTP/1.1" 200 -
+2025-07-14 19:09:25,701 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:09:25] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:09:25,703 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:09:25] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:09:49,873 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/app.py', reloading
+2025-07-14 19:09:49,925 - werkzeug - INFO -  * Restarting with stat
+2025-07-14 19:09:50,164 - ai_ethics_webapp - INFO - Cases table does not exist - will use scenario files from the filesystem
+2025-07-14 19:09:50,165 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-14 19:09:50,172 - werkzeug - WARNING -  * Debugger is active!
+2025-07-14 19:09:50,189 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-14 19:09:56,192 - ai_ethics_webapp - INFO - New evaluator created: hants.williams@stonybrook.edu (ID: 3)
+2025-07-14 19:09:56,194 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:09:56] "[32mPOST /signin HTTP/1.1[0m" 302 -
+2025-07-14 19:09:56,211 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants.williams@stonybrook.edu (ID: 3)
+2025-07-14 19:09:56,232 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:09:56] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:09:56,344 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:09:56] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-07-14 19:09:56,346 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:09:56] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:10:00,082 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_case.md
+2025-07-14 19:10:00,103 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:10:00] "GET /evaluate/1/1_case.md HTTP/1.1" 200 -
+2025-07-14 19:10:00,157 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:10:00] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:10:00,181 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:10:00] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:10:08,763 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:10:08] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
+2025-07-14 19:10:08,772 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants.williams@stonybrook.edu (ID: 3)
+2025-07-14 19:10:08,775 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:10:08] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:10:08,872 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:10:08] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:10:08,874 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:10:08] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:10:12,588 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:10:12] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-07-14 19:10:12,597 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:10:12] "GET / HTTP/1.1" 200 -
+2025-07-14 19:10:12,651 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:10:12] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:10:12,652 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:10:12] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:10:17,144 - ai_ethics_webapp - INFO - Existing evaluator signed in: hants.williams@stonybrook.edu (ID: 3)
+2025-07-14 19:10:17,150 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:10:17] "[32mPOST /signin HTTP/1.1[0m" 302 -
+2025-07-14 19:10:17,155 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants.williams@stonybrook.edu (ID: 3)
+2025-07-14 19:10:17,157 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:10:17] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:10:17,192 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:10:17] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:10:17,192 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:10:17] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:10:35,709 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:10:35] "GET / HTTP/1.1" 200 -
+2025-07-14 19:10:35,745 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:10:35] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:10:35,745 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:10:35] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2025-07-14 19:11:29,561 - ai_ethics_webapp - INFO - Existing evaluator signed in: hants.williams@stonybrook.edu (ID: 3)
+2025-07-14 19:11:29,563 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:11:29] "[32mPOST /signin HTTP/1.1[0m" 302 -
+2025-07-14 19:11:29,571 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator hants.williams@stonybrook.edu (ID: 3)
+2025-07-14 19:11:29,573 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:11:29] "GET /dashboard HTTP/1.1" 200 -
+2025-07-14 19:11:29,627 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:11:29] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-07-14 19:11:29,628 - werkzeug - INFO - 127.0.0.1 - - [14/Jul/2025 19:11:29] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -

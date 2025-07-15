@@ -1,0 +1,374 @@
+2025-07-13 10:39:49,843 - analysis - INFO - Using database at /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/results.db
+2025-07-13 10:39:49,850 - analysis - INFO - Loaded 29 responses from database
+2025-07-13 10:39:49,854 - analysis - INFO - Response counts by model:
+model
+gemini    20
+openai     9
+Name: count, dtype: int64
+2025-07-13 10:39:49,856 - analysis - INFO - Response counts by case:
+case_id
+1    11
+2     9
+3     9
+Name: count, dtype: int64
+2025-07-13 10:39:49,873 - analysis - INFO - Processing time statistics (seconds):
+             mean       std        min        max
+model                                            
+gemini  14.354693  1.079483  12.594918  16.983644
+openai  15.054010  2.253579  12.448083  18.950571
+2025-07-13 10:39:50,841 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-13 10:39:50,844 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-13 10:39:50,934 - analysis - INFO - Processing time plots saved to /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/analysis_output
+2025-07-13 10:39:50,938 - analysis - INFO - Response length statistics:
+               mean         std   min   max
+model                                      
+gemini  4040.050000  310.732153  3425  4638
+openai  5533.777778  439.111825  4761  6105
+2025-07-13 10:39:51,041 - analysis - INFO - Ethical principle mention statistics:
+       autonomy_mentions                ... justice_mentions              
+                    mean       std sum  ...             mean       std sum
+model                                   ...                               
+gemini          4.150000  1.598519  83  ...         0.900000  0.640723  18
+openai          6.111111  2.204793  55  ...         3.777778  1.201850  34
+
+[2 rows x 12 columns]
+2025-07-13 10:39:51,239 - analysis - INFO - Recommendation consistency by model:
+        rec_consistent  alt_consistent  least_consistent  all_consistent
+model                                                                   
+gemini             0.0             0.0               0.0             0.0
+openai             0.0             0.0               0.0             0.0
+2025-07-13 10:39:51,424 - analysis - INFO - Comprehensive report saved to /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/analysis_output/analysis_report.html
+2025-07-13 10:39:51,424 - analysis - INFO - Analysis completed successfully
+2025-07-14 16:27:26,271 - analysis - INFO - Using database at /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/results.db
+2025-07-14 16:27:26,279 - analysis - INFO - Loaded 18 responses from database
+2025-07-14 16:27:26,289 - analysis - INFO - Response counts by vendor:
+vendor
+OpenAI    9
+Google    9
+Name: count, dtype: int64
+2025-07-14 16:27:26,291 - analysis - INFO - Response counts by model:
+   vendor           model  count
+0  Google  gemini-1.5-pro      9
+1  OpenAI    gpt-4.1-mini      9
+2025-07-14 16:27:26,291 - analysis - INFO - Response counts by case:
+case_id
+1    6
+2    6
+3    6
+Name: count, dtype: int64
+2025-07-14 16:27:26,292 - analysis - INFO - Processing time statistics by vendor (seconds):
+             mean       std        min        max
+vendor                                           
+Google  14.638788  0.904512  13.007925  16.468269
+OpenAI  14.148727  1.274991  11.271046  15.603730
+2025-07-14 16:27:26,295 - analysis - INFO - Processing time statistics by model (seconds):
+                            mean  ...        max
+vendor model                      ...           
+Google gemini-1.5-pro  14.638788  ...  16.468269
+OpenAI gpt-4.1-mini    14.148727  ...  15.603730
+
+[2 rows x 4 columns]
+2025-07-14 16:27:26,659 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-14 16:27:26,661 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-14 16:27:26,782 - analysis - INFO - Processing time plots saved to /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/analysis_output
+2025-07-14 16:27:26,785 - analysis - INFO - Response length statistics by vendor:
+               mean         std   min   max
+vendor                                     
+Google  4028.222222  281.743136  3717  4730
+OpenAI  5255.444444  367.763889  4665  5706
+2025-07-14 16:27:26,787 - analysis - INFO - Response length statistics by model:
+                              mean  ...   max
+vendor model                        ...      
+Google gemini-1.5-pro  4028.222222  ...  4730
+OpenAI gpt-4.1-mini    5255.444444  ...  5706
+
+[2 rows x 4 columns]
+2025-07-14 16:27:27,027 - analysis - INFO - Ethical principle mention statistics by vendor:
+       autonomy_mentions            ... justice_mentions    
+                    mean       std  ...              std sum
+vendor                              ...                     
+Google          4.111111  2.088327  ...         0.927961  10
+OpenAI          6.222222  2.773886  ...         1.536591  26
+
+[2 rows x 12 columns]
+2025-07-14 16:27:27,030 - analysis - INFO - Ethical principle mention statistics by model:
+                      autonomy_mentions  ... justice_mentions
+                                   mean  ...              sum
+vendor model                             ...                 
+Google gemini-1.5-pro          4.111111  ...               10
+OpenAI gpt-4.1-mini            6.222222  ...               26
+
+[2 rows x 12 columns]
+2025-07-14 16:27:27,363 - analysis - INFO - Recommendation consistency by vendor:
+        rec_consistent  ...  all_consistent
+vendor                  ...                
+Google             0.0  ...             0.0
+OpenAI             0.0  ...             0.0
+
+[2 rows x 4 columns]
+2025-07-14 16:27:27,365 - analysis - INFO - Recommendation consistency by model:
+                       rec_consistent  ...  all_consistent
+vendor model                           ...                
+Google gemini-1.5-pro             0.0  ...             0.0
+OpenAI gpt-4.1-mini               0.0  ...             0.0
+
+[2 rows x 4 columns]
+2025-07-14 16:27:27,649 - analysis - INFO - Comprehensive report saved to /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/analysis_output/analysis_report.html
+2025-07-14 16:27:27,649 - analysis - INFO - Analysis completed successfully
+2025-07-14 16:41:34,446 - analysis - INFO - Using database at /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/results.db
+2025-07-14 16:41:34,456 - analysis - INFO - Loaded 18 responses from database
+2025-07-14 16:41:34,470 - analysis - INFO - Response counts by vendor:
+vendor
+OpenAI    9
+Google    9
+Name: count, dtype: int64
+2025-07-14 16:41:34,476 - analysis - INFO - Response counts by model:
+   vendor           model  count
+0  Google  gemini-1.5-pro      9
+1  OpenAI    gpt-4.1-mini      9
+2025-07-14 16:41:34,477 - analysis - INFO - Response counts by case:
+case_id
+1    6
+2    6
+3    6
+Name: count, dtype: int64
+2025-07-14 16:41:34,477 - analysis - INFO - Response counts by scenario filename:
+scenario_filename
+1_case.md    6
+2_case.md    6
+3_case.md    6
+Name: count, dtype: int64
+2025-07-14 16:41:34,480 - analysis - INFO - Processing time statistics by vendor (seconds):
+             mean       std        min        max
+vendor                                           
+Google  14.021400  1.468385  12.016055  16.436278
+OpenAI  17.914248  3.864712  13.474857  26.628553
+2025-07-14 16:41:34,483 - analysis - INFO - Processing time statistics by model (seconds):
+                            mean       std        min        max
+vendor model                                                    
+Google gemini-1.5-pro  14.021400  1.468385  12.016055  16.436278
+OpenAI gpt-4.1-mini    17.914248  3.864712  13.474857  26.628553
+2025-07-14 16:41:34,863 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-14 16:41:34,865 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-14 16:41:35,008 - analysis - INFO - Processing time plots saved to /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/analysis_output
+2025-07-14 16:41:35,012 - analysis - INFO - Response length statistics by vendor:
+               mean         std   min   max
+vendor                                     
+Google  3966.333333  398.433809  3525  4593
+OpenAI  5651.333333  513.612938  4901  6484
+2025-07-14 16:41:35,013 - analysis - INFO - Response length statistics by model:
+                              mean         std   min   max
+vendor model                                              
+Google gemini-1.5-pro  3966.333333  398.433809  3525  4593
+OpenAI gpt-4.1-mini    5651.333333  513.612938  4901  6484
+2025-07-14 16:41:35,218 - analysis - INFO - Ethical principle mention statistics by vendor:
+       autonomy_mentions               beneficence_mentions  ... non-maleficence_mentions justice_mentions              
+                    mean       std sum                 mean  ...                      sum             mean       std sum
+vendor                                                       ...                                                        
+Google          4.666667  1.581139  42             3.444444  ...                       23         1.222222  0.833333  11
+OpenAI          5.888889  2.619372  53             6.000000  ...                       43         3.444444  1.589899  31
+
+[2 rows x 12 columns]
+2025-07-14 16:41:35,222 - analysis - INFO - Ethical principle mention statistics by model:
+                      autonomy_mentions               beneficence_mentions  ... non-maleficence_mentions justice_mentions              
+                                   mean       std sum                 mean  ...                      sum             mean       std sum
+vendor model                                                                ...                                                        
+Google gemini-1.5-pro          4.666667  1.581139  42             3.444444  ...                       23         1.222222  0.833333  11
+OpenAI gpt-4.1-mini            5.888889  2.619372  53             6.000000  ...                       43         3.444444  1.589899  31
+
+[2 rows x 12 columns]
+2025-07-14 16:41:35,577 - analysis - INFO - Recommendation consistency by vendor:
+        rec_consistent  alt_consistent  least_consistent  all_consistent
+vendor                                                                  
+Google             0.0             0.0               0.0             0.0
+OpenAI             0.0             0.0               0.0             0.0
+2025-07-14 16:41:35,579 - analysis - INFO - Recommendation consistency by model:
+                       rec_consistent  alt_consistent  least_consistent  all_consistent
+vendor model                                                                           
+Google gemini-1.5-pro             0.0             0.0               0.0             0.0
+OpenAI gpt-4.1-mini               0.0             0.0               0.0             0.0
+2025-07-14 16:41:35,897 - analysis - INFO - Response counts by scenario filename:
+scenario_filename
+1_case.md    6
+2_case.md    6
+3_case.md    6
+Name: count, dtype: int64
+2025-07-14 16:41:35,951 - analysis - INFO - Response length statistics by scenario:
+                     mean          std   min   max
+scenario_filename                                 
+1_case.md          5284.5   959.317622  4241  6484
+2_case.md          4676.0  1108.748123  3525  5936
+3_case.md          4466.0   805.009565  3622  5631
+2025-07-14 16:41:35,956 - analysis - ERROR - Error in analysis: tuple indices must be integers or slices, not str
+2025-07-14 16:42:36,818 - analysis - INFO - Using database at /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/results.db
+2025-07-14 16:42:36,825 - analysis - INFO - Loaded 18 responses from database
+2025-07-14 16:42:36,833 - analysis - INFO - Response counts by vendor:
+vendor
+OpenAI    9
+Google    9
+Name: count, dtype: int64
+2025-07-14 16:42:36,835 - analysis - INFO - Response counts by model:
+   vendor           model  count
+0  Google  gemini-1.5-pro      9
+1  OpenAI    gpt-4.1-mini      9
+2025-07-14 16:42:36,835 - analysis - INFO - Response counts by case:
+case_id
+1    6
+2    6
+3    6
+Name: count, dtype: int64
+2025-07-14 16:42:36,835 - analysis - INFO - Response counts by scenario filename:
+scenario_filename
+1_case.md    6
+2_case.md    6
+3_case.md    6
+Name: count, dtype: int64
+2025-07-14 16:42:36,837 - analysis - INFO - Processing time statistics by vendor (seconds):
+             mean       std        min        max
+vendor                                           
+Google  14.021400  1.468385  12.016055  16.436278
+OpenAI  17.914248  3.864712  13.474857  26.628553
+2025-07-14 16:42:36,838 - analysis - INFO - Processing time statistics by model (seconds):
+                            mean       std        min        max
+vendor model                                                    
+Google gemini-1.5-pro  14.021400  1.468385  12.016055  16.436278
+OpenAI gpt-4.1-mini    17.914248  3.864712  13.474857  26.628553
+2025-07-14 16:42:37,093 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-14 16:42:37,095 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-14 16:42:37,217 - analysis - INFO - Processing time plots saved to /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/analysis_output
+2025-07-14 16:42:37,220 - analysis - INFO - Response length statistics by vendor:
+               mean         std   min   max
+vendor                                     
+Google  3966.333333  398.433809  3525  4593
+OpenAI  5651.333333  513.612938  4901  6484
+2025-07-14 16:42:37,221 - analysis - INFO - Response length statistics by model:
+                              mean         std   min   max
+vendor model                                              
+Google gemini-1.5-pro  3966.333333  398.433809  3525  4593
+OpenAI gpt-4.1-mini    5651.333333  513.612938  4901  6484
+2025-07-14 16:42:37,400 - analysis - INFO - Ethical principle mention statistics by vendor:
+       autonomy_mentions               beneficence_mentions  ... non-maleficence_mentions justice_mentions              
+                    mean       std sum                 mean  ...                      sum             mean       std sum
+vendor                                                       ...                                                        
+Google          4.666667  1.581139  42             3.444444  ...                       23         1.222222  0.833333  11
+OpenAI          5.888889  2.619372  53             6.000000  ...                       43         3.444444  1.589899  31
+
+[2 rows x 12 columns]
+2025-07-14 16:42:37,403 - analysis - INFO - Ethical principle mention statistics by model:
+                      autonomy_mentions               beneficence_mentions  ... non-maleficence_mentions justice_mentions              
+                                   mean       std sum                 mean  ...                      sum             mean       std sum
+vendor model                                                                ...                                                        
+Google gemini-1.5-pro          4.666667  1.581139  42             3.444444  ...                       23         1.222222  0.833333  11
+OpenAI gpt-4.1-mini            5.888889  2.619372  53             6.000000  ...                       43         3.444444  1.589899  31
+
+[2 rows x 12 columns]
+2025-07-14 16:42:37,701 - analysis - INFO - Recommendation consistency by vendor:
+        rec_consistent  alt_consistent  least_consistent  all_consistent
+vendor                                                                  
+Google             0.0             0.0               0.0             0.0
+OpenAI             0.0             0.0               0.0             0.0
+2025-07-14 16:42:37,703 - analysis - INFO - Recommendation consistency by model:
+                       rec_consistent  alt_consistent  least_consistent  all_consistent
+vendor model                                                                           
+Google gemini-1.5-pro             0.0             0.0               0.0             0.0
+OpenAI gpt-4.1-mini               0.0             0.0               0.0             0.0
+2025-07-14 16:42:37,974 - analysis - INFO - Response counts by scenario filename:
+scenario_filename
+1_case.md    6
+2_case.md    6
+3_case.md    6
+Name: count, dtype: int64
+2025-07-14 16:42:38,022 - analysis - INFO - Response length statistics by scenario:
+                     mean          std   min   max
+scenario_filename                                 
+1_case.md          5284.5   959.317622  4241  6484
+2_case.md          4676.0  1108.748123  3525  5936
+3_case.md          4466.0   805.009565  3622  5631
+2025-07-14 16:42:38,028 - analysis - INFO - Comprehensive analysis report saved to /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/analysis_output/analysis_report.html
+2025-07-14 16:42:38,028 - analysis - INFO - Analysis completed successfully
+2025-07-14 19:02:43,987 - analysis - INFO - Using database at /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/results.db
+2025-07-14 19:02:43,996 - analysis - INFO - Loaded 18 responses from database
+2025-07-14 19:02:44,004 - analysis - INFO - Response counts by vendor:
+vendor
+OpenAI    9
+Google    9
+Name: count, dtype: int64
+2025-07-14 19:02:44,005 - analysis - INFO - Response counts by model:
+   vendor           model  count
+0  Google  gemini-1.5-pro      9
+1  OpenAI    gpt-4.1-mini      9
+2025-07-14 19:02:44,006 - analysis - INFO - Response counts by case:
+case_id
+1    6
+2    6
+3    6
+Name: count, dtype: int64
+2025-07-14 19:02:44,006 - analysis - INFO - Response counts by scenario filename:
+scenario_filename
+1_case.md    6
+2_case.md    6
+3_case.md    6
+Name: count, dtype: int64
+2025-07-14 19:02:44,007 - analysis - INFO - Processing time statistics by vendor (seconds):
+             mean       std        min        max
+vendor                                           
+Google  14.535406  0.975988  13.693415  16.694926
+OpenAI  16.227366  8.313734   9.433749  37.556976
+2025-07-14 19:02:44,009 - analysis - INFO - Processing time statistics by model (seconds):
+                            mean       std        min        max
+vendor model                                                    
+Google gemini-1.5-pro  14.535406  0.975988  13.693415  16.694926
+OpenAI gpt-4.1-mini    16.227366  8.313734   9.433749  37.556976
+2025-07-14 19:02:44,269 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-14 19:02:44,271 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-14 19:02:44,387 - analysis - INFO - Processing time plots saved to /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/analysis_output
+2025-07-14 19:02:44,390 - analysis - INFO - Response length statistics by vendor:
+               mean         std   min   max
+vendor                                     
+Google  4054.000000  356.031249  3703  4688
+OpenAI  5600.777778  455.489785  4881  6233
+2025-07-14 19:02:44,392 - analysis - INFO - Response length statistics by model:
+                              mean         std   min   max
+vendor model                                              
+Google gemini-1.5-pro  4054.000000  356.031249  3703  4688
+OpenAI gpt-4.1-mini    5600.777778  455.489785  4881  6233
+2025-07-14 19:02:44,559 - analysis - INFO - Ethical principle mention statistics by vendor:
+       autonomy_mentions               beneficence_mentions  ... non-maleficence_mentions justice_mentions              
+                    mean       std sum                 mean  ...                      sum             mean       std sum
+vendor                                                       ...                                                        
+Google          3.777778  2.048034  34             4.333333  ...                       32         1.111111  0.927961  10
+OpenAI          6.555556  2.833333  59             6.111111  ...                       34         3.333333  1.870829  30
+
+[2 rows x 12 columns]
+2025-07-14 19:02:44,562 - analysis - INFO - Ethical principle mention statistics by model:
+                      autonomy_mentions               beneficence_mentions  ... non-maleficence_mentions justice_mentions              
+                                   mean       std sum                 mean  ...                      sum             mean       std sum
+vendor model                                                                ...                                                        
+Google gemini-1.5-pro          3.777778  2.048034  34             4.333333  ...                       32         1.111111  0.927961  10
+OpenAI gpt-4.1-mini            6.555556  2.833333  59             6.111111  ...                       34         3.333333  1.870829  30
+
+[2 rows x 12 columns]
+2025-07-14 19:02:44,860 - analysis - INFO - Recommendation consistency by vendor:
+        rec_consistent  alt_consistent  least_consistent  all_consistent
+vendor                                                                  
+Google             0.0             0.0               0.0             0.0
+OpenAI             0.0             0.0               0.0             0.0
+2025-07-14 19:02:44,861 - analysis - INFO - Recommendation consistency by model:
+                       rec_consistent  alt_consistent  least_consistent  all_consistent
+vendor model                                                                           
+Google gemini-1.5-pro             0.0             0.0               0.0             0.0
+OpenAI gpt-4.1-mini               0.0             0.0               0.0             0.0
+2025-07-14 19:02:45,148 - analysis - INFO - Response counts by scenario filename:
+scenario_filename
+1_case.md    6
+2_case.md    6
+3_case.md    6
+Name: count, dtype: int64
+2025-07-14 19:02:45,200 - analysis - INFO - Response length statistics by scenario:
+                          mean          std   min   max
+scenario_filename                                      
+1_case.md          5134.166667  1047.371838  3719  6233
+2_case.md          4918.166667   857.332005  3963  5984
+3_case.md          4429.833333   737.255564  3703  5232
+2025-07-14 19:02:45,207 - analysis - INFO - Comprehensive analysis report saved to /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/analysis_output/analysis_report.html
+2025-07-14 19:02:45,207 - analysis - INFO - Analysis completed successfully

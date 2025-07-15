@@ -1,0 +1,567 @@
+<html>
+        <head>
+            <title>AI Ethics Research Evaluation Analysis</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 20px; }
+                h1, h2, h3 { color: #333366; }
+                table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+                th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                th { background-color: #f2f2f2; }
+                img { max-width: 100%; height: auto; margin: 10px 0; }
+                .section { margin-bottom: 30px; }
+            </style>
+        </head>
+        <body>
+            <h1>AI Ethics Research Evaluation Analysis</h1>
+            <p>Generated on: 2025-07-14 19:11:47</p>
+            
+            <div class="section">
+                <h2>Overview</h2>
+                <p>Total evaluations analyzed: 20</p>
+                <p>Vendors included: Google, OpenAI</p>
+                <p>Models included: Google gemini-1.5-pro, OpenAI gpt-4.1-mini</p>
+                <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Total Evaluations</th>
+      <th>Unique Evaluators</th>
+      <th>Unique Cases</th>
+      <th>Unique Scenarios</th>
+      <th>Vendors</th>
+      <th>Models</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Summary</th>
+      <td>20</td>
+      <td>3</td>
+      <td>3</td>
+      <td>9</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+            </div>
+            
+            <div class="section">
+                <h2>Score Distributions</h2>
+                <p>Distribution of scores across all evaluations:</p>
+                <img src="score_distributions.png" alt="Score Distributions">
+                <img src="overall_score_distribution.png" alt="Overall Score Distribution">
+            </div>
+            
+            <div class="section">
+                <h2>Vendor Comparisons</h2>
+                <h3>Average Scores by Vendor</h3>
+                <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean</th>
+      <th>std</th>
+      <th>count</th>
+    </tr>
+    <tr>
+      <th>vendor</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Google</th>
+      <td>3.638889</td>
+      <td>1.139566</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>OpenAI</th>
+      <td>3.409091</td>
+      <td>0.691671</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+                
+                <h3>Detailed Scores by Vendor</h3>
+                <table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">relevance_score</th>
+      <th colspan="3" halign="left">correctness_score</th>
+      <th colspan="3" halign="left">fluency_score</th>
+      <th colspan="3" halign="left">coherence_score</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>mean</th>
+      <th>std</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>count</th>
+    </tr>
+    <tr>
+      <th>vendor</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Google</th>
+      <td>3.777778</td>
+      <td>1.394433</td>
+      <td>9</td>
+      <td>3.666667</td>
+      <td>1.224745</td>
+      <td>9</td>
+      <td>3.666667</td>
+      <td>1.224745</td>
+      <td>9</td>
+      <td>3.444444</td>
+      <td>1.013794</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>OpenAI</th>
+      <td>3.363636</td>
+      <td>0.674200</td>
+      <td>11</td>
+      <td>3.454545</td>
+      <td>0.934199</td>
+      <td>11</td>
+      <td>3.454545</td>
+      <td>0.820200</td>
+      <td>11</td>
+      <td>3.363636</td>
+      <td>0.809040</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+                
+                <h3>Visual Comparisons</h3>
+                <img src="vendor_score_comparisons.png" alt="Vendor Score Comparisons">
+                <img src="vendor_overall_comparison.png" alt="Vendor Overall Comparison">
+                <img src="vendor_metric_averages.png" alt="Vendor Metric Averages">
+            </div>
+            
+            <div class="section">
+                <h2>Model Comparisons</h2>
+                <h3>Average Scores by Model</h3>
+                <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>mean</th>
+      <th>std</th>
+      <th>count</th>
+    </tr>
+    <tr>
+      <th>vendor</th>
+      <th>model</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Google</th>
+      <th>gemini-1.5-pro</th>
+      <td>3.638889</td>
+      <td>1.139566</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>OpenAI</th>
+      <th>gpt-4.1-mini</th>
+      <td>3.409091</td>
+      <td>0.691671</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+                
+                <h3>Detailed Scores by Model</h3>
+                <table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th colspan="3" halign="left">relevance_score</th>
+      <th colspan="3" halign="left">correctness_score</th>
+      <th colspan="3" halign="left">fluency_score</th>
+      <th colspan="3" halign="left">coherence_score</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>mean</th>
+      <th>std</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>count</th>
+    </tr>
+    <tr>
+      <th>vendor</th>
+      <th>model</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Google</th>
+      <th>gemini-1.5-pro</th>
+      <td>3.777778</td>
+      <td>1.394433</td>
+      <td>9</td>
+      <td>3.666667</td>
+      <td>1.224745</td>
+      <td>9</td>
+      <td>3.666667</td>
+      <td>1.224745</td>
+      <td>9</td>
+      <td>3.444444</td>
+      <td>1.013794</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>OpenAI</th>
+      <th>gpt-4.1-mini</th>
+      <td>3.363636</td>
+      <td>0.674200</td>
+      <td>11</td>
+      <td>3.454545</td>
+      <td>0.934199</td>
+      <td>11</td>
+      <td>3.454545</td>
+      <td>0.820200</td>
+      <td>11</td>
+      <td>3.363636</td>
+      <td>0.809040</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+                
+                <h3>Visual Comparisons</h3>
+                <img src="model_score_comparisons.png" alt="Model Score Comparisons">
+                <img src="model_overall_comparison.png" alt="Model Overall Comparison">
+            </div>
+            
+            <div class="section">
+                <h2>Scenario Coverage</h2>
+                <p>Number of evaluations by scenario:</p>
+                <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>0</th>
+    </tr>
+    <tr>
+      <th>case_id</th>
+      <th>scenario_filename</th>
+      <th>iteration</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="3" valign="top">1</th>
+      <th rowspan="3" valign="top">1_case.md</th>
+      <th>1</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">2</th>
+      <th rowspan="3" valign="top">2_case.md</th>
+      <th>1</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">3</th>
+      <th rowspan="3" valign="top">3_case.md</th>
+      <th>1</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+            </div>
+            
+            <div class="section">
+                <h2>Iteration Analysis</h2>
+                <h3>Scores by Iteration Number</h3>
+                <table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">relevance_score</th>
+      <th colspan="3" halign="left">correctness_score</th>
+      <th colspan="3" halign="left">fluency_score</th>
+      <th colspan="3" halign="left">coherence_score</th>
+      <th colspan="3" halign="left">overall_score</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>mean</th>
+      <th>std</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>count</th>
+    </tr>
+    <tr>
+      <th>iteration</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>3.500000</td>
+      <td>1.224745</td>
+      <td>6</td>
+      <td>3.666667</td>
+      <td>0.816497</td>
+      <td>6</td>
+      <td>3.666667</td>
+      <td>0.816497</td>
+      <td>6</td>
+      <td>3.333333</td>
+      <td>0.516398</td>
+      <td>6</td>
+      <td>3.541667</td>
+      <td>0.714435</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.428571</td>
+      <td>0.975900</td>
+      <td>7</td>
+      <td>3.714286</td>
+      <td>1.112697</td>
+      <td>7</td>
+      <td>3.571429</td>
+      <td>1.133893</td>
+      <td>7</td>
+      <td>3.428571</td>
+      <td>0.975900</td>
+      <td>7</td>
+      <td>3.535714</td>
+      <td>0.951190</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.714286</td>
+      <td>1.112697</td>
+      <td>7</td>
+      <td>3.285714</td>
+      <td>1.253566</td>
+      <td>7</td>
+      <td>3.428571</td>
+      <td>1.133893</td>
+      <td>7</td>
+      <td>3.428571</td>
+      <td>1.133893</td>
+      <td>7</td>
+      <td>3.464286</td>
+      <td>1.112697</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
+                
+                <h3>Vendor Performance by Iteration</h3>
+                <table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th colspan="3" halign="left">overall_score</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>mean</th>
+      <th>std</th>
+      <th>count</th>
+    </tr>
+    <tr>
+      <th>vendor</th>
+      <th>iteration</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="3" valign="top">Google</th>
+      <th>1</th>
+      <td>3.750000</td>
+      <td>1.000000</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.750000</td>
+      <td>1.561249</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.416667</td>
+      <td>1.282900</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">OpenAI</th>
+      <th>1</th>
+      <td>3.333333</td>
+      <td>0.381881</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.375000</td>
+      <td>0.322749</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.500000</td>
+      <td>1.172604</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+                
+                <p>Comparison of overall scores across iterations:</p>
+                <img src="iteration_comparison.png" alt="Iteration Comparison">
+            </div>
+            
+            <div class="section">
+                <h2>Evaluator Participation</h2>
+                <p>Number of evaluations by evaluator ID:</p>
+                <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+    </tr>
+    <tr>
+      <th>evaluator_id</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+            </div>
+        </body>
+        </html>

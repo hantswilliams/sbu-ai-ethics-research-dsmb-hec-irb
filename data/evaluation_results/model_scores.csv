@@ -1,0 +1,5 @@
+,,relevance_score,relevance_score,relevance_score,correctness_score,correctness_score,correctness_score,fluency_score,fluency_score,fluency_score,coherence_score,coherence_score,coherence_score
+,,mean,std,count,mean,std,count,mean,std,count,mean,std,count
+vendor,model,,,,,,,,,,,,
+Google,gemini-1.5-pro,3.7777777777777777,1.3944333775567925,9,3.6666666666666665,1.224744871391589,9,3.6666666666666665,1.224744871391589,9,3.4444444444444446,1.0137937550497031,9
+OpenAI,gpt-4.1-mini,3.3636363636363638,0.6741998624632421,11,3.4545454545454546,0.9341987329938275,11,3.4545454545454546,0.8201995322647244,11,3.3636363636363638,0.8090398349558905,11

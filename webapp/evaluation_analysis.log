@@ -1,0 +1,42 @@
+2025-07-14 19:11:46,887 - evaluation_analysis - INFO - Using database at /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/results.db
+2025-07-14 19:11:46,891 - evaluation_analysis - INFO - Loaded 18 responses from database
+2025-07-14 19:11:46,892 - evaluation_analysis - INFO - Loaded 20 evaluations from database
+2025-07-14 19:11:46,895 - evaluation_analysis - INFO - Loaded 20 evaluations from database
+2025-07-14 19:11:46,901 - evaluation_analysis - INFO - Evaluations by evaluator:
+evaluator_id
+1    18
+2     1
+3     1
+dtype: int64
+2025-07-14 19:11:46,902 - evaluation_analysis - INFO - Evaluations by scenario:
+case_id  scenario_filename  iteration
+1        1_case.md          1            2
+                            2            3
+                            3            3
+2        2_case.md          1            2
+                            2            2
+                            3            2
+3        3_case.md          1            2
+                            2            2
+                            3            2
+dtype: int64
+2025-07-14 19:11:46,913 - evaluation_analysis - INFO - Average scores by vendor:
+       relevance_score                  ... coherence_score                
+                  mean       std count  ...            mean       std count
+vendor                                  ...                                
+Google        3.777778  1.394433     9  ...        3.444444  1.013794     9
+OpenAI        3.363636  0.674200    11  ...        3.363636  0.809040    11
+
+[2 rows x 12 columns]
+2025-07-14 19:11:46,915 - evaluation_analysis - INFO - Overall average by vendor:
+            mean       std  count
+vendor                           
+Google  3.638889  1.139566      9
+OpenAI  3.409091  0.691671     11
+2025-07-14 19:11:47,407 - evaluation_analysis - INFO - Score distribution plots saved
+2025-07-14 19:11:47,673 - evaluation_analysis - INFO - Vendor comparison plots saved
+2025-07-14 19:11:47,885 - evaluation_analysis - INFO - Model comparison plots saved
+2025-07-14 19:11:47,900 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-14 19:11:47,902 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-14 19:11:47,967 - evaluation_analysis - INFO - Comprehensive evaluation report saved to /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/evaluation_results/evaluation_report.html
+2025-07-14 19:11:47,967 - evaluation_analysis - INFO - Evaluation analysis completed successfully

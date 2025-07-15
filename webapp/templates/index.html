@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign In - AI Ethics Research Evaluation{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <h2>Evaluator Sign In</h2>
+    <p>Welcome to the AI Ethics in Healthcare Research Project. Please sign in below to begin evaluating AI responses to ethical scenarios.</p>
+    
+    <form action="{{ url_for('signin') }}" method="post">
+        <div class="form-group">
+            <label for="email">Stony Brook Email:</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your stonybrook.edu email" pattern="[a-zA-Z0-9._%+-]+@stonybrook\.edu$" title="Please use your Stony Brook email (stonybrook.edu)">
+            <small class="form-text">Please use your Stony Brook email address (@stonybrook.edu)</small>
+        </div>
+        
+        <button type="submit">Sign In</button>
+    </form>
+    
+    <div class="info-box">
+        <h3>About This Research</h3>
+        <p>This platform is part of a research study evaluating AI models' responses to healthcare ethics scenarios. Your evaluations will help us understand how well different AI systems handle complex ethical decisions in clinical settings.</p>
+        <p>We require Stony Brook University email addresses to ensure that our evaluations come from qualified members of our academic community. Your email is used only for identification and will not be shared with third parties.</p>
+        <p>All evaluations will be used for research purposes only.</p>
+    </div>
+</div>
+{% endblock %}

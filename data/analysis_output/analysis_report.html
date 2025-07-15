@@ -1,0 +1,421 @@
+<html>
+        <head>
+            <title>AI Ethics Research Analysis Report</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 20px; }
+                h1, h2, h3 { color: #333366; }
+                table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+                th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                th { background-color: #f2f2f2; }
+                img { max-width: 100%; height: auto; margin: 10px 0; }
+                .section { margin-bottom: 30px; }
+            </style>
+        </head>
+        <body>
+            <h1>AI Ethics Research Analysis Report</h1>
+            <p>Generated on: 2025-07-14 19:02:45</p>
+            
+            <div class="section">
+                <h2>Overview</h2>
+                <p>Total responses analyzed: 18</p>
+                <p>Vendors included: Google, OpenAI</p>
+                <p>Models included: OpenAI gpt-4.1-mini, Google gemini-1.5-pro</p>
+                <p>Cases analyzed: 1, 2, 3</p>
+            </div>
+            
+            <div class="section">
+                <h2>Basic Statistics</h2>
+                
+                <h3>Response Counts by Vendor</h3>
+                <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+    </tr>
+    <tr>
+      <th>vendor</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>OpenAI</th>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>Google</th>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+                
+                <h3>Response Counts by Model</h3>
+                <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>vendor</th>
+      <th>model</th>
+      <th>count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Google</td>
+      <td>gemini-1.5-pro</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>OpenAI</td>
+      <td>gpt-4.1-mini</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+                
+                <h3>Processing Time Statistics by Vendor (seconds)</h3>
+                <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>vendor</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Google</th>
+      <td>14.535406</td>
+      <td>0.975988</td>
+      <td>13.693415</td>
+      <td>16.694926</td>
+    </tr>
+    <tr>
+      <th>OpenAI</th>
+      <td>16.227366</td>
+      <td>8.313734</td>
+      <td>9.433749</td>
+      <td>37.556976</td>
+    </tr>
+  </tbody>
+</table>
+                
+                <h3>Processing Time Statistics by Model (seconds)</h3>
+                <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>vendor</th>
+      <th>model</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Google</th>
+      <th>gemini-1.5-pro</th>
+      <td>14.535406</td>
+      <td>0.975988</td>
+      <td>13.693415</td>
+      <td>16.694926</td>
+    </tr>
+    <tr>
+      <th>OpenAI</th>
+      <th>gpt-4.1-mini</th>
+      <td>16.227366</td>
+      <td>8.313734</td>
+      <td>9.433749</td>
+      <td>37.556976</td>
+    </tr>
+  </tbody>
+</table>
+                
+                <h3>Processing Time Visualizations</h3>
+                <img src="processing_times_by_vendor.png" alt="Processing Times by Vendor">
+                <img src="processing_times_by_model.png" alt="Processing Times by Model">
+                <img src="avg_processing_times.png" alt="Average Processing Times">
+            </div>
+            
+            <div class="section">
+                <h2>Response Length Analysis</h2>
+                
+                <h3>Response Length Statistics by Vendor</h3>
+                <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>vendor</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Google</th>
+      <td>4054.000000</td>
+      <td>356.031249</td>
+      <td>3703</td>
+      <td>4688</td>
+    </tr>
+    <tr>
+      <th>OpenAI</th>
+      <td>5600.777778</td>
+      <td>455.489785</td>
+      <td>4881</td>
+      <td>6233</td>
+    </tr>
+  </tbody>
+</table>
+                
+                <h3>Response Length Statistics by Model</h3>
+                <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>vendor</th>
+      <th>model</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Google</th>
+      <th>gemini-1.5-pro</th>
+      <td>4054.000000</td>
+      <td>356.031249</td>
+      <td>3703</td>
+      <td>4688</td>
+    </tr>
+    <tr>
+      <th>OpenAI</th>
+      <th>gpt-4.1-mini</th>
+      <td>5600.777778</td>
+      <td>455.489785</td>
+      <td>4881</td>
+      <td>6233</td>
+    </tr>
+  </tbody>
+</table>
+                
+                <h3>Response Length Visualizations</h3>
+                <img src="response_lengths_by_vendor.png" alt="Response Lengths by Vendor">
+                <img src="response_lengths_by_model.png" alt="Response Lengths by Model">
+                <img src="avg_response_lengths.png" alt="Average Response Lengths">
+            </div>
+            
+            
+            <div class="section">
+                <h2>Scenario Analysis</h2>
+                
+                <h3>Response Counts by Scenario</h3>
+                <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+    </tr>
+    <tr>
+      <th>scenario_filename</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1_case.md</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2_case.md</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>3_case.md</th>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+                
+                <h3>Response Length by Scenario</h3>
+                <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>scenario_filename</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1_case.md</th>
+      <td>5134.166667</td>
+      <td>1047.371838</td>
+      <td>3719</td>
+      <td>6233</td>
+    </tr>
+    <tr>
+      <th>2_case.md</th>
+      <td>4918.166667</td>
+      <td>857.332005</td>
+      <td>3963</td>
+      <td>5984</td>
+    </tr>
+    <tr>
+      <th>3_case.md</th>
+      <td>4429.833333</td>
+      <td>737.255564</td>
+      <td>3703</td>
+      <td>5232</td>
+    </tr>
+  </tbody>
+</table>
+                
+                <h3>Scenario Visualizations</h3>
+                <img src="responses_by_scenario.png" alt="Responses by Scenario">
+            </div>
+        
+            
+            <div class="section">
+                <h2>Ethical Principles Analysis</h2>
+                <p>Average mentions of ethical principles per response:</p>
+                
+                <h3>By Vendor</h3>
+                <img src="ethical_principle_mentions_by_vendor.png" alt="Ethical Principle Mentions by Vendor">
+                
+                <h3>By Model</h3>
+                <img src="ethical_principle_mentions_by_model.png" alt="Ethical Principle Mentions by Model">
+            </div>
+            
+            <div class="section">
+                <h2>Recommendation Consistency Analysis</h2>
+                <p>Consistency of recommendations across iterations for the same case:</p>
+                
+                <h3>By Vendor</h3>
+                <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>rec_consistent</th>
+      <th>alt_consistent</th>
+      <th>least_consistent</th>
+      <th>all_consistent</th>
+    </tr>
+    <tr>
+      <th>vendor</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Google</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>OpenAI</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+                <img src="recommendation_consistency_by_vendor.png" alt="Recommendation Consistency by Vendor">
+                
+                <h3>By Model</h3>
+                <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>rec_consistent</th>
+      <th>alt_consistent</th>
+      <th>least_consistent</th>
+      <th>all_consistent</th>
+    </tr>
+    <tr>
+      <th>vendor</th>
+      <th>model</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Google</th>
+      <th>gemini-1.5-pro</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>OpenAI</th>
+      <th>gpt-4.1-mini</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+                <img src="recommendation_consistency_by_model.png" alt="Recommendation Consistency by Model">
+            </div>
+            
+        </body>
+        </html>
