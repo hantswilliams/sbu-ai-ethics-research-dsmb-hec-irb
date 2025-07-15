@@ -274,6 +274,24 @@ def evaluate(case_id, scenario_filename):
             print(f"Error checking database for scenario: {e}")
             case_content = f"Error: Could not retrieve scenario content. {str(e)}"
     
+    # Try to read the ethics committee discussion file
+    discussion_content = None
+    discussion_filename = scenario_filename.replace('_case.md', '_discussion.md')
+    discussion_path = BASE_PATH / "research" / "scenarios" / discussion_filename
+    
+    if discussion_path.exists():
+        try:
+            with open(discussion_path, 'r') as f:
+                discussion_content = f.read()
+            logger = logging.getLogger(__name__)
+            logger.info(f"Successfully read discussion content from file: {discussion_path}")
+        except Exception as e:
+            print(f"Error reading discussion file: {e}")
+            discussion_content = f"Error: Could not read discussion file. {str(e)}"
+    else:
+        discussion_content = "Ethics committee discussion not available for this scenario."
+        logger.warning(f"Discussion file not found at {discussion_path}")
+    
     # Get a random response for this case that hasn't been evaluated by this evaluator
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -348,6 +366,7 @@ def evaluate(case_id, scenario_filename):
                           case_id=case_id,
                           scenario_filename=scenario_filename,
                           case_content=case_content,
+                          discussion_content=discussion_content,
                           response=response)
 
 @app.route('/submit_evaluation', methods=['POST'])

@@ -648,3 +648,63 @@
 2025-07-15 09:27:42,133 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 09:27:42] "[32mPOST /submit_evaluation HTTP/1.1[0m" 302 -
 2025-07-15 09:27:42,138 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator admin2@stonybrook.edu (ID: 2)
 2025-07-15 09:27:42,139 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 09:27:42] "GET /dashboard HTTP/1.1" 200 -
+2025-07-15 09:33:33,912 - ai_ethics_webapp - INFO - Cases table does not exist - will use scenario files from the filesystem
+2025-07-15 09:33:33,912 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-15 09:33:33,941 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://172.17.8.190:5005
+2025-07-15 09:33:33,942 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-15 09:33:33,954 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 09:33:34,238 - ai_ethics_webapp - INFO - Cases table does not exist - will use scenario files from the filesystem
+2025-07-15 09:33:34,239 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-15 09:33:34,245 - werkzeug - WARNING -  * Debugger is active!
+2025-07-15 09:33:34,266 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-15 09:33:36,033 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 09:33:36] "GET / HTTP/1.1" 200 -
+2025-07-15 09:33:40,825 - ai_ethics_webapp - INFO - New evaluator created: admin3@stonybrook.edu (ID: 3)
+2025-07-15 09:33:40,829 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 09:33:40] "[32mPOST /signin HTTP/1.1[0m" 302 -
+2025-07-15 09:33:40,843 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator admin3@stonybrook.edu (ID: 3)
+2025-07-15 09:33:40,861 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 09:33:40] "GET /dashboard HTTP/1.1" 200 -
+2025-07-15 09:33:52,700 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_case.md
+2025-07-15 09:33:52,712 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 09:33:52] "GET /evaluate/1/1_case.md HTTP/1.1" 200 -
+2025-07-15 09:36:02,621 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/app.py', reloading
+2025-07-15 09:36:02,797 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 09:36:04,208 - ai_ethics_webapp - INFO - Cases table does not exist - will use scenario files from the filesystem
+2025-07-15 09:36:04,210 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-15 09:36:04,241 - werkzeug - WARNING -  * Debugger is active!
+2025-07-15 09:36:04,304 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-15 09:36:09,409 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 09:36:09] "[32mGET /evaluate/1/1_case.md HTTP/1.1[0m" 302 -
+2025-07-15 09:36:09,432 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 09:36:09] "GET / HTTP/1.1" 200 -
+2025-07-15 09:36:11,771 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/app.py', reloading
+2025-07-15 09:36:11,960 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 09:36:12,474 - ai_ethics_webapp - INFO - Cases table does not exist - will use scenario files from the filesystem
+2025-07-15 09:36:12,474 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-15 09:36:12,487 - werkzeug - WARNING -  * Debugger is active!
+2025-07-15 09:36:12,514 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-15 09:36:36,723 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 09:36:36] "GET / HTTP/1.1" 200 -
+2025-07-15 09:36:43,772 - ai_ethics_webapp - INFO - Existing evaluator signed in: admin3@stonybrook.edu (ID: 3)
+2025-07-15 09:36:43,774 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 09:36:43] "[32mPOST /signin HTTP/1.1[0m" 302 -
+2025-07-15 09:36:43,778 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator admin3@stonybrook.edu (ID: 3)
+2025-07-15 09:36:43,788 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 09:36:43] "GET /dashboard HTTP/1.1" 200 -
+2025-07-15 09:37:22,803 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator admin3@stonybrook.edu (ID: 3)
+2025-07-15 09:37:22,805 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 09:37:22] "GET /dashboard HTTP/1.1" 200 -
+2025-07-15 09:37:24,984 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_case.md
+2025-07-15 09:37:24,985 - __main__ - INFO - Successfully read discussion content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_discussion.md
+2025-07-15 09:37:24,995 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 09:37:24] "GET /evaluate/1/1_case.md HTTP/1.1" 200 -
+2025-07-15 09:40:29,132 - werkzeug - INFO -  * Detected change in '/Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/webapp/app.py', reloading
+2025-07-15 09:40:29,170 - werkzeug - INFO -  * Restarting with stat
+2025-07-15 09:40:29,394 - ai_ethics_webapp - INFO - Cases table does not exist - will use scenario files from the filesystem
+2025-07-15 09:40:29,395 - ai_ethics_webapp - INFO - Database initialized.
+2025-07-15 09:40:29,400 - werkzeug - WARNING -  * Debugger is active!
+2025-07-15 09:40:29,413 - werkzeug - INFO -  * Debugger PIN: 652-794-124
+2025-07-15 09:40:33,225 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 09:40:33] "[32mGET /evaluate/1/1_case.md HTTP/1.1[0m" 302 -
+2025-07-15 09:40:33,247 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 09:40:33] "GET / HTTP/1.1" 200 -
+2025-07-15 09:40:38,225 - ai_ethics_webapp - INFO - Existing evaluator signed in: admin3@stonybrook.edu (ID: 3)
+2025-07-15 09:40:38,227 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 09:40:38] "[32mPOST /signin HTTP/1.1[0m" 302 -
+2025-07-15 09:40:38,231 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator admin3@stonybrook.edu (ID: 3)
+2025-07-15 09:40:38,245 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 09:40:38] "GET /dashboard HTTP/1.1" 200 -
+2025-07-15 09:40:39,572 - __main__ - INFO - Successfully read scenario content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_case.md
+2025-07-15 09:40:39,573 - __main__ - INFO - Successfully read discussion content from file: /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/scenarios/1_discussion.md
+2025-07-15 09:40:39,586 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 09:40:39] "GET /evaluate/1/1_case.md HTTP/1.1" 200 -
+2025-07-15 09:41:30,768 - ai_ethics_webapp - INFO - Dashboard loaded for evaluator admin3@stonybrook.edu (ID: 3)
+2025-07-15 09:41:30,771 - werkzeug - INFO - 127.0.0.1 - - [15/Jul/2025 09:41:30] "GET /dashboard HTTP/1.1" 200 -
