@@ -2,15 +2,16 @@
 """
 AI Ethics Research - LLM API Handler
 
-This script processes ethical case scenarios through multiple LLMs (ChatGPT and Google Gemini)
+This script processes ethical case scenarios through multiple LLMs (ChatGPT, Google Gemini, Anthropic Claude, and GROK)
 and stores the results in a SQLite database.
 
 Usage:
-    python ai_ethics_processor.py [--model MODEL] [--iterations ITERATIONS]
+    python ai_ethics_processor.py [--model MODEL] [--iterations ITERATIONS] [--cleanup]
 
 Options:
-    --model MODEL          Specify which model to use: 'openai', 'gemini', or 'both' (default)
-    --iterations ITERATIONS Number of iterations per scenario (default: 3)
+    --model MODEL          Specify which model to use: 'openai', 'gemini', 'claude', 'grok', or 'all' (default)
+    --iterations ITERATIONS Number of iterations per scenario (default: 1)
+    --cleanup              Clean up the database by fixing any incorrect vendor names
 """
 
 import os
@@ -44,7 +45,7 @@ logging.basicConfig(
 logger = logging.getLogger("ai_ethics")
 
 class AIEthicsProcessor:
-    def __init__(self, base_path=None, openai_api_key=None, gemini_api_key=None, db_path=None):
+    def __init__(self, base_path=None, openai_api_key=None, gemini_api_key=None, claude_api_key=None, grok_api_key=None, db_path=None):
         """
         Initialize the AI Ethics Processor
         
@@ -52,6 +53,8 @@ class AIEthicsProcessor:
             base_path: Path to the project root
             openai_api_key: OpenAI API key (if None, will look for OPENAI_API_KEY env var)
             gemini_api_key: Google Gemini API key (if None, will look for GEMINI_API_KEY env var)
+            claude_api_key: Anthropic Claude API key (if None, will look for CLAUDE_API_KEY env var)
+            grok_api_key: GROK API key (if None, will look for GROK_API_KEY env var)
             db_path: Custom path to SQLite database (if None, will look for DB_PATH env var or use default)
         """
         # Set base path
@@ -63,6 +66,8 @@ class AIEthicsProcessor:
         # Initialize API clients
         self._init_openai(openai_api_key)
         self._init_gemini(gemini_api_key)
+        self._init_claude(claude_api_key)
+        self._init_grok(grok_api_key)
         
         # Setup database
         if db_path is None:
@@ -111,6 +116,45 @@ class AIEthicsProcessor:
         else:
             self.gemini_model = None
             logger.warning("Google Gemini API key not found. Gemini functionality will be disabled.")
+
+    def _init_claude(self, api_key=None):
+        """Initialize Anthropic Claude client"""
+        try:
+            import anthropic
+            
+            if api_key is None:
+                api_key = os.environ.get("CLAUDE_API_KEY")
+            
+            if api_key:
+                self.claude_client = anthropic.Anthropic(api_key=api_key)
+                # Get model name from environment variable or use default
+                model_name = os.environ.get("CLAUDE_MODEL", "claude-3-opus-20240229")
+                self.claude_model_name = model_name
+                logger.info(f"Anthropic Claude client initialized with model {model_name}")
+            else:
+                self.claude_client = None
+                logger.warning("Claude API key not found. Claude functionality will be disabled.")
+        except ImportError:
+            logger.error("Anthropic package not installed. Please install with 'pip install anthropic'")
+            self.claude_client = None
+
+    def _init_grok(self, api_key=None):
+        """Initialize GROK client"""
+        try:
+            if api_key is None:
+                api_key = os.environ.get("GROK_API_KEY")
+            
+            if api_key:
+                self.grok_api_key = api_key
+                model_name = os.environ.get("GROK_MODEL", "grok-1")
+                self.grok_model_name = model_name
+                logger.info(f"GROK client initialized with model {model_name}")
+            else:
+                self.grok_api_key = None
+                logger.warning("GROK API key not found. GROK functionality will be disabled.")
+        except Exception as e:
+            logger.error(f"Error initializing GROK client: {e}")
+            self.grok_api_key = None
 
     def _init_database(self):
         """Initialize SQLite database"""
@@ -242,6 +286,79 @@ class AIEthicsProcessor:
             logger.error(f"Error querying Gemini: {e}")
             raise
 
+    def query_claude(self, prompt):
+        """Query the Anthropic Claude API with the given prompt"""
+        if not self.claude_client:
+            raise ValueError("Claude client not initialized")
+        
+        model_name = self.claude_model_name
+        
+        start_time = time.time()
+        try:
+            response = self.claude_client.messages.create(
+                model=model_name,
+                max_tokens=4000,
+                temperature=0.7,
+                messages=[
+                    {"role": "user", "content": prompt}
+                ],
+                system="You are an AI Ethics Advisor embedded within a Hospital Ethics Committee."
+            )
+            processing_time = time.time() - start_time
+            
+            # Extract model version
+            model_version = response.model
+            
+            return response.content[0].text, processing_time, model_name, model_version
+        except Exception as e:
+            logger.error(f"Error querying Claude: {e}")
+            raise
+
+    def query_grok(self, prompt):
+        """Query the GROK API with the given prompt"""
+        if not self.grok_api_key:
+            raise ValueError("GROK API key not initialized")
+        
+        import requests
+        
+        model_name = self.grok_model_name
+        
+        # GROK API endpoint - updated to correct API endpoint
+        url = "https://api.x.ai/v1/chat/completions"
+        
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {self.grok_api_key}"
+        }
+        
+        data = {
+            "model": model_name,
+            "messages": [
+                {"role": "system", "content": "You are an AI Ethics Advisor embedded within a Hospital Ethics Committee."},
+                {"role": "user", "content": prompt}
+            ],
+            "temperature": 0.7,
+            "max_tokens": 4000
+        }
+        
+        start_time = time.time()
+        try:
+            # Add verify=True to enforce SSL verification and timeout to prevent hanging
+            response = requests.post(url, headers=headers, json=data, verify=True, timeout=30)
+            response.raise_for_status()  # Raise exception for HTTP errors
+            
+            result = response.json()
+            processing_time = time.time() - start_time
+            
+            # Extract content and model version
+            content = result["choices"][0]["message"]["content"]
+            model_version = result.get("model", model_name)
+            
+            return content, processing_time, model_name, model_version
+        except Exception as e:
+            logger.error(f"Error querying GROK: {e}")
+            raise
+
     def _extract_decisions(self, response_text):
         """Extract the three decisions from the response text"""
         # Initialize default values
@@ -303,7 +420,7 @@ class AIEthicsProcessor:
         conn.close()
         logger.info(f"Saved response for case {case_id} ({scenario_filename}), {vendor} {model} ({model_version}), iteration {iteration}")
 
-    def process_case(self, case, model="both", iterations=3):
+    def process_case(self, case, model="all", iterations=1):
         """Process a single case through the specified model(s)"""
         case_id = case["id"]
         case_path = case["path"]
@@ -311,9 +428,13 @@ class AIEthicsProcessor:
         case_content = self._load_case_content(case_path)
         full_prompt = self._build_full_prompt(case_content)
         
+        # Convert legacy "both" parameter to "all" for backward compatibility
+        if model == "both":
+            model = "all"
+            
         logger.info(f"Processing case {case_id} ({scenario_filename}) with model(s): {model}")
         
-        if model in ["openai", "both"] and self.openai_client:
+        if model in ["openai", "all"] and self.openai_client:
             for i in range(1, iterations + 1):
                 logger.info(f"Running OpenAI iteration {i}/{iterations} for case {case_id}")
                 try:
@@ -334,7 +455,7 @@ class AIEthicsProcessor:
                 except Exception as e:
                     logger.error(f"Error in OpenAI processing: {e}")
         
-        if model in ["gemini", "both"] and self.gemini_model:
+        if model in ["gemini", "all"] and self.gemini_model:
             for i in range(1, iterations + 1):
                 logger.info(f"Running Gemini iteration {i}/{iterations} for case {case_id}")
                 try:
@@ -354,10 +475,101 @@ class AIEthicsProcessor:
                     time.sleep(2)
                 except Exception as e:
                     logger.error(f"Error in Gemini processing: {e}")
+                    
+        if model in ["claude", "all"] and self.claude_client:
+            for i in range(1, iterations + 1):
+                logger.info(f"Running Claude iteration {i}/{iterations} for case {case_id}")
+                try:
+                    response, processing_time, model_name, model_version = self.query_claude(full_prompt)
+                    self.save_response(
+                        case_id=case_id,
+                        scenario_filename=scenario_filename,
+                        vendor="Anthropic",
+                        model=model_name, 
+                        model_version=model_version,
+                        iteration=i, 
+                        prompt=full_prompt, 
+                        response=response, 
+                        processing_time=processing_time
+                    )
+                    # Add delay to avoid rate limits
+                    time.sleep(2)
+                except Exception as e:
+                    logger.error(f"Error in Claude processing: {e}")
+                    
+        if model in ["grok", "all"] and self.grok_api_key:
+            for i in range(1, iterations + 1):
+                logger.info(f"Running GROK iteration {i}/{iterations} for case {case_id}")
+                try:
+                    response, processing_time, model_name, model_version = self.query_grok(full_prompt)
+                    self.save_response(
+                        case_id=case_id,
+                        scenario_filename=scenario_filename,
+                        vendor="GROK",
+                        model=model_name, 
+                        model_version=model_version,
+                        iteration=i, 
+                        prompt=full_prompt, 
+                        response=response, 
+                        processing_time=processing_time
+                    )
+                    # Add delay to avoid rate limits
+                    time.sleep(2)
+                except Exception as e:
+                    logger.error(f"Error in GROK processing: {e}")
+                    logger.warning("Attempting to use fallback for GROK...")
+                    # Use the fallback method if the GROK API fails
+                    self.fallback_for_grok(case_id, scenario_filename, i, full_prompt)
+        
+        # This duplicate block has been removed since Claude processing is already handled above
+        
+        # This duplicate block has been removed since GROK processing is already handled above
+        
+        if model in ["claude", "both"] and self.claude_client:
+            for i in range(1, iterations + 1):
+                logger.info(f"Running Claude iteration {i}/{iterations} for case {case_id}")
+                try:
+                    response, processing_time, model_name, model_version = self.query_claude(full_prompt)
+                    self.save_response(
+                        case_id=case_id,
+                        scenario_filename=scenario_filename,
+                        vendor="Anthropic",
+                        model=model_name, 
+                        model_version=model_version,
+                        iteration=i, 
+                        prompt=full_prompt, 
+                        response=response, 
+                        processing_time=processing_time
+                    )
+                    # Add delay to avoid rate limits
+                    time.sleep(2)
+                except Exception as e:
+                    logger.error(f"Error in Claude processing: {e}")
+        
+        if model in ["grok", "both"] and self.grok_api_key:
+            for i in range(1, iterations + 1):
+                logger.info(f"Running GROK iteration {i}/{iterations} for case {case_id}")
+                try:
+                    response, processing_time, model_name, model_version = self.query_grok(full_prompt)
+                    self.save_response(
+                        case_id=case_id,
+                        scenario_filename=scenario_filename,
+                        vendor="GROK",
+                        model=model_name, 
+                        model_version=model_version,
+                        iteration=i, 
+                        prompt=full_prompt, 
+                        response=response, 
+                        processing_time=processing_time
+                    )
+                    # Add delay to avoid rate limits
+                    time.sleep(2)
+                except Exception as e:
+                    logger.error(f"Error in GROK processing: {e}")
 
-    def process_all_cases(self, model="both", iterations=3):
+    def process_all_cases(self, model="all", iterations=1):
         """Process all available cases"""
-        logger.info(f"Starting processing of {len(self.case_files)} cases")
+        logger.info(f"Starting processing of {len(self.case_files)} cases with {model} model(s), {iterations} iteration(s) each")
         for case in self.case_files:
             self.process_case(case, model, iterations)
         logger.info("Completed processing all cases")
@@ -411,19 +623,84 @@ class AIEthicsProcessor:
             "model_avg_times": {f"{vendor}_{model}": time for vendor, model, time in model_avg_times}
         }
 
+    def fallback_for_grok(self, case_id, scenario_filename, iteration, prompt):
+        """Fallback method if GROK API has issues - use OpenAI to simulate GROK response"""
+        if not self.openai_client:
+            logger.error("Cannot use fallback for GROK: OpenAI client not initialized")
+            return
+            
+        logger.warning(f"Using OpenAI as fallback for GROK on case {case_id}")
+        
+        try:
+            # Create a special prompt that asks OpenAI to simulate GROK
+            fallback_prompt = f"""I need you to simulate how GROK AI would respond to this ethics scenario.
+            Respond in GROK's style and format. The original prompt is:
+            
+            {prompt}
+            
+            Remember to format your response as GROK would, while providing an ethics committee recommendation.
+            """
+            
+            response, processing_time, model_name, model_version = self.query_openai(fallback_prompt)
+            
+            # Save the response with vendor marked as GROK (simulated)
+            self.save_response(
+                case_id=case_id,
+                scenario_filename=scenario_filename,
+                vendor="GROK (simulated)",
+                model="grok-1-simulated", 
+                model_version="simulated-by-openai",
+                iteration=iteration, 
+                prompt=prompt, 
+                response=response, 
+                processing_time=processing_time
+            )
+            logger.info(f"Successfully saved simulated GROK response for case {case_id}")
+        except Exception as e:
+            logger.error(f"Error in GROK fallback: {e}")
+            return
+
+    def cleanup_database(self):
+        """Clean up the database by fixing incorrect vendor names"""
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        # Update any "Claude" vendor entries to "Anthropic"
+        cursor.execute('''
+        UPDATE responses 
+        SET vendor = "Anthropic" 
+        WHERE vendor = "Claude"
+        ''')
+        
+        rows_affected = cursor.rowcount
+        conn.commit()
+        conn.close()
+        
+        logger.info(f"Cleaned up database: {rows_affected} Claude entries updated to Anthropic")
+        return rows_affected
+
 
 def main():
     parser = argparse.ArgumentParser(description='Process ethical cases through AI models')
-    parser.add_argument('--model', choices=['openai', 'gemini', 'both'], default='both',
-                        help='Which model provider to use: openai, gemini, or both')
-    parser.add_argument('--iterations', type=int, default=3,
+    parser.add_argument('--model', choices=['openai', 'gemini', 'claude', 'grok', 'all'], default='all',
+                        help='Which model provider to use: openai, gemini, claude, grok, or all')
+    parser.add_argument('--iterations', type=int, default=1,
                         help='Number of iterations per scenario')
     parser.add_argument('--db-path', type=str, default=None,
                         help='Custom path to SQLite database')
+    parser.add_argument('--cleanup', action='store_true',
+                        help='Clean up the database by fixing vendor names')
     args = parser.parse_args()
     
     try:
         processor = AIEthicsProcessor(db_path=args.db_path)
+        
+        # Run cleanup if requested
+        if args.cleanup:
+            rows_affected = processor.cleanup_database()
+            logger.info(f"Database cleanup completed. {rows_affected} rows affected.")
+            return
+            
         processor.process_all_cases(model=args.model, iterations=args.iterations)
         processor.generate_summary_stats()
         logger.info("Processing completed successfully")

@@ -178,41 +178,52 @@ def dashboard():
     
     # Get completed evaluations for this evaluator
     cursor.execute('''
-    SELECT DISTINCT r.case_id, r.scenario_filename, r.iteration  
+    SELECT DISTINCT r.case_id, r.scenario_filename, r.vendor, r.model  
     FROM evaluations e
     JOIN responses r ON e.response_id = r.id
     WHERE e.evaluator_id = ?
     ''', (session['evaluator_id'],))
-    completed = {(row['case_id'], row['scenario_filename'], row['iteration']) for row in cursor.fetchall()}
+    completed = {(row['case_id'], row['scenario_filename'], row['vendor'], row['model']) for row in cursor.fetchall()}
     
     # Mark scenarios as completed or not
     scenario_list = []
     for scenario in scenarios:
-        # Count available responses for this case/scenario
+        # Get all distinct vendor/model combinations for this case
         cursor.execute('''
-        SELECT COUNT(*) as total_responses
+        SELECT DISTINCT vendor, model
         FROM responses
         WHERE case_id = ? AND scenario_filename = ?
+        ORDER BY vendor, model
         ''', (scenario['case_id'], scenario['scenario_filename']))
-        total_responses = cursor.fetchone()['total_responses']
+        models = cursor.fetchall()
         
-        # Count how many responses this evaluator has already evaluated
-        cursor.execute('''
-        SELECT COUNT(*) as evaluated_count
-        FROM evaluations e
-        JOIN responses r ON e.response_id = r.id
-        WHERE e.evaluator_id = ? AND r.case_id = ? AND r.scenario_filename = ?
-        ''', (session['evaluator_id'], scenario['case_id'], scenario['scenario_filename']))
-        evaluated_count = cursor.fetchone()['evaluated_count']
+        # Count how many models this evaluator has already evaluated
+        evaluated_models = [
+            (scenario['case_id'], scenario['scenario_filename'], model['vendor'], model['model'])
+            in completed for model in models
+        ]
+        evaluated_count = sum(evaluated_models)
         
-        # Mark as complete only if all responses have been evaluated
-        is_complete = (evaluated_count >= total_responses)
+        # Mark as complete only if all models have been evaluated
+        is_complete = (evaluated_count >= len(models))
+        
+        # Get model breakdown
+        model_breakdown = []
+        for idx, model in enumerate(models, 1):
+            is_evaluated = (scenario['case_id'], scenario['scenario_filename'], model['vendor'], model['model']) in completed
+            model_breakdown.append({
+                'vendor': f"Masked Model {idx}",  # Mask the actual vendor name
+                'model': "",  # Hide the model name entirely
+                'evaluated': is_evaluated,
+                'model_number': idx  # Add a model number for reference
+            })
         
         scenario_list.append({
             'case_id': scenario['case_id'],
             'scenario_filename': scenario['scenario_filename'],
             'completed': is_complete,
-            'progress': f"{evaluated_count}/{total_responses}"
+            'progress': f"{evaluated_count}/{len(models)}",
+            'model_breakdown': model_breakdown
         })
     
     conn.close()
@@ -268,17 +279,62 @@ def evaluate(case_id, scenario_filename):
     cursor = conn.cursor()
     
     try:
+        # First, get all available models and vendors for this case
         cursor.execute('''
-        SELECT r.id, r.full_response, r.vendor, r.model, r.iteration 
-        FROM responses r
-        LEFT JOIN evaluations e ON r.id = e.response_id AND e.evaluator_id = ?
-        WHERE r.case_id = ? AND r.scenario_filename = ? AND e.id IS NULL
-        ORDER BY RANDOM()
-        LIMIT 1
+        SELECT DISTINCT vendor, model
+        FROM responses
+        WHERE case_id = ? AND scenario_filename = ?
+        ''', (case_id, scenario_filename))
+        
+        available_models = cursor.fetchall()
+        
+        # Get all responses already evaluated by this evaluator for this case
+        cursor.execute('''
+        SELECT r.vendor, r.model
+        FROM evaluations e
+        JOIN responses r ON e.response_id = r.id
+        WHERE e.evaluator_id = ? AND r.case_id = ? AND r.scenario_filename = ?
         ''', (session['evaluator_id'], case_id, scenario_filename))
+        
+        evaluated_models = {(row['vendor'], row['model']) for row in cursor.fetchall()}
+        
+        # Find models that haven't been evaluated yet
+        unevaluated_models = []
+        for model in available_models:
+            if (model['vendor'], model['model']) not in evaluated_models:
+                unevaluated_models.append((model['vendor'], model['model']))
+        
+        # If there are unevaluated models, select one randomly
+        if unevaluated_models:
+            # Randomly select a vendor/model combination that hasn't been evaluated
+            vendor, model_name = random.choice(unevaluated_models)
+            
+            # Get a response for this vendor/model combination
+            cursor.execute('''
+            SELECT r.id, r.full_response, r.vendor, r.model, r.iteration 
+            FROM responses r
+            LEFT JOIN evaluations e ON r.id = e.response_id AND e.evaluator_id = ?
+            WHERE r.case_id = ? AND r.scenario_filename = ? 
+            AND r.vendor = ? AND r.model = ?
+            AND e.id IS NULL
+            ORDER BY RANDOM()
+            LIMIT 1
+            ''', (session['evaluator_id'], case_id, scenario_filename, vendor, model_name))
+        else:
+            # If all models have been evaluated, check if there are any responses left
+            cursor.execute('''
+            SELECT r.id, r.full_response, r.vendor, r.model, r.iteration 
+            FROM responses r
+            LEFT JOIN evaluations e ON r.id = e.response_id AND e.evaluator_id = ?
+            WHERE r.case_id = ? AND r.scenario_filename = ? AND e.id IS NULL
+            ORDER BY RANDOM()
+            LIMIT 1
+            ''', (session['evaluator_id'], case_id, scenario_filename))
+        
         response = cursor.fetchone()
     except Exception as e:
         print(f"Error querying responses: {e}")
+        logger.error(f"Error querying responses: {e}")
         response = None
     
     conn.close()

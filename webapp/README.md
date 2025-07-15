@@ -2,6 +2,25 @@
 
 This Flask web application provides a platform for human evaluators to assess AI-generated responses to healthcare ethics scenarios. It's part of a research project studying the effectiveness of different AI models in handling complex ethical decisions in clinical settings.
 
+## UI Implementation 
+
+The UI has been modernized using [Tailwind CSS](https://tailwindcss.com/), a utility-first CSS framework. Tailwind is loaded via CDN in the `base.html` template.
+
+Key features of our Tailwind implementation:
+
+- **Custom Theme**: We've defined a custom theme with SBU colors in `base.html`
+- **Component Classes**: Common components like buttons and flash messages have custom Tailwind component classes
+- **Responsive Design**: All pages are responsive and work well on mobile and desktop devices
+- **Dynamic Model Handling**: UI dynamically adapts to any number of models/iterations
+- **Blinded Evaluation**: Interface masks model identities to prevent bias
+
+### Template Structure
+
+- `base.html` - Base template with Tailwind configuration and layout
+- `index.html` - Sign-in page
+- `dashboard.html` - Main dashboard showing available scenarios
+- `evaluate.html` - Evaluation form for AI responses
+
 ## Features
 
 - Evaluator sign-in system

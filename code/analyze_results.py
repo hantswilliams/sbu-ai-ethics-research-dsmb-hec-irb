@@ -484,6 +484,22 @@ class ResultsAnalyzer:
         # Run scenario analysis if the column exists
         scenario_analysis = self.analyze_by_scenario()
         
+        # Prepare recommendation stats HTML
+        if recommendation_stats is not None:
+            recommendation_stats_html = f"""
+                <h3>By Vendor</h3>
+                {recommendation_stats['vendor_consistency'].to_html()}
+                <img src="recommendation_consistency_by_vendor.png" alt="Recommendation Consistency by Vendor">
+                
+                <h3>By Model</h3>
+                {recommendation_stats['model_consistency'].to_html()}
+                <img src="recommendation_consistency_by_model.png" alt="Recommendation Consistency by Model">
+            """
+        else:
+            recommendation_stats_html = """
+                <p>No consistency analysis available. This analysis requires multiple iterations of the same model for each case.</p>
+            """
+        
         # List of unique cases
         cases = sorted(self.df['case_id'].unique())
         
@@ -571,13 +587,7 @@ class ResultsAnalyzer:
                 <h2>Recommendation Consistency Analysis</h2>
                 <p>Consistency of recommendations across iterations for the same case:</p>
                 
-                <h3>By Vendor</h3>
-                {recommendation_stats['vendor_consistency'].to_html()}
-                <img src="recommendation_consistency_by_vendor.png" alt="Recommendation Consistency by Vendor">
-                
-                <h3>By Model</h3>
-                {recommendation_stats['model_consistency'].to_html()}
-                <img src="recommendation_consistency_by_model.png" alt="Recommendation Consistency by Model">
+                {recommendation_stats_html}
             </div>
             
         </body>

@@ -1,0 +1,248 @@
+/* Main styles for AI Ethics Evaluation App */
+
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2980b9;
+  --light-color: #ecf0f1;
+  --dark-color: #2c3e50;
+  --success-color: #2ecc71;
+  --warning-color: #f39c12;
+  --danger-color: #e74c3c;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f7fa;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.flash-messages {
+  margin-bottom: 20px;
+}
+
+.flash {
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background-color: var(--warning-color);
+  color: white;
+}
+
+.flash.success {
+  background-color: var(--success-color);
+}
+
+.flash.error {
+  background-color: var(--danger-color);
+}
+
+/* Form Styles */
+form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+button, .btn {
+  display: inline-block;
+  background: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+button:hover, .btn:hover {
+  background: var(--secondary-color);
+}
+
+.btn-secondary {
+  background: var(--light-color);
+  color: var(--dark-color);
+}
+
+.btn-secondary:hover {
+  background: #ddd;
+}
+
+/* Scenario list */
+.scenario-list {
+  list-style: none;
+  padding: 0;
+}
+
+.scenario-item {
+  background: white;
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.scenario-item.completed {
+  border-left: 5px solid var(--success-color);
+}
+
+/* Progress Indicator */
+.progress-indicator {
+  margin-left: 10px;
+  font-size: 0.9em;
+  color: var(--dark-color);
+  background-color: var(--light-color);
+  padding: 3px 8px;
+  border-radius: 10px;
+}
+
+/* Scenario Meta Information */
+.scenario-meta {
+  font-size: 0.9em;
+  color: #666;
+  margin-top: -10px;
+  margin-bottom: 15px;
+}
+
+/* Evaluation page */
+.evaluation-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .evaluation-container {
+    flex-direction: row;
+  }
+  
+  .case-content, 
+  .ai-response {
+    flex: 1;
+  }
+}
+
+.case-content, 
+.ai-response {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.case-content h3, 
+.ai-response h3 {
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+  margin-top: 0;
+}
+
+.evaluation-form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.rating-group {
+  margin-bottom: 20px;
+}
+
+.rating-options {
+  display: flex;
+  gap: 10px;
+}
+
+.rating-option {
+  display: flex;
+  align-items: center;
+}
+
+.rating-option input {
+  margin-right: 5px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px;
+  border-top: 1px solid #ddd;
+  color: #666;
+}
+
+/* Adjust styles for the Dashboard */
+.scenario-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s;
+}
+
+.scenario-item:hover {
+  background-color: #f9f9f9;
+}
+
+.scenario-item.completed {
+  background-color: #f0f7f0;
+}
+
+.dashboard-header h2 {
+  margin-bottom: 10px;
+  font-size: 1.5em;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.dashboard-header h2 .email {
+  font-weight: normal;
+  color: #666;
+}
+
+.stonybrook-domain {
+  color: #990000; /* SBU red color */
+  font-weight: bold;
+}

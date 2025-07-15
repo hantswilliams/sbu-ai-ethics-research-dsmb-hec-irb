@@ -3,55 +3,93 @@
 {% block title %}Dashboard - AI Ethics Research Evaluation{% endblock %}
 
 {% block content %}
-<div class="dashboard">
-    <div class="dashboard-header">
-        <h2>Welcome, <span class="email">{{ email.split('@')[0] }}<span class="stonybrook-domain">@stonybrook.edu</span></span></h2>
+<div class="max-w-5xl mx-auto">
+    <div class="flex justify-between items-center mb-8 border-b pb-4">
+        <h2 class="text-2xl font-semibold">
+            Welcome, <span class="text-gray-600 font-normal">{{ email.split('@')[0] }}</span><span class="text-sbured font-semibold">@stonybrook.edu</span>
+        </h2>
         <a href="{{ url_for('logout') }}" class="btn btn-secondary">Sign Out</a>
     </div>
     
-    <div class="dashboard-content">
-        <h3>Scenarios to Evaluate</h3>
-        <p>Please select a scenario to evaluate. Each scenario will present you with a clinical ethics case and an AI-generated response for you to assess.</p>
+    <div class="mb-10">
+        <h3 class="text-xl font-semibold mb-4">Scenarios to Evaluate</h3>
+        <p class="mb-4">Please select a scenario to evaluate. Each scenario will present you with a clinical ethics case and an AI-generated response for you to assess.</p>
         
-        <ul class="scenario-list">
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6 rounded-md">
+            <strong class="text-blue-800">Note:</strong> 
+            <span class="text-blue-700">
+                For each scenario, you'll evaluate responses from different masked models (one from each). 
+                All model details are completely masked to maintain a blind evaluation. 
+                Expand "Evaluation Progress" to see which models you've already evaluated.
+            </span>
+        </div>
+        
+        <ul class="space-y-4">
             {% for scenario in scenarios %}
-            <li class="scenario-item {% if scenario.completed %}completed{% endif %}">
-                <div class="scenario-info">
-                    <strong>Case {{ scenario.case_id }}</strong>
-                    <span class="scenario-filename">{{ scenario.scenario_filename }}</span>
+            <li class="border rounded-lg overflow-hidden bg-white shadow-sm {% if scenario.completed %}border-l-4 border-l-success{% endif %}">
+                <div class="p-4 flex justify-between items-center">
+                    <div>
+                        <strong class="text-lg">Case {{ scenario.case_id }}</strong>
+                        <span class="text-sm text-gray-500 block">{{ scenario.scenario_filename }}</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        {% if scenario.completed %}
+                        <span class="bg-success text-white py-1 px-3 rounded-full text-sm">Completed</span>
+                        {% else %}
+                        <a href="{{ url_for('evaluate', case_id=scenario.case_id, scenario_filename=scenario.scenario_filename) }}" 
+                           class="btn btn-primary">Evaluate</a>
+                        <span class="text-sm bg-gray-200 py-1 px-3 rounded-full">Progress: {{ scenario.progress }}</span>
+                        {% endif %}
+                    </div>
                 </div>
-                <div class="scenario-actions">
-                    {% if scenario.completed %}
-                    <span class="status-badge completed">Completed</span>
-                    {% else %}
-                    <a href="{{ url_for('evaluate', case_id=scenario.case_id, scenario_filename=scenario.scenario_filename) }}" class="btn">Evaluate</a>
-                    <span class="progress-indicator">Progress: {{ scenario.progress }}</span>
-                    {% endif %}
+                
+                <!-- Model breakdown section -->
+                <div class="border-t px-4 py-2 bg-gray-50">
+                    <details class="group">
+                        <summary class="flex items-center text-gray-600 cursor-pointer font-medium">
+                            <span>Evaluation Progress</span>
+                            <svg class="ml-2 h-5 w-5 transform group-open:rotate-180 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </summary>
+                        <ul class="mt-2 space-y-1 pt-2">
+                            {% for model in scenario.model_breakdown %}
+                            <li class="flex justify-between items-center py-1 px-2 {% if model.evaluated %}bg-green-50{% else %}bg-gray-100{% endif %} rounded">
+                                <span class="font-medium">{{ model.vendor }}</span>
+                                {% if model.evaluated %}
+                                <span class="text-success text-sm">✓ Evaluated</span>
+                                {% else %}
+                                <span class="text-danger text-sm">Pending</span>
+                                {% endif %}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </details>
                 </div>
             </li>
             {% endfor %}
         </ul>
         
         {% if not scenarios %}
-        <p>No scenarios are currently available for evaluation.</p>
+        <p class="text-center py-8 text-gray-500">No scenarios are currently available for evaluation.</p>
         {% endif %}
     </div>
     
-    <div class="instructions">
-        <h3>Evaluation Instructions</h3>
-        <p>For each scenario:</p>
-        <ol>
-            <li><strong>Read the clinical case</strong> carefully to understand the ethical dilemma presented.</li>
-            <li><strong>Review the AI-generated response</strong> without knowing which AI model produced it (blind evaluation).</li>
-            <li><strong>Score the response</strong> on a scale of 1-5 for:
-                <ul>
-                    <li><strong>Relevance:</strong> How well the response addresses the specific ethical issue in the case.</li>
-                    <li><strong>Correctness:</strong> Accuracy of information and appropriateness of ethical reasoning.</li>
-                    <li><strong>Fluency:</strong> Clarity and readability of the text.</li>
-                    <li><strong>Coherence:</strong> Logical flow and consistency of the arguments presented.</li>
+    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 mt-8">
+        <h3 class="text-xl font-semibold mb-4 text-gray-800">Evaluation Instructions</h3>
+        <p class="mb-2">For each scenario:</p>
+        <ol class="list-decimal pl-5 space-y-2">
+            <li class="mb-2"><span class="font-semibold">Read the clinical case</span> carefully to understand the ethical dilemma presented.</li>
+            <li class="mb-2"><span class="font-semibold">Review the AI-generated response</span> without knowing which AI model produced it (blind evaluation).</li>
+            <li class="mb-2"><span class="font-semibold">Score the response</span> on a scale of 1-5 for:
+                <ul class="list-disc pl-5 mt-2 space-y-1">
+                    <li><span class="font-semibold">Relevance:</span> How well the response addresses the specific ethical issue in the case.</li>
+                    <li><span class="font-semibold">Correctness:</span> Accuracy of information and appropriateness of ethical reasoning.</li>
+                    <li><span class="font-semibold">Fluency:</span> Clarity and readability of the text.</li>
+                    <li><span class="font-semibold">Coherence:</span> Logical flow and consistency of the arguments presented.</li>
                 </ul>
             </li>
-            <li><strong>Provide optional comments</strong> to explain your evaluation.</li>
+            <li class="mb-2"><span class="font-semibold">Provide optional comments</span> to explain your evaluation.</li>
         </ol>
     </div>
 </div>

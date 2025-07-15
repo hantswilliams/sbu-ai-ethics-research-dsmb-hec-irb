@@ -383,3 +383,98 @@
 2025-07-14 19:01:14,871 - ai_ethics - INFO - Average processing times by vendor: [('Google', 14.535405794779459), ('OpenAI', 16.22736594412062)]
 2025-07-14 19:01:14,872 - ai_ethics - INFO - Average processing times by model: [('Google', 'gemini-1.5-pro', 14.535405794779459), ('OpenAI', 'gpt-4.1-mini', 16.22736594412062)]
 2025-07-14 19:01:14,872 - ai_ethics - INFO - Processing completed successfully
+2025-07-15 08:52:09,605 - ai_ethics - INFO - OpenAI client initialized with model gpt-4.1-mini
+2025-07-15 08:52:09,605 - ai_ethics - INFO - Google Gemini client initialized with model gemini-1.5-pro
+2025-07-15 08:52:09,605 - ai_ethics - INFO - Database will be stored at /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/results.db
+2025-07-15 08:52:09,610 - ai_ethics - INFO - Database initialized at /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/results.db
+2025-07-15 08:52:09,610 - ai_ethics - INFO - Loaded prompt template from /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/prompt/prompt_v1.md
+2025-07-15 08:52:09,611 - ai_ethics - INFO - Found 3 case files
+2025-07-15 08:52:09,611 - ai_ethics - INFO - Starting processing of 3 cases
+2025-07-15 08:52:09,611 - ai_ethics - INFO - Processing case 1 (1_case.md) with model(s): both
+2025-07-15 08:52:09,611 - ai_ethics - INFO - Running OpenAI iteration 1/1 for case 1
+2025-07-15 08:52:25,135 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 08:52:25,150 - ai_ethics - INFO - Saved response for case 1 (1_case.md), OpenAI gpt-4.1-mini (gpt-4.1-mini-2025-04-14), iteration 1
+2025-07-15 08:52:27,155 - ai_ethics - INFO - Running Gemini iteration 1/1 for case 1
+2025-07-15 08:52:40,634 - ai_ethics - INFO - Saved response for case 1 (1_case.md), Google gemini-1.5-pro (gemini-1.5-pro), iteration 1
+2025-07-15 08:52:42,639 - ai_ethics - INFO - Processing case 2 (2_case.md) with model(s): both
+2025-07-15 08:52:42,639 - ai_ethics - INFO - Running OpenAI iteration 1/1 for case 2
+2025-07-15 08:53:00,441 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 08:53:00,455 - ai_ethics - INFO - Saved response for case 2 (2_case.md), OpenAI gpt-4.1-mini (gpt-4.1-mini-2025-04-14), iteration 1
+2025-07-15 08:53:02,460 - ai_ethics - INFO - Running Gemini iteration 1/1 for case 2
+2025-07-15 08:53:16,081 - ai_ethics - INFO - Saved response for case 2 (2_case.md), Google gemini-1.5-pro (gemini-1.5-pro), iteration 1
+2025-07-15 08:53:18,086 - ai_ethics - INFO - Processing case 3 (3_case.md) with model(s): both
+2025-07-15 08:53:18,087 - ai_ethics - INFO - Running OpenAI iteration 1/1 for case 3
+2025-07-15 08:53:35,623 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 08:53:35,633 - ai_ethics - INFO - Saved response for case 3 (3_case.md), OpenAI gpt-4.1-mini (gpt-4.1-mini-2025-04-14), iteration 1
+2025-07-15 08:53:37,638 - ai_ethics - INFO - Running Gemini iteration 1/1 for case 3
+2025-07-15 08:53:53,065 - ai_ethics - INFO - Saved response for case 3 (3_case.md), Google gemini-1.5-pro (gemini-1.5-pro), iteration 1
+2025-07-15 08:53:55,069 - ai_ethics - INFO - Completed processing all cases
+2025-07-15 08:53:55,071 - ai_ethics - INFO - Summary Statistics:
+2025-07-15 08:53:55,072 - ai_ethics - INFO - Total responses: 6
+2025-07-15 08:53:55,072 - ai_ethics - INFO - By vendor: [('Google', 3), ('OpenAI', 3)]
+2025-07-15 08:53:55,072 - ai_ethics - INFO - By model: [('Google', 'gemini-1.5-pro', 3), ('OpenAI', 'gpt-4.1-mini', 3)]
+2025-07-15 08:53:55,072 - ai_ethics - INFO - By case: [('1', 2), ('2', 2), ('3', 2)]
+2025-07-15 08:53:55,072 - ai_ethics - INFO - By scenario: [('1_case.md', 2), ('2_case.md', 2), ('3_case.md', 2)]
+2025-07-15 08:53:55,072 - ai_ethics - INFO - Average processing times by vendor: [('Google', 14.169843753178915), ('OpenAI', 16.961997270584106)]
+2025-07-15 08:53:55,072 - ai_ethics - INFO - Average processing times by model: [('Google', 'gemini-1.5-pro', 14.169843753178915), ('OpenAI', 'gpt-4.1-mini', 16.961997270584106)]
+2025-07-15 08:53:55,072 - ai_ethics - INFO - Processing completed successfully
+2025-07-15 08:59:33,056 - ai_ethics - INFO - OpenAI client initialized with model gpt-4.1-mini
+2025-07-15 08:59:33,056 - ai_ethics - INFO - Google Gemini client initialized with model gemini-1.5-pro
+2025-07-15 08:59:33,316 - ai_ethics - INFO - Anthropic Claude client initialized with model claude-3-opus-20240229
+2025-07-15 08:59:33,317 - ai_ethics - INFO - GROK client initialized with model grok-3-mini
+2025-07-15 08:59:33,317 - ai_ethics - INFO - Database will be stored at /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/results.db
+2025-07-15 08:59:33,323 - ai_ethics - INFO - Database initialized at /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/results.db
+2025-07-15 08:59:33,324 - ai_ethics - INFO - Loaded prompt template from /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/prompt/prompt_v1.md
+2025-07-15 08:59:33,326 - ai_ethics - INFO - Found 3 case files
+2025-07-15 08:59:33,326 - ai_ethics - INFO - Starting processing of 3 cases with all model(s), 1 iteration(s) each
+2025-07-15 08:59:33,328 - ai_ethics - INFO - Processing case 1 (1_case.md) with model(s): all
+2025-07-15 08:59:33,328 - ai_ethics - INFO - Running OpenAI iteration 1/1 for case 1
+2025-07-15 08:59:47,386 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 08:59:47,415 - ai_ethics - INFO - Saved response for case 1 (1_case.md), OpenAI gpt-4.1-mini (gpt-4.1-mini-2025-04-14), iteration 1
+2025-07-15 08:59:49,420 - ai_ethics - INFO - Running Gemini iteration 1/1 for case 1
+2025-07-15 09:00:04,877 - ai_ethics - INFO - Saved response for case 1 (1_case.md), Google gemini-1.5-pro (gemini-1.5-pro), iteration 1
+2025-07-15 09:00:06,882 - ai_ethics - INFO - Running Claude iteration 1/1 for case 1
+2025-07-15 09:00:41,812 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-15 09:00:41,825 - ai_ethics - INFO - Saved response for case 1 (1_case.md), Anthropic claude-3-opus-20240229 (claude-3-opus-20240229), iteration 1
+2025-07-15 09:00:43,830 - ai_ethics - INFO - Running GROK iteration 1/1 for case 1
+2025-07-15 09:00:57,883 - ai_ethics - INFO - Saved response for case 1 (1_case.md), GROK grok-3-mini (grok-3-mini), iteration 1
+2025-07-15 09:00:59,886 - ai_ethics - INFO - Processing case 2 (2_case.md) with model(s): all
+2025-07-15 09:00:59,886 - ai_ethics - INFO - Running OpenAI iteration 1/1 for case 2
+2025-07-15 09:01:18,921 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 09:01:18,955 - ai_ethics - INFO - Saved response for case 2 (2_case.md), OpenAI gpt-4.1-mini (gpt-4.1-mini-2025-04-14), iteration 1
+2025-07-15 09:01:20,961 - ai_ethics - INFO - Running Gemini iteration 1/1 for case 2
+2025-07-15 09:01:35,840 - ai_ethics - INFO - Saved response for case 2 (2_case.md), Google gemini-1.5-pro (gemini-1.5-pro), iteration 1
+2025-07-15 09:01:37,846 - ai_ethics - INFO - Running Claude iteration 1/1 for case 2
+2025-07-15 09:02:14,562 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-15 09:02:14,583 - ai_ethics - INFO - Saved response for case 2 (2_case.md), Anthropic claude-3-opus-20240229 (claude-3-opus-20240229), iteration 1
+2025-07-15 09:02:16,588 - ai_ethics - INFO - Running GROK iteration 1/1 for case 2
+2025-07-15 09:03:58,603 - ai_ethics - INFO - OpenAI client initialized with model gpt-4.1-mini
+2025-07-15 09:03:58,604 - ai_ethics - INFO - Google Gemini client initialized with model gemini-1.5-pro
+2025-07-15 09:03:58,724 - ai_ethics - INFO - Anthropic Claude client initialized with model claude-3-opus-20240229
+2025-07-15 09:03:58,725 - ai_ethics - INFO - GROK client initialized with model grok-3-mini
+2025-07-15 09:03:58,725 - ai_ethics - INFO - Database will be stored at /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/results.db
+2025-07-15 09:03:58,728 - ai_ethics - INFO - Database initialized at /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/results.db
+2025-07-15 09:03:58,729 - ai_ethics - INFO - Loaded prompt template from /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/research/prompt/prompt_v1.md
+2025-07-15 09:03:58,729 - ai_ethics - INFO - Found 1 case files
+2025-07-15 09:03:58,729 - ai_ethics - INFO - Starting processing of 1 cases with all model(s), 1 iteration(s) each
+2025-07-15 09:03:58,730 - ai_ethics - INFO - Processing case 1 (1_case.md) with model(s): all
+2025-07-15 09:03:58,730 - ai_ethics - INFO - Running OpenAI iteration 1/1 for case 1
+2025-07-15 09:04:26,529 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-15 09:04:26,545 - ai_ethics - INFO - Saved response for case 1 (1_case.md), OpenAI gpt-4.1-mini (gpt-4.1-mini-2025-04-14), iteration 1
+2025-07-15 09:04:28,550 - ai_ethics - INFO - Running Gemini iteration 1/1 for case 1
+2025-07-15 09:04:45,531 - ai_ethics - INFO - Saved response for case 1 (1_case.md), Google gemini-1.5-pro (gemini-1.5-pro), iteration 1
+2025-07-15 09:04:47,535 - ai_ethics - INFO - Running Claude iteration 1/1 for case 1
+2025-07-15 09:05:19,623 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-07-15 09:05:19,654 - ai_ethics - INFO - Saved response for case 1 (1_case.md), Anthropic claude-3-opus-20240229 (claude-3-opus-20240229), iteration 1
+2025-07-15 09:05:21,658 - ai_ethics - INFO - Running GROK iteration 1/1 for case 1
+2025-07-15 09:05:36,977 - ai_ethics - INFO - Saved response for case 1 (1_case.md), GROK grok-3-mini (grok-3-mini), iteration 1
+2025-07-15 09:05:38,986 - ai_ethics - INFO - Completed processing all cases
+2025-07-15 09:05:38,987 - ai_ethics - INFO - Summary Statistics:
+2025-07-15 09:05:38,987 - ai_ethics - INFO - Total responses: 4
+2025-07-15 09:05:38,987 - ai_ethics - INFO - By vendor: [('Anthropic', 1), ('GROK', 1), ('Google', 1), ('OpenAI', 1)]
+2025-07-15 09:05:38,987 - ai_ethics - INFO - By model: [('Anthropic', 'claude-3-opus-20240229', 1), ('GROK', 'grok-3-mini', 1), ('Google', 'gemini-1.5-pro', 1), ('OpenAI', 'gpt-4.1-mini', 1)]
+2025-07-15 09:05:38,987 - ai_ethics - INFO - By case: [('1', 4)]
+2025-07-15 09:05:38,987 - ai_ethics - INFO - By scenario: [('1_case.md', 4)]
+2025-07-15 09:05:38,987 - ai_ethics - INFO - Average processing times by vendor: [('Anthropic', 32.11049294471741), ('GROK', 15.308090925216675), ('Google', 16.973388195037842), ('OpenAI', 27.810884952545166)]
+2025-07-15 09:05:38,987 - ai_ethics - INFO - Average processing times by model: [('Anthropic', 'claude-3-opus-20240229', 32.11049294471741), ('GROK', 'grok-3-mini', 15.308090925216675), ('Google', 'gemini-1.5-pro', 16.973388195037842), ('OpenAI', 'gpt-4.1-mini', 27.810884952545166)]
+2025-07-15 09:05:38,987 - ai_ethics - INFO - Processing completed successfully

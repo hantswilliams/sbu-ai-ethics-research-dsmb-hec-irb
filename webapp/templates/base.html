@@ -4,21 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}AI Ethics Research Evaluation{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3498db',
+                        secondary: '#2980b9',
+                        sbured: '#990000',
+                        light: '#ecf0f1',
+                        dark: '#2c3e50',
+                        success: '#2ecc71',
+                        warning: '#f39c12',
+                        danger: '#e74c3c'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom styles on top of Tailwind -->
+    <style type="text/tailwindcss">
+        @layer components {
+            .btn {
+                @apply px-4 py-2 rounded-md text-white transition-colors duration-200 inline-block;
+            }
+            .btn-primary {
+                @apply bg-primary hover:bg-secondary;
+            }
+            .btn-secondary {
+                @apply bg-light text-dark hover:bg-gray-200;
+            }
+            .flash {
+                @apply p-3 rounded-md mb-4;
+            }
+            .flash-success {
+                @apply bg-success text-white;
+            }
+            .flash-error {
+                @apply bg-danger text-white;
+            }
+            .flash-warning {
+                @apply bg-warning text-white;
+            }
+        }
+    </style>
     {% block extra_css %}{% endblock %}
 </head>
-<body>
-    <header>
-        <h1>Healthcare Ethics Research</h1>
-        <h2>AI Response Evaluation Platform</h2>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <header class="bg-primary text-white py-4 px-6 shadow-md">
+        <div class="container mx-auto">
+            <h1 class="text-3xl font-bold">Healthcare Ethics Research</h1>
+            <h2 class="text-xl">AI Response Evaluation Platform</h2>
+        </div>
     </header>
     
-    <div class="container">
+    <main class="container mx-auto flex-grow px-4 py-8">
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
-        <div class="flash-messages">
+        <div class="mb-6">
             {% for category, message in messages %}
-            <div class="flash {% if category %}{{ category }}{% endif %}">
+            <div class="flash {% if category %}flash-{{ category }}{% else %}bg-warning{% endif %}">
                 {{ message }}
             </div>
             {% endfor %}
@@ -27,13 +74,14 @@
         {% endwith %}
         
         {% block content %}{% endblock %}
-    </div>
+    </main>
     
-    <footer>
-        <p>&copy; {{ current_year }} Stony Brook University AI Ethics Research Project</p>
+    <footer class="bg-gray-100 py-6 border-t border-gray-200 mt-auto">
+        <div class="container mx-auto text-center text-gray-600">
+            <p>&copy; {{ current_year }} Stony Brook University AI Ethics Research Project</p>
+        </div>
     </footer>
     
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     {% block scripts %}{% endblock %}
 </body>
 </html>

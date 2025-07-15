@@ -1,5 +1,7 @@
 ,autonomy_mentions,autonomy_mentions,autonomy_mentions,beneficence_mentions,beneficence_mentions,beneficence_mentions,non-maleficence_mentions,non-maleficence_mentions,non-maleficence_mentions,justice_mentions,justice_mentions,justice_mentions
 ,mean,std,sum,mean,std,sum,mean,std,sum,mean,std,sum
 vendor,,,,,,,,,,,,
-Google,3.7777777777777777,2.048034287907418,34,4.333333333333333,1.9999999999999996,39,3.5555555555555554,1.130388330520878,32,1.1111111111111112,0.927960727138337,10
-OpenAI,6.555555555555555,2.8333333333333335,59,6.111111111111111,1.3642254619787417,55,3.7777777777777777,0.8333333333333334,34,3.3333333333333335,1.8708286933869709,30
+Anthropic,2.0,,2,3.0,,3,2.0,,2,0.0,,0
+GROK,9.0,,9,11.0,,11,8.0,,8,11.0,,11
+Google,4.0,,4,3.0,,3,2.0,,2,0.0,,0
+OpenAI,4.0,,4,5.0,,5,4.0,,4,2.0,,2

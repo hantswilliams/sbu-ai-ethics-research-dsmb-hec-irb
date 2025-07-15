@@ -1,3 +1,5 @@
 vendor,model,mean,std,min,max
-Google,gemini-1.5-pro,4054.0,356.0312486285438,3703,4688
-OpenAI,gpt-4.1-mini,5600.777777777777,455.4897852251402,4881,6233
+Anthropic,claude-3-opus-20240229,4532.0,,4532,4532
+GROK,grok-3-mini,10282.0,,10282,10282
+Google,gemini-1.5-pro,4636.0,,4636,4636
+OpenAI,gpt-4.1-mini,6001.0,,6001,6001
