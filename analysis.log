@@ -1049,3 +1049,453 @@ scenario_filename
 5_case.md          5844.25  2306.913288  4171   9255
 2025-07-24 09:42:54,018 - analysis - INFO - Comprehensive analysis report saved to /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/analysis_output/analysis_report.html
 2025-07-24 09:42:54,019 - analysis - INFO - Analysis completed successfully
+2025-07-25 20:24:53,504 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-25 20:24:53,505 - analysis - INFO - Using supabase database
+2025-07-25 20:24:54,374 - analysis - INFO - Loaded 20 responses from database
+2025-07-25 20:24:54,413 - analysis - INFO - Response counts by vendor:
+vendor
+Google       5
+GROK         5
+Anthropic    5
+OpenAI       5
+Name: count, dtype: int64
+2025-07-25 20:24:54,422 - analysis - INFO - Response counts by model:
+      vendor                   model  count
+0  Anthropic  claude-3-opus-20240229      5
+1       GROK             grok-3-mini      5
+2     Google          gemini-1.5-pro      5
+3     OpenAI            gpt-4.1-nano      5
+2025-07-25 20:24:54,423 - analysis - INFO - Response counts by case:
+case_id
+1    4
+2    4
+3    4
+4    4
+5    4
+Name: count, dtype: int64
+2025-07-25 20:24:54,424 - analysis - INFO - Response counts by scenario filename:
+scenario_filename
+1_case.md    4
+2_case.md    4
+3_case.md    4
+4_case.md    4
+5_case.md    4
+Name: count, dtype: int64
+2025-07-25 20:24:54,435 - analysis - INFO - Processing time statistics by vendor (seconds):
+               mean  ...      max
+vendor               ...         
+Anthropic  32.21916  ...  37.4549
+GROK       15.60010  ...  17.6367
+Google     14.53272  ...  15.4382
+OpenAI     11.58877  ...  13.5827
+
+[4 rows x 4 columns]
+2025-07-25 20:24:54,449 - analysis - INFO - Processing time statistics by model (seconds):
+                                      mean  ...      max
+vendor    model                             ...         
+Anthropic claude-3-opus-20240229  32.21916  ...  37.4549
+GROK      grok-3-mini             15.60010  ...  17.6367
+Google    gemini-1.5-pro          14.53272  ...  15.4382
+OpenAI    gpt-4.1-nano            11.58877  ...  13.5827
+
+[4 rows x 4 columns]
+2025-07-25 20:24:55,530 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-25 20:24:55,537 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-25 20:24:56,075 - analysis - INFO - Processing time plots saved to /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/analysis_output
+2025-07-25 20:24:56,084 - analysis - INFO - Response length statistics by vendor:
+              mean         std   min    max
+vendor                                     
+Anthropic   4638.8  732.165760  3614   5422
+GROK       10108.0  809.659805  9255  11261
+Google      3978.6  237.808326  3599   4171
+OpenAI      5706.0  776.245773  4868   6473
+2025-07-25 20:24:56,090 - analysis - INFO - Response length statistics by model:
+                                     mean  ...    max
+vendor    model                            ...       
+Anthropic claude-3-opus-20240229   4638.8  ...   5422
+GROK      grok-3-mini             10108.0  ...  11261
+Google    gemini-1.5-pro           3978.6  ...   4171
+OpenAI    gpt-4.1-nano             5706.0  ...   6473
+
+[4 rows x 4 columns]
+2025-07-25 20:24:56,823 - analysis - INFO - Ethical principle mention statistics by vendor:
+          autonomy_mentions  ... justice_mentions
+                       mean  ...              sum
+vendor                       ...                 
+Anthropic               3.8  ...                3
+GROK                   11.6  ...               42
+Google                  4.2  ...                6
+OpenAI                  5.2  ...               15
+
+[4 rows x 12 columns]
+2025-07-25 20:24:56,840 - analysis - INFO - Ethical principle mention statistics by model:
+                                 autonomy_mentions  ... justice_mentions
+                                              mean  ...              sum
+vendor    model                                     ...                 
+Anthropic claude-3-opus-20240229               3.8  ...                3
+GROK      grok-3-mini                         11.6  ...               42
+Google    gemini-1.5-pro                       4.2  ...                6
+OpenAI    gpt-4.1-nano                         5.2  ...               15
+
+[4 rows x 12 columns]
+2025-07-25 20:24:58,465 - analysis - WARNING - No consistency data available - need multiple iterations per model
+2025-07-25 20:24:58,681 - analysis - INFO - Response counts by scenario filename:
+scenario_filename
+1_case.md    4
+2_case.md    4
+3_case.md    4
+4_case.md    4
+5_case.md    4
+Name: count, dtype: int64
+2025-07-25 20:24:58,862 - analysis - INFO - Response length statistics by scenario:
+                      mean  ...    max
+scenario_filename           ...       
+1_case.md          6695.25  ...  11261
+2_case.md          6307.00  ...   9501
+3_case.md          5929.25  ...  10535
+4_case.md          5763.50  ...   9988
+5_case.md          5844.25  ...   9255
+
+[5 rows x 4 columns]
+2025-07-25 20:24:58,882 - analysis - INFO - Comprehensive analysis report saved to /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/analysis_output/analysis_report.html
+2025-07-25 20:24:58,884 - analysis - INFO - Analysis completed successfully
+2025-07-25 20:27:05,906 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-25 20:27:05,907 - analysis - INFO - Using supabase database
+2025-07-25 20:27:06,450 - analysis - INFO - Loaded 20 responses from database
+2025-07-25 20:27:06,465 - analysis - INFO - Response counts by vendor:
+vendor
+Google       5
+GROK         5
+Anthropic    5
+OpenAI       5
+Name: count, dtype: int64
+2025-07-25 20:27:06,469 - analysis - INFO - Response counts by model:
+      vendor                   model  count
+0  Anthropic  claude-3-opus-20240229      5
+1       GROK             grok-3-mini      5
+2     Google          gemini-1.5-pro      5
+3     OpenAI            gpt-4.1-nano      5
+2025-07-25 20:27:06,469 - analysis - INFO - Response counts by case:
+case_id
+1    4
+2    4
+3    4
+4    4
+5    4
+Name: count, dtype: int64
+2025-07-25 20:27:06,469 - analysis - INFO - Response counts by scenario filename:
+scenario_filename
+1_case.md    4
+2_case.md    4
+3_case.md    4
+4_case.md    4
+5_case.md    4
+Name: count, dtype: int64
+2025-07-25 20:27:06,473 - analysis - INFO - Processing time statistics by vendor (seconds):
+               mean       std       min      max
+vendor                                          
+Anthropic  32.21916  5.033282  24.68750  37.4549
+GROK       15.60010  1.328791  14.32030  17.6367
+Google     14.53272  1.177516  12.57940  15.4382
+OpenAI     11.58877  1.664012   8.96585  13.5827
+2025-07-25 20:27:06,477 - analysis - INFO - Processing time statistics by model (seconds):
+                                      mean  ...      max
+vendor    model                             ...         
+Anthropic claude-3-opus-20240229  32.21916  ...  37.4549
+GROK      grok-3-mini             15.60010  ...  17.6367
+Google    gemini-1.5-pro          14.53272  ...  15.4382
+OpenAI    gpt-4.1-nano            11.58877  ...  13.5827
+
+[4 rows x 4 columns]
+2025-07-25 20:27:06,915 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-25 20:27:06,917 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-25 20:27:07,185 - analysis - INFO - Processing time plots saved to /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/analysis_output
+2025-07-25 20:27:07,190 - analysis - INFO - Response length statistics by vendor:
+              mean         std   min    max
+vendor                                     
+Anthropic   4638.8  732.165760  3614   5422
+GROK       10108.0  809.659805  9255  11261
+Google      3978.6  237.808326  3599   4171
+OpenAI      5706.0  776.245773  4868   6473
+2025-07-25 20:27:07,193 - analysis - INFO - Response length statistics by model:
+                                     mean  ...    max
+vendor    model                            ...       
+Anthropic claude-3-opus-20240229   4638.8  ...   5422
+GROK      grok-3-mini             10108.0  ...  11261
+Google    gemini-1.5-pro           3978.6  ...   4171
+OpenAI    gpt-4.1-nano             5706.0  ...   6473
+
+[4 rows x 4 columns]
+2025-07-25 20:27:07,535 - analysis - INFO - Ethical principle mention statistics by vendor:
+          autonomy_mentions            ... justice_mentions    
+                       mean       std  ...              std sum
+vendor                                 ...                     
+Anthropic               3.8  1.923538  ...         0.547723   3
+GROK                   11.6  4.335897  ...         2.701851  42
+Google                  4.2  2.280351  ...         0.836660   6
+OpenAI                  5.2  3.962323  ...         1.224745  15
+
+[4 rows x 12 columns]
+2025-07-25 20:27:07,541 - analysis - INFO - Ethical principle mention statistics by model:
+                                 autonomy_mentions  ... justice_mentions
+                                              mean  ...              sum
+vendor    model                                     ...                 
+Anthropic claude-3-opus-20240229               3.8  ...                3
+GROK      grok-3-mini                         11.6  ...               42
+Google    gemini-1.5-pro                       4.2  ...                6
+OpenAI    gpt-4.1-nano                         5.2  ...               15
+
+[4 rows x 12 columns]
+2025-07-25 20:27:08,335 - analysis - WARNING - No consistency data available - need multiple iterations per model
+2025-07-25 20:27:08,437 - analysis - INFO - Response counts by scenario filename:
+scenario_filename
+1_case.md    4
+2_case.md    4
+3_case.md    4
+4_case.md    4
+5_case.md    4
+Name: count, dtype: int64
+2025-07-25 20:27:08,522 - analysis - INFO - Response length statistics by scenario:
+                      mean          std   min    max
+scenario_filename                                   
+1_case.md          6695.25  3194.368417  4147  11261
+2_case.md          6307.00  2366.654601  3897   9501
+3_case.md          5929.25  3093.878512  4079  10535
+4_case.md          5763.50  3008.865844  3599   9988
+5_case.md          5844.25  2306.913288  4171   9255
+2025-07-25 20:27:08,530 - analysis - INFO - Comprehensive analysis report saved to /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/analysis_output/analysis_report.html
+2025-07-25 20:27:08,530 - analysis - INFO - Analysis completed successfully
+2025-07-25 20:32:47,590 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-25 20:32:47,591 - analysis - INFO - Using supabase database
+2025-07-25 20:32:48,283 - analysis - INFO - Loaded 20 responses from database
+2025-07-25 20:32:48,309 - analysis - INFO - Response counts by vendor:
+vendor
+Google       5
+GROK         5
+Anthropic    5
+OpenAI       5
+Name: count, dtype: int64
+2025-07-25 20:32:48,315 - analysis - INFO - Response counts by model:
+      vendor                   model  count
+0  Anthropic  claude-3-opus-20240229      5
+1       GROK             grok-3-mini      5
+2     Google          gemini-1.5-pro      5
+3     OpenAI            gpt-4.1-nano      5
+2025-07-25 20:32:48,316 - analysis - INFO - Response counts by case:
+case_id
+1    4
+2    4
+3    4
+4    4
+5    4
+Name: count, dtype: int64
+2025-07-25 20:32:48,317 - analysis - INFO - Response counts by scenario filename:
+scenario_filename
+1_case.md    4
+2_case.md    4
+3_case.md    4
+4_case.md    4
+5_case.md    4
+Name: count, dtype: int64
+2025-07-25 20:32:48,324 - analysis - INFO - Processing time statistics by vendor (seconds):
+               mean       std       min      max
+vendor                                          
+Anthropic  32.21916  5.033282  24.68750  37.4549
+GROK       15.60010  1.328791  14.32030  17.6367
+Google     14.53272  1.177516  12.57940  15.4382
+OpenAI     11.58877  1.664012   8.96585  13.5827
+2025-07-25 20:32:48,335 - analysis - INFO - Processing time statistics by model (seconds):
+                                      mean  ...      max
+vendor    model                             ...         
+Anthropic claude-3-opus-20240229  32.21916  ...  37.4549
+GROK      grok-3-mini             15.60010  ...  17.6367
+Google    gemini-1.5-pro          14.53272  ...  15.4382
+OpenAI    gpt-4.1-nano            11.58877  ...  13.5827
+
+[4 rows x 4 columns]
+2025-07-25 20:32:49,268 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-25 20:32:49,273 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-25 20:32:49,754 - analysis - INFO - Processing time plots saved to /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/analysis_output
+2025-07-25 20:32:49,764 - analysis - INFO - Response length statistics by vendor:
+              mean         std   min    max
+vendor                                     
+Anthropic   4638.8  732.165760  3614   5422
+GROK       10108.0  809.659805  9255  11261
+Google      3978.6  237.808326  3599   4171
+OpenAI      5706.0  776.245773  4868   6473
+2025-07-25 20:32:49,770 - analysis - INFO - Response length statistics by model:
+                                     mean  ...    max
+vendor    model                            ...       
+Anthropic claude-3-opus-20240229   4638.8  ...   5422
+GROK      grok-3-mini             10108.0  ...  11261
+Google    gemini-1.5-pro           3978.6  ...   4171
+OpenAI    gpt-4.1-nano             5706.0  ...   6473
+
+[4 rows x 4 columns]
+2025-07-25 20:32:50,565 - analysis - INFO - Ethical principle mention statistics by vendor:
+          autonomy_mentions            ... justice_mentions    
+                       mean       std  ...              std sum
+vendor                                 ...                     
+Anthropic               3.8  1.923538  ...         0.547723   3
+GROK                   11.6  4.335897  ...         2.701851  42
+Google                  4.2  2.280351  ...         0.836660   6
+OpenAI                  5.2  3.962323  ...         1.224745  15
+
+[4 rows x 12 columns]
+2025-07-25 20:32:50,580 - analysis - INFO - Ethical principle mention statistics by model:
+                                 autonomy_mentions  ... justice_mentions
+                                              mean  ...              sum
+vendor    model                                     ...                 
+Anthropic claude-3-opus-20240229               3.8  ...                3
+GROK      grok-3-mini                         11.6  ...               42
+Google    gemini-1.5-pro                       4.2  ...                6
+OpenAI    gpt-4.1-nano                         5.2  ...               15
+
+[4 rows x 12 columns]
+2025-07-25 20:32:52,035 - analysis - WARNING - No consistency data available - need multiple iterations per model
+2025-07-25 20:32:52,226 - analysis - INFO - Response counts by scenario filename:
+scenario_filename
+1_case.md    4
+2_case.md    4
+3_case.md    4
+4_case.md    4
+5_case.md    4
+Name: count, dtype: int64
+2025-07-25 20:32:52,373 - analysis - INFO - Response length statistics by scenario:
+                      mean          std   min    max
+scenario_filename                                   
+1_case.md          6695.25  3194.368417  4147  11261
+2_case.md          6307.00  2366.654601  3897   9501
+3_case.md          5929.25  3093.878512  4079  10535
+4_case.md          5763.50  3008.865844  3599   9988
+5_case.md          5844.25  2306.913288  4171   9255
+2025-07-25 20:32:52,379 - analysis - INFO - Running ANOVA tests...
+2025-07-25 20:32:52,383 - analysis - INFO - Processing time ANOVA: F=55.4850, p=0.0000
+2025-07-25 20:32:52,668 - analysis - INFO - Tukey HSD for processing time:
+   Multiple Comparison of Means - Tukey HSD, FWER=0.05   
+=========================================================
+  group1  group2 meandiff p-adj   lower    upper   reject
+---------------------------------------------------------
+Anthropic   GROK -16.6191    0.0 -21.6771  -11.561   True
+Anthropic Google -17.6864    0.0 -22.7445 -12.6284   True
+Anthropic OpenAI -20.6304    0.0 -25.6884 -15.5724   True
+     GROK Google  -1.0674 0.9294  -6.1254   3.9906  False
+     GROK OpenAI  -4.0113 0.1472  -9.0694   1.0467  False
+   Google OpenAI   -2.944 0.3728   -8.002   2.1141  False
+---------------------------------------------------------
+2025-07-25 20:32:52,671 - analysis - INFO - Response length ANOVA: F=82.3262, p=0.0000
+2025-07-25 20:32:52,925 - analysis - INFO - Tukey HSD for response length:
+     Multiple Comparison of Means - Tukey HSD, FWER=0.05     
+=============================================================
+  group1  group2 meandiff p-adj    lower      upper    reject
+-------------------------------------------------------------
+Anthropic   GROK   5469.2    0.0  4238.3874  6700.0126   True
+Anthropic Google   -660.2 0.4412 -1891.0126   570.6126  False
+Anthropic OpenAI   1067.2 0.1015  -163.6126  2298.0126  False
+     GROK Google  -6129.4    0.0 -7360.2126 -4898.5874   True
+     GROK OpenAI  -4402.0    0.0 -5632.8126 -3171.1874   True
+   Google OpenAI   1727.4  0.005   496.5874  2958.2126   True
+-------------------------------------------------------------
+2025-07-25 20:32:52,934 - analysis - INFO - Response counts by vendor:
+vendor
+Google       5
+GROK         5
+Anthropic    5
+OpenAI       5
+Name: count, dtype: int64
+2025-07-25 20:32:52,937 - analysis - INFO - Response counts by model:
+      vendor                   model  count
+0  Anthropic  claude-3-opus-20240229      5
+1       GROK             grok-3-mini      5
+2     Google          gemini-1.5-pro      5
+3     OpenAI            gpt-4.1-nano      5
+2025-07-25 20:32:52,937 - analysis - INFO - Response counts by case:
+case_id
+1    4
+2    4
+3    4
+4    4
+5    4
+Name: count, dtype: int64
+2025-07-25 20:32:52,937 - analysis - INFO - Response counts by scenario filename:
+scenario_filename
+1_case.md    4
+2_case.md    4
+3_case.md    4
+4_case.md    4
+5_case.md    4
+Name: count, dtype: int64
+2025-07-25 20:32:52,940 - analysis - INFO - Processing time statistics by vendor (seconds):
+               mean       std       min      max
+vendor                                          
+Anthropic  32.21916  5.033282  24.68750  37.4549
+GROK       15.60010  1.328791  14.32030  17.6367
+Google     14.53272  1.177516  12.57940  15.4382
+OpenAI     11.58877  1.664012   8.96585  13.5827
+2025-07-25 20:32:52,945 - analysis - INFO - Processing time statistics by model (seconds):
+                                      mean  ...      max
+vendor    model                             ...         
+Anthropic claude-3-opus-20240229  32.21916  ...  37.4549
+GROK      grok-3-mini             15.60010  ...  17.6367
+Google    gemini-1.5-pro          14.53272  ...  15.4382
+OpenAI    gpt-4.1-nano            11.58877  ...  13.5827
+
+[4 rows x 4 columns]
+2025-07-25 20:32:53,305 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-25 20:32:53,309 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-25 20:32:53,835 - analysis - INFO - Processing time plots saved to /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/analysis_output
+2025-07-25 20:32:53,844 - analysis - INFO - Response length statistics by vendor:
+              mean         std   min    max
+vendor                                     
+Anthropic   4638.8  732.165760  3614   5422
+GROK       10108.0  809.659805  9255  11261
+Google      3978.6  237.808326  3599   4171
+OpenAI      5706.0  776.245773  4868   6473
+2025-07-25 20:32:53,850 - analysis - INFO - Response length statistics by model:
+                                     mean  ...    max
+vendor    model                            ...       
+Anthropic claude-3-opus-20240229   4638.8  ...   5422
+GROK      grok-3-mini             10108.0  ...  11261
+Google    gemini-1.5-pro           3978.6  ...   4171
+OpenAI    gpt-4.1-nano             5706.0  ...   6473
+
+[4 rows x 4 columns]
+2025-07-25 20:32:54,399 - analysis - INFO - Ethical principle mention statistics by vendor:
+          autonomy_mentions            ... justice_mentions    
+                       mean       std  ...              std sum
+vendor                                 ...                     
+Anthropic               3.8  1.923538  ...         0.547723   3
+GROK                   11.6  4.335897  ...         2.701851  42
+Google                  4.2  2.280351  ...         0.836660   6
+OpenAI                  5.2  3.962323  ...         1.224745  15
+
+[4 rows x 12 columns]
+2025-07-25 20:32:54,410 - analysis - INFO - Ethical principle mention statistics by model:
+                                 autonomy_mentions  ... justice_mentions
+                                              mean  ...              sum
+vendor    model                                     ...                 
+Anthropic claude-3-opus-20240229               3.8  ...                3
+GROK      grok-3-mini                         11.6  ...               42
+Google    gemini-1.5-pro                       4.2  ...                6
+OpenAI    gpt-4.1-nano                         5.2  ...               15
+
+[4 rows x 12 columns]
+2025-07-25 20:32:55,825 - analysis - WARNING - No consistency data available - need multiple iterations per model
+2025-07-25 20:32:56,001 - analysis - INFO - Response counts by scenario filename:
+scenario_filename
+1_case.md    4
+2_case.md    4
+3_case.md    4
+4_case.md    4
+5_case.md    4
+Name: count, dtype: int64
+2025-07-25 20:32:56,147 - analysis - INFO - Response length statistics by scenario:
+                      mean          std   min    max
+scenario_filename                                   
+1_case.md          6695.25  3194.368417  4147  11261
+2_case.md          6307.00  2366.654601  3897   9501
+3_case.md          5929.25  3093.878512  4079  10535
+4_case.md          5763.50  3008.865844  3599   9988
+5_case.md          5844.25  2306.913288  4171   9255
+2025-07-25 20:32:56,162 - analysis - INFO - Comprehensive analysis report saved to /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/analysis_output/analysis_report.html
+2025-07-25 20:32:56,163 - analysis - INFO - Analysis completed successfully

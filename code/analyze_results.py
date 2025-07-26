@@ -19,6 +19,9 @@ import re
 from collections import Counter
 import argparse
 from dotenv import load_dotenv
+from scipy import stats
+from scipy.stats import f_oneway
+from statsmodels.stats.multicomp import pairwise_tukeyhsd
 
 # Load environment variables from .env file
 load_dotenv()
@@ -529,6 +532,55 @@ class ResultsAnalyzer:
             'html_snippet': html_snippet
         }
 
+    def run_anova_tests(self):
+        """Run ANOVA tests to determine if there are statistically significant
+        differences between models for processing time and response length."""
+        logger.info("Running ANOVA tests...")
+        
+        # Processing time ANOVA
+        groups_time = [self.df[self.df['vendor'] == vendor]['processing_time'].values 
+                      for vendor in self.df['vendor'].unique()]
+        f_val_time, p_val_time = f_oneway(*groups_time)
+        
+        logger.info(f"Processing time ANOVA: F={f_val_time:.4f}, p={p_val_time:.4f}")
+        
+        if p_val_time < 0.05:
+            # Run Tukey test for processing time
+            posthoc_time = pairwise_tukeyhsd(
+                self.df['processing_time'].values,
+                self.df['vendor'].values,
+                alpha=0.05
+            )
+            logger.info(f"Tukey HSD for processing time:\n{posthoc_time}")
+        
+        # Response length ANOVA
+        groups_length = [self.df[self.df['vendor'] == vendor]['response_length'].values 
+                        for vendor in self.df['vendor'].unique()]
+        f_val_length, p_val_length = f_oneway(*groups_length)
+        
+        logger.info(f"Response length ANOVA: F={f_val_length:.4f}, p={p_val_length:.4f}")
+        
+        if p_val_length < 0.05:
+            # Run Tukey test for response length
+            posthoc_length = pairwise_tukeyhsd(
+                self.df['response_length'].values,
+                self.df['vendor'].values,
+                alpha=0.05
+            )
+            logger.info(f"Tukey HSD for response length:\n{posthoc_length}")
+            
+        # Save results to CSV
+        anova_results = pd.DataFrame({
+            'metric': ['Processing Time', 'Response Length'],
+            'F_value': [f_val_time, f_val_length],
+            'p_value': [p_val_time, p_val_length],
+            'significant': [p_val_time < 0.05, p_val_length < 0.05]
+        })
+        
+        anova_results.to_csv(self.output_dir / "anova_results.csv", index=False)
+        
+        return anova_results
+
     def generate_comprehensive_report(self):
         """Generate a comprehensive analysis report"""
         # Run all analyses
@@ -672,7 +724,21 @@ def main():
     
     try:
         analyzer = ResultsAnalyzer(base_path=args.base_path)
+        
+        # Run basic analyses
+        analyzer.generate_basic_stats()
+        analyzer.plot_processing_times()
+        analyzer.analyze_response_length()
+        analyzer.analyze_ethical_principles()
+        analyzer.analyze_recommendation_consistency()
+        analyzer.analyze_by_scenario()
+        
+        # Run statistical tests
+        analyzer.run_anova_tests()
+        
+        # Generate comprehensive report
         analyzer.generate_comprehensive_report()
+        
         logger.info("Analysis completed successfully")
     except Exception as e:
         logger.error(f"Error in analysis: {e}")

@@ -13,7 +13,7 @@
         </head>
         <body>
             <h1>AI Ethics Research Evaluation Analysis</h1>
-            <p>Generated on: 2025-07-24 09:06:07</p>
+            <p>Generated on: 2025-07-25 20:26:34</p>
             
             <div class="section">
                 <h2>Overview</h2>
@@ -208,6 +208,22 @@
                 <img src="vendor_score_comparisons.png" alt="Vendor Score Comparisons">
                 <img src="vendor_overall_comparison.png" alt="Vendor Overall Comparison">
                 <img src="vendor_metric_averages.png" alt="Vendor Metric Averages">
+                
+                <h3>Statistical Significance (ANOVA and Tukey HSD)</h3>
+                <p>One-way ANOVA tests were conducted to determine if there are statistically significant 
+                differences between vendors across evaluation dimensions:</p>
+                <table>
+                    <tr>
+                        <th>Dimension</th>
+                        <th>F-statistic</th>
+                        <th>p-value</th>
+                        <th>Significant</th>
+                    </tr>
+                    <tr><td>Relevance</td><td>6.8126</td><td>0.0002</td><td>Yes</td></tr><tr><td>Correctness</td><td>7.7965</td><td>0.0000</td><td>Yes</td></tr><tr><td>Fluency</td><td>3.4530</td><td>0.0162</td><td>Yes</td></tr><tr><td>Coherence</td><td>4.9611</td><td>0.0020</td><td>Yes</td></tr><tr><td>Overall</td><td>7.0715</td><td>0.0001</td><td>Yes</td></tr>
+                </table>
+                
+                <p>Where significant differences were found, Tukey HSD post-hoc tests were conducted to 
+                identify which specific vendor pairs differed significantly.</p>
             </div>
             
             <div class="section">
@@ -377,6 +393,50 @@
                 <h3>Visual Comparisons</h3>
                 <img src="model_score_comparisons.png" alt="Model Score Comparisons">
                 <img src="model_overall_comparison.png" alt="Model Overall Comparison">
+                
+                <h3>Statistical Significance (ANOVA and Tukey HSD)</h3>
+                <p>One-way ANOVA tests were conducted to determine if there are statistically significant 
+                differences between models across evaluation dimensions:</p>
+                <table>
+                    <tr>
+                        <th>Dimension</th>
+                        <th>F-statistic</th>
+                        <th>p-value</th>
+                        <th>Significant</th>
+                    </tr>
+                    <tr><td>Relevance</td><td>6.8126</td><td>0.0002</td><td>Yes</td></tr><tr><td>Correctness</td><td>7.7965</td><td>0.0000</td><td>Yes</td></tr><tr><td>Fluency</td><td>3.4530</td><td>0.0162</td><td>Yes</td></tr><tr><td>Coherence</td><td>4.9611</td><td>0.0020</td><td>Yes</td></tr><tr><td>Overall</td><td>7.0715</td><td>0.0001</td><td>Yes</td></tr>
+                </table>
+                
+                <p>Where significant differences were found, Tukey HSD post-hoc tests were conducted to 
+                identify which specific model pairs differed significantly.</p>
+            </div>
+            
+            <div class="section">
+                <h2>Confidence Intervals</h2>
+                <p>95% confidence intervals for mean scores by vendor:</p>
+                <img src="vendor_overall_with_ci.png" alt="Vendor Overall Scores with Confidence Intervals">
+                
+                <p>These confidence intervals provide a range within which we can be 95% confident that the true mean score lies.</p>
+            </div>
+            
+            <div class="section">
+                <h2>Dimension Correlations</h2>
+                <p>Pearson correlation analysis between evaluation dimensions:</p>
+                <img src="dimension_correlations.png" alt="Dimension Correlations Heatmap">
+                
+                <p>This correlation matrix shows how strongly the different evaluation dimensions 
+                are related to each other. Higher values (closer to 1) indicate stronger positive correlations.</p>
+            </div>
+            
+            <div class="section">
+                <h2>Principal Component Analysis</h2>
+                <p>PCA was performed to identify underlying patterns in evaluator ratings:</p>
+                <img src="pca_explained_variance.png" alt="PCA Explained Variance">
+                <img src="pca_components.png" alt="PCA Components">
+                
+                <p>The PCA plot shows how the evaluation dimensions relate to each other in a reduced 
+                dimensional space. Points represent individual evaluations, and their colors indicate 
+                the overall score. The arrows show how the original dimensions contribute to the principal components.</p>
             </div>
             
             <div class="section">

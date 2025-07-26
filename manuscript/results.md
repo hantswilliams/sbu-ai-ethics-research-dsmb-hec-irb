@@ -20,107 +20,141 @@ Our analysis included responses from four major generative AI models: Anthropic 
 
 ### Processing Time
 
-Processing time varied significantly across models. The average processing time for generating responses was highest for Gemini 1.5 Pro (8.21 seconds), followed by GPT-4.1 (6.72 seconds), Grok-1 (4.43 seconds), and Claude 3 Opus (3.87 seconds). These differences were statistically significant and indicate varying computational efficiency in generating ethical analyses.
+Processing time varied significantly across models. Our analysis revealed that Anthropic Claude 3 Opus had the longest average processing time at 32.22 seconds, followed by Grok-1 at 15.60 seconds, Google Gemini 1.5 Pro at 14.53 seconds, and OpenAI GPT-4.1 at 11.59 seconds.
+
+One-way ANOVA testing confirmed that these differences were statistically significant (F=55.49, p<0.0001). Post-hoc Tukey HSD analysis revealed that Anthropic Claude 3 Opus took significantly longer than all other models (p<0.0001 for all comparisons), while differences among the remaining three models were not statistically significant.
 
 **Table 2: Processing Time by Model (in seconds)**
 
-| Model          | Mean  | Std Dev | Min   | Max    | Median |
-|----------------|-------|---------|-------|--------|--------|
-| Claude 3 Opus  | 3.87  | 0.58    | 3.22  | 4.71   | 3.81   |
-| Grok-1         | 4.43  | 0.67    | 3.85  | 5.57   | 4.21   |
-| GPT-4.1        | 6.72  | 0.88    | 5.63  | 7.91   | 6.59   |
-| Gemini 1.5 Pro | 8.21  | 1.03    | 6.85  | 9.72   | 8.33   |
+| Vendor    | Model                | Mean   | Std Dev | Min    | Max    |
+|-----------|----------------------|--------|---------|--------|--------|
+| Anthropic | Claude 3 Opus        | 32.22  | 5.03    | 24.69  | 37.45  |
+| GROK      | Grok-3-mini          | 15.60  | 1.33    | 14.32  | 17.64  |
+| Google    | Gemini 1.5 Pro       | 14.53  | 1.18    | 12.58  | 15.44  |
+| OpenAI    | GPT-4.1-nano         | 11.59  | 1.66    | 8.97   | 13.58  |
 
 ![Processing Times by Model](../data/analysis_output/processing_times_by_model.png)
 
+Further analysis of processing times by scenario revealed interesting patterns, with scenario 1 (cultural) requiring the longest average processing time (19.74 seconds) and scenario 4 (reproduction) requiring the shortest average processing time (17.26 seconds). This suggests that the complexity of the ethical scenario may impact the computational resources required for AI analysis.
+
 ### Response Length
 
-The average response length also showed notable variation between models. Claude 3 Opus produced the longest responses (mean 6,140 characters), followed by GPT-4.1 (5,856 characters), Gemini 1.5 Pro (5,214 characters), and Grok-1 (4,829 characters). This suggests differences in verbosity and level of detail provided in ethical analyses.
+The average response length showed notable variation between models. Grok-1 produced the longest responses by a significant margin (mean 10,108 characters), followed by OpenAI GPT-4.1 (5,706 characters), Anthropic Claude 3 Opus (4,639 characters), and Google Gemini 1.5 Pro (3,979 characters).
+
+One-way ANOVA testing confirmed that these differences in response length were statistically significant (F=82.33, p<0.0001). Post-hoc Tukey HSD analysis revealed that Grok-1 produced significantly longer responses than all other models (p<0.0001), and OpenAI GPT-4.1 produced significantly longer responses than Google Gemini 1.5 Pro (p=0.005). No statistically significant difference was found between Anthropic Claude 3 Opus and Google Gemini 1.5 Pro (p=0.44) or between Anthropic Claude 3 Opus and OpenAI GPT-4.1 (p=0.10).
 
 **Table 3: Response Length by Model (in characters)**
 
-| Model          | Mean   | Std Dev | Min    | Max    | Median |
-|----------------|--------|---------|--------|--------|--------|
-| Claude 3 Opus  | 6,140  | 721     | 5,103  | 7,025  | 6,224  |
-| GPT-4.1        | 5,856  | 692     | 4,891  | 6,783  | 5,921  |
-| Gemini 1.5 Pro | 5,214  | 615     | 4,481  | 6,129  | 5,082  |
-| Grok-1         | 4,829  | 583     | 4,108  | 5,673  | 4,769  |
+| Vendor    | Model                | Mean    | Std Dev | Min    | Max    |
+|-----------|----------------------|---------|---------|--------|--------|
+| GROK      | Grok-3-mini          | 10,108  | 810     | 9,255  | 11,261 |
+| OpenAI    | GPT-4.1-nano         | 5,706   | 776     | 4,868  | 6,473  |
+| Anthropic | Claude 3 Opus        | 4,639   | 732     | 3,614  | 5,422  |
+| Google    | Gemini 1.5 Pro       | 3,979   | 238     | 3,599  | 4,171  |
 
 ![Response Lengths by Model](../data/analysis_output/response_lengths_by_model.png)
 
+Analysis of response lengths by scenario showed that scenario 1 (cultural) elicited the longest responses on average (6,695 characters), while scenario 4 (reproduction) generated the shortest responses (5,764 characters). This variation may reflect differences in the complexity of ethical considerations across different scenario types.
+
+**Table 4: Response Length by Scenario (in characters)**
+
+| Scenario | Topic                 | Mean    | Std Dev | Min    | Max    |
+|----------|----------------------|---------|---------|--------|--------|
+| 1        | Cultural             | 6,695   | 3,194   | 4,147  | 11,261 |
+| 2        | Self-harm            | 6,307   | 2,367   | 3,897  | 9,501  |
+| 3        | Addiction            | 5,929   | 3,094   | 4,079  | 10,535 |
+| 4        | Reproduction         | 5,764   | 3,009   | 3,599  | 9,988  |
+| 5        | End-of-life management | 5,844 | 2,307   | 4,171  | 9,255  |
+
 ### Ethical Principle Coverage
 
-We analyzed the frequency with which each model explicitly mentioned key ethical principles in their responses:
+We analyzed the frequency with which each model explicitly mentioned key ethical principles in their responses. The analysis revealed significant variation in how comprehensively different models addressed core bioethical principles:
 
-1. Across all models, patient autonomy was the most frequently mentioned principle (97.5% of responses).
-2. Beneficence (85.0%), non-maleficence (80.0%), and justice (70.0%) were mentioned at high but varying rates.
-3. Professional integrity (42.5%) and cultural considerations (40.0%) were mentioned less frequently.
-4. Claude 3 Opus demonstrated the most comprehensive coverage of ethical principles, mentioning all six principles in 80% of its responses.
-5. GPT-4.1 ranked second in comprehensive ethical principle coverage.
+1. All models frequently mentioned autonomy, with Grok-1 having the highest average mentions per response (11.6), followed by OpenAI (5.2), Google (4.2), and Anthropic (3.8).
+2. Beneficence was most frequently mentioned by Grok-1 (mean 10.8 mentions per response), compared to OpenAI (3.6), Anthropic (3.2), and Google (3.0).
+3. Non-maleficence was mentioned most by Grok-1 (mean 8.4 mentions), followed by OpenAI (3.8), Anthropic (3.4), and Google (2.8).
+4. Justice was mentioned most frequently by Grok-1 (mean 8.4 mentions), with significantly fewer mentions by OpenAI (3.0), Google (1.2), and Anthropic (0.6).
 
-**Table 4: Ethical Principle Mention Frequency by Model (%)**
+**Table 5: Ethical Principle Mentions by Model (Mean Mentions per Response)**
 
-| Ethical Principle    | Claude 3 Opus | GPT-4.1 | Gemini 1.5 Pro | Grok-1 | Overall |
-|----------------------|---------------|---------|----------------|--------|---------|
-| Autonomy             | 100%          | 100%    | 100%           | 90%    | 97.5%   |
-| Beneficence          | 100%          | 90%     | 80%            | 70%    | 85.0%   |
-| Non-maleficence      | 100%          | 90%     | 70%            | 60%    | 80.0%   |
-| Justice              | 90%           | 80%     | 60%            | 50%    | 70.0%   |
-| Professional Integrity| 60%          | 50%     | 30%            | 30%    | 42.5%   |
-| Cultural Considerations| 60%         | 50%     | 30%            | 20%    | 40.0%   |
+| Ethical Principle    | Anthropic | GROK  | Google | OpenAI | Overall Mean |
+|----------------------|-----------|-------|--------|--------|--------------|
+| Autonomy             | 3.8       | 11.6  | 4.2    | 5.2    | 6.2          |
+| Beneficence          | 3.2       | 10.8  | 3.0    | 3.6    | 5.2          |
+| Non-maleficence      | 3.4       | 8.4   | 2.8    | 3.8    | 4.6          |
+| Justice              | 0.6       | 8.4   | 1.2    | 3.0    | 3.3          |
+| Total Mentions       | 11.0      | 39.2  | 11.2   | 15.6   | 19.3         |
 
 ![Ethical Principle Mentions by Model](../data/analysis_output/ethical_principle_mentions_by_model.png)
 
+This analysis reveals that Grok-1 employed ethical terminology much more frequently than other models, though frequency of mentions does not necessarily correlate with quality of ethical analysis. The substantial variation in mention frequency suggests different approaches to ethical reasoning across model architectures.
+
 ### Recommendation Consistency
 
-Analysis of recommendation consistency was limited by our research design, which did not include multiple iterations of the same case-vendor-model combination. Based on a review of the available data, we estimated consistency rates for scenarios:
+Analysis of recommendation consistency was limited by our research design, which did not include multiple iterations of the same case-vendor-model combination. Based on a review of the available data and qualitative assessment of responses, we observed the following patterns:
 
-1. Models demonstrated relatively high agreement on recommendations for scenarios 1 (cultural), 2 (self-harm), and 5 (end-of-life management). 
+1. Models demonstrated relatively high agreement on recommendations for scenarios 1 (cultural) and 5 (end-of-life management).
 2. Models showed more divergence in their recommendations for scenarios 3 (addiction) and 4 (reproduction), reflecting the complex and controversial nature of these ethical cases.
+3. Within each scenario, different models emphasized different ethical principles, potentially leading to variations in their ultimate recommendations.
 
-**Table 5: Estimated Recommendation Consistency by Scenario**
+**Table 6: Qualitative Assessment of Recommendation Consistency by Scenario**
 
-| Scenario              | Agreement Rate | Key Points of Divergence |
-|-----------------------|----------------|--------------------------|
-| 1 - Cultural          | 85%            | Weight given to cultural factors vs. clinical judgment |
-| 2 - Self-harm         | 80%            | Degree of restrictive interventions recommended |
-| 3 - Addiction         | 65%            | Harm reduction approaches vs. abstinence-focused treatment |
-| 4 - Reproduction      | 60%            | Legal vs. ethical considerations in posthumous reproduction |
-| 5 - End-of-life       | 90%            | Balance of surrogate authority vs. patient's best interests |
+| Scenario              | Key Points of Divergence |
+|-----------------------|--------------------------|
+| 1 - Cultural          | Weight given to cultural factors vs. clinical judgment |
+| 2 - Self-harm         | Degree of restrictive interventions recommended |
+| 3 - Addiction         | Harm reduction approaches vs. abstinence-focused treatment |
+| 4 - Reproduction      | Legal vs. ethical considerations in posthumous reproduction |
+| 5 - End-of-life       | Balance of surrogate authority vs. patient's best interests |
 
-**Note**: These consistency rates are estimates based on qualitative review of the recommendations, as our dataset did not include sufficient multiple iterations of the same case-vendor-model combination for quantitative consistency analysis.
+For a more rigorous analysis of recommendation consistency, future research should include multiple iterations of the same case-model combinations to quantify the consistency and reliability of AI-generated ethical recommendations.
 
 ## Human Evaluation Results
 
 ### Evaluator Demographics
 
-A total of 44 graduate-level evaluators with backgrounds in healthcare, ethics, or related fields participated in the evaluation process. Each evaluator assessed multiple AI-generated responses using the SummEval framework dimensions.
+A total of 44 evaluators participated in the assessment of AI-generated responses using the SummEval framework dimensions. Each evaluator assessed multiple AI-generated responses, resulting in 857 total evaluations across all scenarios and models.
 
-**Table 6: Evaluator Participation Summary**
+**Table 7: Evaluator Participation Summary**
 
-| Evaluator Group        | Count | Average Evaluations per Evaluator | Total Evaluations |
-|------------------------|-------|----------------------------------|-------------------|
-| Healthcare Students    | 28    | 19.8                             | 554               |
-| Ethics Students        | 12    | 20.5                             | 246               |
-| Other Related Fields   | 4     | 14.3                             | 57                |
-| **Total**              | 44    | 19.5                             | 857               |
+| Evaluations per Evaluator | Number of Evaluators |
+|---------------------------|----------------------|
+| 5-10                      | 2                    |
+| 20                        | 38                   |
+| 21-22                     | 4                    |
+| **Total**                 | 44                   |
+
+The distribution of evaluations across scenarios was relatively balanced, with each of the five case scenarios receiving between 170-175 evaluations:
+
+**Table 8: Evaluations by Scenario**
+
+| Case ID | Scenario Topic        | Number of Evaluations |
+|---------|----------------------|----------------------|
+| 1       | Cultural             | 171                  |
+| 2       | Self-harm            | 171                  |
+| 3       | Addiction            | 170                  |
+| 4       | Reproduction         | 170                  |
+| 5       | End-of-life management | 175                |
+| **Total** |                    | 857                  |
 
 ### Overall Model Performance
 
-Based on the human evaluations across all SummEval dimensions:
+Based on human evaluations across all SummEval dimensions:
 
 1. Grok-1 received the highest overall average score (4.10 out of 5), though by a narrow margin.
 2. Claude 3 Opus ranked second (4.08), followed closely by GPT-4.1 (4.01).
 3. Gemini 1.5 Pro received the lowest overall scores (3.82).
 
-**Table 7: Overall Evaluation Scores by Model (scale 1-5)**
+The differences between Grok-1, Claude 3 Opus, and GPT-4.1 were not statistically significant, while Gemini 1.5 Pro scored significantly lower than all other models (p < 0.001).
 
-| Model          | Mean  | Std Dev | Min   | Max  | Median |
-|----------------|-------|---------|-------|------|--------|
-| Grok-1         | 4.10  | 0.71    | 2.25  | 5.00 | 4.25   |
-| Claude 3 Opus  | 4.08  | 0.65    | 2.50  | 5.00 | 4.00   |
-| GPT-4.1        | 4.01  | 0.66    | 2.00  | 5.00 | 4.00   |
-| Gemini 1.5 Pro | 3.82  | 0.76    | 1.75  | 5.00 | 3.75   |
+**Table 9: Overall Evaluation Scores by Model (scale 1-5)**
+
+| Vendor    | Model                | Mean  | Std Dev | Count |
+|-----------|----------------------|-------|---------|-------|
+| GROK      | Grok-3-mini          | 4.10  | 0.71    | 212   |
+| Anthropic | Claude 3 Opus        | 4.08  | 0.65    | 216   |
+| OpenAI    | GPT-4.1-nano         | 4.01  | 0.66    | 214   |
+| Google    | Gemini 1.5 Pro       | 3.82  | 0.76    | 215   |
 
 ![Model Overall Comparison](../data/evaluation_results/model_overall_comparison.png)
 
@@ -148,6 +182,57 @@ Breaking down the results by the SummEval dimensions:
 
 ![Model Score Comparisons](../data/evaluation_results/model_score_comparisons.png)
 
+#### Statistical Analysis of Model Performance Differences
+
+To determine whether the observed differences in evaluation scores between models were statistically significant, we conducted one-way ANOVA tests followed by post-hoc Tukey HSD analyses for each evaluation dimension.
+
+**Table 9: ANOVA and Tukey HSD Results by Dimension**
+
+| Dimension   | ANOVA F-value | p-value | Significant Differences |
+|-------------|---------------|---------|-------------------------|
+| Relevance   | 6.81          | 0.0002  | Grok > Google; Anthropic > Google |
+| Correctness | 7.80          | <0.0001 | Grok > Google; Anthropic > Google; OpenAI > Google |
+| Fluency     | 3.45          | 0.0162  | Anthropic > Google |
+| Coherence   | 4.96          | 0.0020  | Anthropic > Google; Grok > Google; OpenAI > Google |
+| Overall     | 7.07          | 0.0001  | Anthropic > Google; Grok > Google; OpenAI > Google |
+
+These results indicate that Gemini 1.5 Pro (Google) consistently scored significantly lower than other models across multiple dimensions, while no statistically significant differences were observed between Claude 3 Opus (Anthropic), Grok-1 (GROK), and GPT-4.1 (OpenAI) on most dimensions.
+
+### Correlation Analysis and Dimension Relationships
+
+To understand the relationships between evaluation dimensions, we performed a correlation analysis using Pearson correlation coefficients. This analysis revealed strong positive correlations between all evaluation dimensions, suggesting that models that perform well in one dimension tend to perform well across all dimensions.
+
+**Table 10: Pearson Correlation Matrix of Evaluation Dimensions**
+
+| Dimension          | Relevance | Correctness | Fluency | Coherence | Overall |
+|--------------------|-----------|-------------|---------|-----------|---------|
+| Relevance          | 1.000     | 0.729       | 0.568   | 0.643     | 0.859   |
+| Correctness        | 0.729     | 1.000       | 0.640   | 0.694     | 0.845   |
+| Fluency            | 0.568     | 0.640       | 1.000   | 0.815     | 0.818   |
+| Coherence          | 0.643     | 0.694       | 0.815   | 1.000     | 0.875   |
+| Overall            | 0.859     | 0.845       | 0.818   | 0.875     | 1.000   |
+
+All correlations were statistically significant (p < 0.001). The strongest correlations were observed between:
+1. Overall score and Coherence (r = 0.875)
+2. Overall score and Relevance (r = 0.859)
+3. Overall score and Correctness (r = 0.845)
+4. Fluency and Coherence (r = 0.815)
+
+### Principal Component Analysis
+
+To further investigate the underlying structure of evaluation dimensions, we conducted a principal component analysis (PCA). This analysis helps identify patterns and reduce dimensionality in the evaluation data.
+
+**Table 11: PCA Explained Variance**
+
+| Component | Explained Variance | Cumulative Variance |
+|-----------|-------------------|---------------------|
+| PC1       | 72.22%            | 72.22%              |
+| PC2       | 13.69%            | 85.91%              |
+| PC3       | 7.59%             | 93.50%              |
+| PC4       | 6.50%             | 100.00%             |
+
+The PCA results revealed that the first principal component (PC1) accounts for 72.22% of the total variance in evaluation scores, suggesting that a single underlying factor largely explains evaluator ratings across all dimensions. The high explained variance by PC1 and strong correlations between dimensions indicate that evaluators tend to perceive AI model performance holistically rather than distinguishing sharply between different quality dimensions.
+
 ### Performance by Scenario Type
 
 Analysis of human evaluation scores across different ethical scenarios revealed:
@@ -156,7 +241,7 @@ Analysis of human evaluation scores across different ethical scenarios revealed:
 2. Greater variation in model performance was observed for scenarios involving reproduction (scenario 4), addiction (scenario 3), and self-harm (scenario 2).
 3. All models struggled most with the reproduction scenario, which involved complex considerations of posthumous reproduction and cultural inheritance pressures.
 
-**Table 9: Average Evaluation Scores by Scenario Type**
+**Table 12: Average Evaluation Scores by Scenario Type**
 
 | Scenario | Topic                 | Average Score | Std Dev | Min   | Max   |
 |----------|----------------------|---------------|---------|-------|-------|

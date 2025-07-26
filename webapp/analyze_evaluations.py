@@ -11,12 +11,17 @@ Usage:
 
 import os
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from pathlib import Path
 import logging
 import argparse
 from dotenv import load_dotenv
+from scipy import stats
+from scipy.stats import f_oneway, pearsonr
+from statsmodels.stats.multicomp import pairwise_tukeyhsd
+from sklearn.decomposition import PCA
 
 # Add shared module to path
 import sys
@@ -296,6 +301,418 @@ class EvaluationAnalyzer:
         
         logger.info("Score distribution plots saved")
 
+    def run_anova_and_tukey_tests(self):
+        """Perform ANOVA and Tukey HSD tests for between-model comparisons"""
+        if self.df.empty:
+            logger.warning("No data available for ANOVA and Tukey tests")
+            return None
+            
+        metrics = ['relevance_score', 'correctness_score', 'fluency_score', 'coherence_score', 'overall_score']
+        titles = ['Relevance', 'Correctness', 'Fluency', 'Coherence', 'Overall']
+        
+        anova_results = {}
+        tukey_results = {}
+        
+        for metric, title in zip(metrics, titles):
+            # Group data by vendor
+            groups = [self.df[self.df['vendor'] == vendor][metric].values for vendor in self.df['vendor'].unique()]
+            
+            # Perform one-way ANOVA
+            f_stat, p_value = f_oneway(*groups)
+            anova_results[metric] = {
+                'F-statistic': f_stat,
+                'p-value': p_value,
+                'significant': p_value < 0.05
+            }
+            
+            # Perform Tukey HSD post-hoc test if ANOVA is significant
+            if p_value < 0.05:
+                # Create arrays for Tukey test
+                values = self.df[metric].values
+                labels = self.df['vendor'].values
+                
+                # Run Tukey HSD
+                tukey = pairwise_tukeyhsd(values, labels, alpha=0.05)
+                tukey_results[metric] = tukey
+                
+                # Log the results
+                logger.info(f"ANOVA for {title}: F={f_stat:.4f}, p={p_value:.4f}")
+                logger.info(f"Tukey HSD for {title}:\n{tukey}")
+            else:
+                logger.info(f"ANOVA for {title}: F={f_stat:.4f}, p={p_value:.4f} (not significant)")
+        
+        # Group data by model (more granular than vendor)
+        self.df['model_identifier'] = self.df['vendor'] + ' ' + self.df['model']
+        model_anova_results = {}
+        model_tukey_results = {}
+        
+        for metric, title in zip(metrics, titles):
+            # Group data by model
+            groups = [self.df[self.df['model_identifier'] == model][metric].values 
+                     for model in self.df['model_identifier'].unique()]
+            
+            # Perform one-way ANOVA
+            f_stat, p_value = f_oneway(*groups)
+            model_anova_results[metric] = {
+                'F-statistic': f_stat,
+                'p-value': p_value,
+                'significant': p_value < 0.05
+            }
+            
+            # Perform Tukey HSD post-hoc test if ANOVA is significant
+            if p_value < 0.05:
+                # Create arrays for Tukey test
+                values = self.df[metric].values
+                labels = self.df['model_identifier'].values
+                
+                # Run Tukey HSD
+                tukey = pairwise_tukeyhsd(values, labels, alpha=0.05)
+                model_tukey_results[metric] = tukey
+                
+                # Log the results
+                logger.info(f"Model-level ANOVA for {title}: F={f_stat:.4f}, p={p_value:.4f}")
+                logger.info(f"Model-level Tukey HSD for {title}:\n{tukey}")
+            else:
+                logger.info(f"Model-level ANOVA for {title}: F={f_stat:.4f}, p={p_value:.4f} (not significant)")
+        
+        # Save results to CSV
+        anova_df = pd.DataFrame(anova_results).T
+        anova_df.to_csv(self.output_dir / "anova_results.csv")
+        
+        model_anova_df = pd.DataFrame(model_anova_results).T
+        model_anova_df.to_csv(self.output_dir / "model_anova_results.csv")
+        
+        # Create a summary of significant differences
+        significant_pairs = []
+        for metric, tukey in model_tukey_results.items():
+            reject = tukey.reject
+            
+            # Handle the data structure safely
+            if hasattr(tukey, 'data'):
+                for i in range(len(reject)):
+                    if reject[i]:
+                        # Check if this is a proper data structure
+                        if isinstance(tukey.data, list) and len(tukey.data) >= 2:
+                            group1 = tukey.data[0]
+                            group2 = tukey.data[1]
+                            
+                            # Make sure we can access these as iterables
+                            if hasattr(group1, '__iter__') and hasattr(group2, '__iter__'):
+                                g1 = group1[i] if i < len(group1) else "Unknown"
+                                g2 = group2[i] if i < len(group2) else "Unknown"
+                                
+                                significant_pairs.append({
+                                    'Metric': metric,
+                                    'Group1': g1,
+                                    'Group2': g2,
+                                    'Mean Difference': tukey.meandiffs[i],
+                                    'p-value': tukey.pvalues[i],
+                                    'Lower CI': tukey.confint[i][0],
+                                    'Upper CI': tukey.confint[i][1]
+                                })
+                        else:
+                            # If data structure is unexpected, add a basic entry
+                            significant_pairs.append({
+                                'Metric': metric,
+                                'Group1': "Group pair " + str(i),
+                                'Group2': "Unknown",
+                                'Mean Difference': tukey.meandiffs[i] if hasattr(tukey, 'meandiffs') else 0,
+                                'p-value': tukey.pvalues[i] if hasattr(tukey, 'pvalues') else 0,
+                                'Lower CI': tukey.confint[i][0] if hasattr(tukey, 'confint') else 0,
+                                'Upper CI': tukey.confint[i][1] if hasattr(tukey, 'confint') else 0
+                            })
+        
+        if significant_pairs:
+            sig_df = pd.DataFrame(significant_pairs)
+            sig_df.to_csv(self.output_dir / "significant_model_differences.csv")
+        
+        return {
+            'vendor_anova': anova_results,
+            'vendor_tukey': tukey_results,
+            'model_anova': model_anova_results,
+            'model_tukey': model_tukey_results,
+            'significant_pairs': significant_pairs if significant_pairs else None
+        }
+    
+    def calculate_dimension_correlations(self):
+        """Calculate Pearson correlation coefficients between evaluation dimensions"""
+        if self.df.empty:
+            logger.warning("No data available for correlation analysis")
+            return None
+            
+        # Define the metrics
+        metrics = ['relevance_score', 'correctness_score', 'fluency_score', 'coherence_score', 'overall_score']
+        
+        # Calculate correlation matrix
+        corr_matrix = self.df[metrics].corr(method='pearson')
+        logger.info(f"Pearson correlation matrix:\n{corr_matrix}")
+        
+        # Calculate p-values for correlations
+        p_values = pd.DataFrame(np.zeros_like(corr_matrix), 
+                               index=corr_matrix.index, 
+                               columns=corr_matrix.columns)
+        
+        for i, col_i in enumerate(metrics):
+            for j, col_j in enumerate(metrics):
+                if i != j:  # Skip diagonal (self-correlations)
+                    corr, p = pearsonr(self.df[col_i], self.df[col_j])
+                    p_values.loc[col_i, col_j] = p
+        
+        logger.info(f"Correlation p-values:\n{p_values}")
+        
+        # Create a heatmap of correlations
+        plt.figure(figsize=(10, 8))
+        mask = np.triu(np.ones_like(corr_matrix, dtype=bool))
+        sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', vmin=-1, vmax=1, 
+                   mask=mask, square=True, fmt='.2f')
+        plt.title('Pearson Correlation Between Evaluation Dimensions')
+        plt.tight_layout()
+        plt.savefig(self.output_dir / "dimension_correlations.png")
+        plt.close()
+        
+        # Save results to CSV
+        corr_matrix.to_csv(self.output_dir / "dimension_correlations.csv")
+        p_values.to_csv(self.output_dir / "correlation_p_values.csv")
+        
+        return {
+            'correlation_matrix': corr_matrix,
+            'p_values': p_values
+        }
+    
+    def run_principal_component_analysis(self):
+        """Perform principal component analysis on evaluation dimensions"""
+        if self.df.empty:
+            logger.warning("No data available for PCA")
+            return None
+            
+        # Define the metrics
+        metrics = ['relevance_score', 'correctness_score', 'fluency_score', 'coherence_score']
+        
+        # Extract and standardize the data
+        X = self.df[metrics].values
+        X_std = (X - np.mean(X, axis=0)) / np.std(X, axis=0)
+        
+        # Run PCA
+        pca = PCA()
+        principal_components = pca.fit_transform(X_std)
+        
+        # Get explained variance ratio
+        explained_variance = pca.explained_variance_ratio_
+        cumulative_variance = np.cumsum(explained_variance)
+        
+        logger.info(f"PCA explained variance ratio: {explained_variance}")
+        logger.info(f"PCA cumulative variance: {cumulative_variance}")
+        
+        # Plot explained variance
+        plt.figure(figsize=(10, 6))
+        plt.bar(range(1, len(explained_variance) + 1), explained_variance, alpha=0.8, 
+               label='Individual explained variance')
+        plt.step(range(1, len(cumulative_variance) + 1), cumulative_variance, where='mid',
+                label='Cumulative explained variance')
+        plt.axhline(y=0.95, color='r', linestyle='--', label='95% explained variance threshold')
+        plt.xlabel('Principal Components')
+        plt.ylabel('Explained Variance Ratio')
+        plt.title('PCA: Explained Variance by Components')
+        plt.legend(loc='best')
+        plt.tight_layout()
+        plt.savefig(self.output_dir / "pca_explained_variance.png")
+        plt.close()
+        
+        # Plot first two principal components
+        plt.figure(figsize=(12, 10))
+        plt.scatter(principal_components[:, 0], principal_components[:, 1],
+                   c=self.df['overall_score'], cmap='viridis', alpha=0.8, s=50)
+        plt.colorbar(label='Overall Score')
+        
+        # Add vendor information as labels
+        for i, model in enumerate(self.df['vendor'].unique()):
+            model_mask = self.df['vendor'] == model
+            centroid_x = np.mean(principal_components[model_mask, 0])
+            centroid_y = np.mean(principal_components[model_mask, 1])
+            plt.annotate(model, (centroid_x, centroid_y), 
+                        fontsize=12, fontweight='bold',
+                        bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="gray", alpha=0.8))
+        
+        # Plot component loadings (feature vectors)
+        feature_vectors = pca.components_.T
+        for i, feature in enumerate(metrics):
+            plt.arrow(0, 0, feature_vectors[i, 0] * 5, feature_vectors[i, 1] * 5, 
+                     head_width=0.2, head_length=0.2, fc='red', ec='red')
+            plt.text(feature_vectors[i, 0] * 5.2, feature_vectors[i, 1] * 5.2, feature, 
+                    color='red', fontsize=12)
+        
+        plt.xlabel(f'Principal Component 1 ({explained_variance[0]:.2%} variance)')
+        plt.ylabel(f'Principal Component 2 ({explained_variance[1]:.2%} variance)')
+        plt.title('PCA: Evaluation Dimensions')
+        plt.grid(True, linestyle='--', alpha=0.7)
+        plt.tight_layout()
+        plt.savefig(self.output_dir / "pca_components.png")
+        plt.close()
+        
+        # Save PCA results
+        pca_results = pd.DataFrame(data=principal_components[:, :2],
+                                  columns=['PC1', 'PC2'])
+        pca_results['vendor'] = self.df['vendor'].values
+        pca_results['model'] = self.df['model'].values
+        pca_results['overall_score'] = self.df['overall_score'].values
+        
+        pca_results.to_csv(self.output_dir / "pca_results.csv")
+        
+        # Save component loadings
+        loadings = pd.DataFrame(
+            pca.components_.T,
+            columns=[f'PC{i+1}' for i in range(pca.components_.shape[0])],
+            index=metrics
+        )
+        loadings.to_csv(self.output_dir / "pca_loadings.csv")
+        
+        return {
+            'explained_variance': explained_variance,
+            'cumulative_variance': cumulative_variance,
+            'loadings': loadings,
+            'pca_results': pca_results
+        }
+    
+    def calculate_confidence_intervals(self):
+        """Calculate confidence intervals for mean scores"""
+        if self.df.empty:
+            logger.warning("No data available for confidence interval calculation")
+            return None
+            
+        metrics = ['relevance_score', 'correctness_score', 'fluency_score', 'coherence_score', 'overall_score']
+        titles = ['Relevance', 'Correctness', 'Fluency', 'Coherence', 'Overall']
+        
+        # Calculate vendor-level confidence intervals
+        vendor_ci = {}
+        for vendor in self.df['vendor'].unique():
+            vendor_data = self.df[self.df['vendor'] == vendor]
+            vendor_ci[vendor] = {}
+            
+            for metric, title in zip(metrics, titles):
+                # Get the mean
+                mean = vendor_data[metric].mean()
+                # Get the standard error
+                std_err = vendor_data[metric].sem()
+                # Calculate 95% confidence interval
+                ci_95 = stats.t.interval(0.95, vendor_data[metric].count() - 1, 
+                                        loc=mean, scale=std_err)
+                
+                vendor_ci[vendor][metric] = {
+                    'mean': mean,
+                    'std_err': std_err,
+                    'ci_lower': ci_95[0],
+                    'ci_upper': ci_95[1],
+                    'count': vendor_data[metric].count()
+                }
+        
+        # Calculate model-level confidence intervals
+        self.df['model_identifier'] = self.df['vendor'] + ' ' + self.df['model']
+        model_ci = {}
+        
+        for model in self.df['model_identifier'].unique():
+            model_data = self.df[self.df['model_identifier'] == model]
+            model_ci[model] = {}
+            
+            for metric, title in zip(metrics, titles):
+                # Get the mean
+                mean = model_data[metric].mean()
+                # Get the standard error
+                std_err = model_data[metric].sem()
+                # Calculate 95% confidence interval
+                ci_95 = stats.t.interval(0.95, model_data[metric].count() - 1, 
+                                       loc=mean, scale=std_err)
+                
+                model_ci[model][metric] = {
+                    'mean': mean,
+                    'std_err': std_err,
+                    'ci_lower': ci_95[0],
+                    'ci_upper': ci_95[1],
+                    'count': model_data[metric].count()
+                }
+        
+        # Convert to DataFrames for easier handling
+        vendor_ci_df = pd.DataFrame.from_dict({(vendor, metric): values 
+                                             for vendor, metrics in vendor_ci.items() 
+                                             for metric, values in metrics.items()}, 
+                                             orient='index')
+        
+        model_ci_df = pd.DataFrame.from_dict({(model, metric): values 
+                                            for model, metrics in model_ci.items() 
+                                            for metric, values in metrics.items()}, 
+                                            orient='index')
+        
+        # Save to CSV
+        vendor_ci_df.to_csv(self.output_dir / "vendor_confidence_intervals.csv")
+        model_ci_df.to_csv(self.output_dir / "model_confidence_intervals.csv")
+        
+        # Create plots with confidence intervals
+        # Plot for vendors
+        for metric, title in zip(metrics, titles):
+            plt.figure(figsize=(12, 6))
+            
+            # Extract data for this metric
+            plot_data = []
+            for vendor in self.df['vendor'].unique():
+                plot_data.append({
+                    'vendor': vendor,
+                    'mean': vendor_ci[vendor][metric]['mean'],
+                    'ci_lower': vendor_ci[vendor][metric]['ci_lower'],
+                    'ci_upper': vendor_ci[vendor][metric]['ci_upper']
+                })
+            
+            plot_df = pd.DataFrame(plot_data)
+            
+            # Plot with error bars
+            plt.errorbar(plot_df['vendor'], plot_df['mean'], 
+                        yerr=[plot_df['mean'] - plot_df['ci_lower'], 
+                              plot_df['ci_upper'] - plot_df['mean']],
+                        fmt='o', capsize=5, capthick=2, elinewidth=2, markersize=8)
+            
+            plt.title(f'{title} Scores by Vendor with 95% CI')
+            plt.xlabel('Vendor')
+            plt.ylabel(f'{title} Score (1-5)')
+            plt.ylim(1, 5)
+            plt.grid(True, linestyle='--', alpha=0.7)
+            plt.tight_layout()
+            plt.savefig(self.output_dir / f"vendor_{metric}_with_ci.png")
+            plt.close()
+        
+        # Plot for overall score with all vendors
+        plt.figure(figsize=(12, 6))
+        plot_data = []
+        for vendor in self.df['vendor'].unique():
+            plot_data.append({
+                'vendor': vendor,
+                'mean': vendor_ci[vendor]['overall_score']['mean'],
+                'ci_lower': vendor_ci[vendor]['overall_score']['ci_lower'],
+                'ci_upper': vendor_ci[vendor]['overall_score']['ci_upper']
+            })
+        
+        plot_df = pd.DataFrame(plot_data)
+        
+        # Sort by mean score for better visualization
+        plot_df = plot_df.sort_values('mean', ascending=False)
+        
+        # Plot with error bars
+        plt.errorbar(plot_df['vendor'], plot_df['mean'], 
+                   yerr=[plot_df['mean'] - plot_df['ci_lower'], 
+                         plot_df['ci_upper'] - plot_df['mean']],
+                   fmt='o', capsize=5, capthick=2, elinewidth=2, markersize=10)
+        
+        plt.title('Overall Scores by Vendor with 95% Confidence Intervals')
+        plt.xlabel('Vendor')
+        plt.ylabel('Overall Score (1-5)')
+        plt.ylim(1, 5)
+        plt.grid(True, linestyle='--', alpha=0.7)
+        plt.tight_layout()
+        plt.savefig(self.output_dir / "vendor_overall_with_ci.png")
+        plt.close()
+        
+        return {
+            'vendor_ci': vendor_ci,
+            'model_ci': model_ci
+        }
+        
     def plot_vendor_comparisons(self):
         """Plot comparisons between vendors"""
         if self.df.empty or len(self.df['vendor'].unique()) < 2:
@@ -618,7 +1035,12 @@ class EvaluationAnalyzer:
         self.plot_model_comparisons()
         iteration_analysis = self.analyze_by_iteration()
         scenario_analysis = self.analyze_by_scenario()
-        scenario_analysis = self.analyze_by_scenario()
+        
+        # Run the new statistical analyses
+        anova_results = self.run_anova_and_tukey_tests()
+        correlation_results = self.calculate_dimension_correlations()
+        pca_results = self.run_principal_component_analysis()
+        ci_results = self.calculate_confidence_intervals()
         
         # Get unique vendors and models
         vendors = sorted(self.df['vendor'].unique())
@@ -682,6 +1104,22 @@ class EvaluationAnalyzer:
                 <img src="vendor_score_comparisons.png" alt="Vendor Score Comparisons">
                 <img src="vendor_overall_comparison.png" alt="Vendor Overall Comparison">
                 <img src="vendor_metric_averages.png" alt="Vendor Metric Averages">
+                
+                <h3>Statistical Significance (ANOVA and Tukey HSD)</h3>
+                <p>One-way ANOVA tests were conducted to determine if there are statistically significant 
+                differences between vendors across evaluation dimensions:</p>
+                <table>
+                    <tr>
+                        <th>Dimension</th>
+                        <th>F-statistic</th>
+                        <th>p-value</th>
+                        <th>Significant</th>
+                    </tr>
+                    {"".join([f"<tr><td>{metric.replace('_score', '').capitalize()}</td><td>{results['F-statistic']:.4f}</td><td>{results['p-value']:.4f}</td><td>{'Yes' if results['significant'] else 'No'}</td></tr>" for metric, results in anova_results['vendor_anova'].items()])}
+                </table>
+                
+                <p>Where significant differences were found, Tukey HSD post-hoc tests were conducted to 
+                identify which specific vendor pairs differed significantly.</p>
             </div>
             
             <div class="section">
@@ -695,6 +1133,50 @@ class EvaluationAnalyzer:
                 <h3>Visual Comparisons</h3>
                 <img src="model_score_comparisons.png" alt="Model Score Comparisons">
                 <img src="model_overall_comparison.png" alt="Model Overall Comparison">
+                
+                <h3>Statistical Significance (ANOVA and Tukey HSD)</h3>
+                <p>One-way ANOVA tests were conducted to determine if there are statistically significant 
+                differences between models across evaluation dimensions:</p>
+                <table>
+                    <tr>
+                        <th>Dimension</th>
+                        <th>F-statistic</th>
+                        <th>p-value</th>
+                        <th>Significant</th>
+                    </tr>
+                    {"".join([f"<tr><td>{metric.replace('_score', '').capitalize()}</td><td>{results['F-statistic']:.4f}</td><td>{results['p-value']:.4f}</td><td>{'Yes' if results['significant'] else 'No'}</td></tr>" for metric, results in anova_results['model_anova'].items()])}
+                </table>
+                
+                <p>Where significant differences were found, Tukey HSD post-hoc tests were conducted to 
+                identify which specific model pairs differed significantly.</p>
+            </div>
+            
+            <div class="section">
+                <h2>Confidence Intervals</h2>
+                <p>95% confidence intervals for mean scores by vendor:</p>
+                <img src="vendor_overall_with_ci.png" alt="Vendor Overall Scores with Confidence Intervals">
+                
+                <p>These confidence intervals provide a range within which we can be 95% confident that the true mean score lies.</p>
+            </div>
+            
+            <div class="section">
+                <h2>Dimension Correlations</h2>
+                <p>Pearson correlation analysis between evaluation dimensions:</p>
+                <img src="dimension_correlations.png" alt="Dimension Correlations Heatmap">
+                
+                <p>This correlation matrix shows how strongly the different evaluation dimensions 
+                are related to each other. Higher values (closer to 1) indicate stronger positive correlations.</p>
+            </div>
+            
+            <div class="section">
+                <h2>Principal Component Analysis</h2>
+                <p>PCA was performed to identify underlying patterns in evaluator ratings:</p>
+                <img src="pca_explained_variance.png" alt="PCA Explained Variance">
+                <img src="pca_components.png" alt="PCA Components">
+                
+                <p>The PCA plot shows how the evaluation dimensions relate to each other in a reduced 
+                dimensional space. Points represent individual evaluations, and their colors indicate 
+                the overall score. The arrows show how the original dimensions contribute to the principal components.</p>
             </div>
             
             <div class="section">
@@ -808,7 +1290,24 @@ def main():
     
     try:
         analyzer = EvaluationAnalyzer(base_path=args.base_path)
+        
+        # Run the basic analyses first
+        analyzer.generate_basic_stats()
+        analyzer.plot_score_distributions()
+        analyzer.plot_vendor_comparisons()
+        analyzer.plot_model_comparisons()
+        analyzer.analyze_by_iteration()
+        analyzer.analyze_by_scenario()
+        
+        # Run the new statistical analyses
+        analyzer.run_anova_and_tukey_tests()
+        analyzer.calculate_dimension_correlations()
+        analyzer.run_principal_component_analysis()
+        analyzer.calculate_confidence_intervals()
+        
+        # Generate the comprehensive report
         analyzer.generate_comprehensive_report()
+        
         logger.info("Evaluation analysis completed successfully")
     except Exception as e:
         logger.error(f"Error in analysis: {e}")
