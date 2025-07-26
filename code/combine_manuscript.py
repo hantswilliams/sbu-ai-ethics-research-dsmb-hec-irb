@@ -93,7 +93,8 @@ def combine_markdown_files(base_path=None):
         {"file": "intro.md", "title": "Introduction"},
         {"file": "methods.md", "title": "Methods"},
         {"file": "results.md", "title": "Results"},
-        {"file": "discussion.md", "title": "Discussion"}
+        {"file": "discussion.md", "title": "Discussion"},
+        {"file": "references.md", "title": "References"}
     ]
     
     # Create the output file
@@ -103,7 +104,7 @@ def combine_markdown_files(base_path=None):
     now = datetime.now()
     timestamp = now.strftime("%Y-%m-%d %H:%M:%S")
     
-    combined_content = f"""# Benchmarking Generative AI for Healthcare Ethics: A Comparative Analysis of Four Models Across Five Clinical Ethics Scenarios
+    combined_content = f"""# WORKING DRAFT: Benchmarking Generative AI for Healthcare Ethics: A Comparative Analysis of Four Models Across Five Clinical Ethics Scenarios
 
 **Version: {timestamp}**
 
