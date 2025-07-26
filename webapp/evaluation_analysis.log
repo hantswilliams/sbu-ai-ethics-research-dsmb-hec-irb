@@ -113,3 +113,55 @@ OpenAI     4.00  0.353553      2
 2025-07-15 09:27:57,398 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
 2025-07-15 09:27:57,475 - evaluation_analysis - INFO - Comprehensive evaluation report saved to /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/evaluation_results/evaluation_report.html
 2025-07-15 09:27:57,475 - evaluation_analysis - INFO - Evaluation analysis completed successfully
+2025-07-17 08:41:34,888 - ai_ethics.db - INFO - Using Supabase PostgreSQL database
+2025-07-17 08:41:34,888 - evaluation_analysis - INFO - Using supabase database
+2025-07-17 08:41:35,562 - evaluation_analysis - INFO - Loaded 20 responses from database
+2025-07-17 08:41:35,906 - evaluation_analysis - INFO - Loaded 164 evaluations from database
+2025-07-17 08:41:35,908 - evaluation_analysis - INFO - Loaded 164 evaluations from database
+2025-07-17 08:41:35,914 - evaluation_analysis - INFO - Evaluations by evaluator:
+evaluator_id
+9      2
+10     4
+14    20
+16     5
+18    20
+20     4
+21    20
+22    20
+24     8
+25     8
+26     3
+27    22
+28    20
+29     8
+dtype: int64
+2025-07-17 08:41:35,914 - evaluation_analysis - INFO - Evaluations by scenario:
+case_id  scenario_filename  iteration
+1        1_case.md          1            48
+2        2_case.md          1            38
+3        3_case.md          1            26
+4        4_case.md          1            25
+5        5_case.md          1            27
+dtype: int64
+2025-07-17 08:41:35,918 - evaluation_analysis - INFO - Average scores by vendor:
+          relevance_score                 correctness_score                 fluency_score                 coherence_score                
+                     mean       std count              mean       std count          mean       std count            mean       std count
+vendor                                                                                                                                   
+Anthropic        4.175000  0.747217    40          4.100000  0.841244    40      4.125000  0.852974    40        4.200000  0.822753    40
+GROK             4.261905  0.828149    42          4.285714  0.741972    42      4.166667  0.695514    42        4.142857  0.813647    42
+Google           4.047619  0.909365    42          3.857143  0.871540    42      4.000000  0.855399    42        3.880952  1.040694    42
+OpenAI           4.075000  0.828576    40          4.000000  0.877058    40      4.025000  0.767530    40        4.000000  0.784465    40
+2025-07-17 08:41:35,921 - evaluation_analysis - INFO - Overall average by vendor:
+               mean       std  count
+vendor                              
+Anthropic  4.150000  0.690596     40
+GROK       4.214286  0.684255     42
+Google     3.946429  0.836543     42
+OpenAI     4.025000  0.699817     40
+2025-07-17 08:41:36,432 - evaluation_analysis - INFO - Score distribution plots saved
+2025-07-17 08:41:36,755 - evaluation_analysis - INFO - Vendor comparison plots saved
+2025-07-17 08:41:37,027 - evaluation_analysis - INFO - Model comparison plots saved
+2025-07-17 08:41:37,040 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-17 08:41:37,042 - matplotlib.category - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-07-17 08:41:37,089 - evaluation_analysis - INFO - Comprehensive evaluation report saved to /Users/hantswilliams/Development/python/sbu-ai-ethics-research-dsmb-hec-irb/data/evaluation_results/evaluation_report.html
+2025-07-17 08:41:37,089 - evaluation_analysis - INFO - Evaluation analysis completed successfully

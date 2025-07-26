@@ -62,6 +62,7 @@ class EvaluationAnalyzer:
         # Load data
         self.responses_df = self._load_responses()
         self.evaluations_df = self._load_evaluations()
+        self.scenario_details = self._load_scenario_details()
         
         # Join responses and evaluations
         if not self.evaluations_df.empty:
@@ -76,6 +77,9 @@ class EvaluationAnalyzer:
         else:
             self.df = pd.DataFrame()
             logger.warning("No evaluations found in database")
+        
+        # Load scenario details
+        self.scenario_details = self._load_scenario_details()
 
     def _fetch_query(self, query):
         """Execute a query and return results as a pandas DataFrame"""
@@ -110,6 +114,86 @@ class EvaluationAnalyzer:
         df = self._fetch_query(query)
         logger.info(f"Loaded {len(df)} evaluations from database")
         return df
+
+    def _load_scenario_details(self):
+        """Load scenario details from the CSV file"""
+        try:
+            scenario_details_path = self.base_path / "research" / "scenarios" / "scenario_details.csv"
+            logger.info(f"Loading scenario details from: {scenario_details_path}")
+            
+            if not scenario_details_path.exists():
+                logger.error(f"Scenario details file not found at: {scenario_details_path}")
+                return {}
+                
+            # Read directly with pandas, explicitly setting encoding
+            df = pd.read_csv(scenario_details_path, encoding='utf-8')
+            logger.info(f"Successfully loaded CSV with {len(df)} rows")
+            logger.info("CSV contents:")
+            logger.info(df.to_string())
+            
+            # Create mapping from case numbers to descriptions
+            scenario_map = {}
+            for _, row in df.iterrows():
+                # Extract just the number from case_file (e.g., "1_case" -> "1")
+                case_num = str(row['case_file']).split('_')[0].strip()
+                description = str(row['simple_groups']).strip()
+                
+                # Store both string and numeric versions of the key
+                scenario_map[case_num] = description
+                scenario_map[int(case_num)] = description
+                
+                logger.info(f"Created mapping: {case_num} (and {int(case_num)}) -> {description}")
+            
+            logger.info("Final scenario mappings created:")
+            for k, v in scenario_map.items():
+                logger.info(f"  {k}: {v}")
+            
+            return scenario_map
+            
+        except Exception as e:
+            logger.error(f"Error loading scenario details: {str(e)}")
+            import traceback
+            logger.error(traceback.format_exc())
+            return {}
+            
+        except Exception as e:
+            logger.error(f"Error loading scenario details: {str(e)}")
+            import traceback
+            logger.error(traceback.format_exc())
+            return {}
+                
+            scenario_df = pd.read_csv(scenario_details_path)
+            logger.info(f"Loaded CSV with columns: {scenario_df.columns.tolist()}")
+            logger.info("First few rows of scenario_details.csv:")
+            logger.info(scenario_df.head().to_string())
+            
+            # Create a mapping from case number to simple group description
+            scenario_map = {}
+            for _, row in scenario_df.iterrows():
+                # Map both the full case name (e.g., "1_case") and just the number
+                case_full = row['case_file']
+                case_num = case_full.split('_')[0]
+                description = row['simple_groups'].strip()
+                
+                # Log each mapping being created
+                logger.info(f"Creating mapping for case {case_full}: {description}")
+                
+                scenario_map[case_full] = description  # Map full case name
+                scenario_map[case_num + '_case'] = description  # Map with _case
+                scenario_map[case_num] = description  # Map just the number
+            
+            logger.info("Final scenario mappings:")
+            for key, value in scenario_map.items():
+                logger.info(f"  {key}: {value}")
+                
+            return scenario_map
+            
+        except Exception as e:
+            logger.error(f"Error loading scenario details: {str(e)}")
+            return {}
+        except Exception as e:
+            logger.warning(f"Could not load scenario details: {e}")
+            return {}
 
     def generate_basic_stats(self):
         """Generate basic statistics about the evaluations"""
@@ -343,6 +427,184 @@ class EvaluationAnalyzer:
             'plot_path': output_path
         }
 
+    def analyze_by_scenario(self):
+        """Analyze scores by individual case scenarios"""
+        if self.df.empty:
+            logger.warning("No data available for scenario analysis")
+            return None
+            
+        logger.info("Starting scenario analysis...")
+        logger.info(f"Available scenario mappings: {self.scenario_details}")
+            
+        # Create scenario identifier
+        self.df['scenario_id'] = self.df['case_id'].astype(str) + '-' + self.df['scenario_filename']
+        
+        # Map case IDs to descriptions
+        def get_scenario_description(case_id):
+            try:
+                # Try both integer and string versions for lookup
+                str_id = str(case_id)
+                int_id = int(case_id)
+                
+                # Log what we're trying to match
+                logger.info(f"Looking up case {case_id} (str: {str_id}, int: {int_id})")
+                
+                # Try both versions
+                if int_id in self.scenario_details:
+                    desc = self.scenario_details[int_id]
+                    logger.info(f"Found match using int {int_id}: {desc}")
+                    return desc
+                if str_id in self.scenario_details:
+                    desc = self.scenario_details[str_id]
+                    logger.info(f"Found match using string {str_id}: {desc}")
+                    return desc
+                    
+                logger.warning(f"No mapping found for case {case_id}")
+                return 'Unknown'
+            except Exception as e:
+                logger.error(f"Error getting scenario description for {case_id}: {str(e)}")
+                return 'Unknown'
+        
+        # Map case IDs to descriptions
+        self.df['scenario_group'] = self.df['case_id'].apply(get_scenario_description)
+        self.df['scenario_label'] = 'Case ' + self.df['case_id'].astype(str) + ' - ' + self.df['scenario_group']
+        
+        # Log the mappings we created
+        logger.info("Final scenario mappings:")
+        unique_mappings = self.df[['case_id', 'scenario_group']].drop_duplicates().sort_values('case_id')
+        logger.info(unique_mappings.to_string())
+        
+        self.df['scenario_group'] = self.df['case_id'].apply(get_scenario_description)
+        
+        # Create final label
+        self.df['scenario_label'] = 'Case ' + self.df['case_id'] + ' - ' + self.df['scenario_group']
+        
+        # Log the unique mappings to help with debugging
+        unique_mappings = self.df[['case_id', 'scenario_group', 'scenario_label']].drop_duplicates().sort_values('case_id')
+        logger.info("Final scenario mappings created:")
+        logger.info(unique_mappings.to_string())
+        
+        # Calculate metrics by scenario
+        scenario_metrics = self.df.groupby('scenario_id').agg({
+            'relevance_score': ['mean', 'std', 'count'],
+            'correctness_score': ['mean', 'std', 'count'],
+            'fluency_score': ['mean', 'std', 'count'],
+            'coherence_score': ['mean', 'std', 'count'],
+            'overall_score': ['mean', 'std', 'count']
+        })
+        
+        # Calculate metrics by scenario and model
+        scenario_model_metrics = self.df.groupby(['scenario_id', 'vendor', 'model']).agg({
+            'relevance_score': ['mean', 'std'],
+            'correctness_score': ['mean', 'std'],
+            'fluency_score': ['mean', 'std'],
+            'coherence_score': ['mean', 'std'],
+            'overall_score': ['mean', 'std']
+        })
+        
+        # Plot scenario comparisons
+        plt.figure(figsize=(15, 8))
+        sns.boxplot(x='scenario_id', y='overall_score', data=self.df)
+        plt.title('Overall Scores by Scenario')
+        plt.xlabel('Scenario')
+        plt.ylabel('Overall Score (1-5)')
+        plt.xticks(rotation=45, ha='right')
+        plt.tight_layout()
+        plt.savefig(self.output_dir / "scenario_overall_scores.png")
+        plt.close()
+        
+        # Plot heatmap of average scores by scenario and metric
+        metrics = ['relevance_score', 'correctness_score', 'fluency_score', 'coherence_score']
+        scenario_avg = self.df.groupby('scenario_label')[metrics].mean()
+        
+        plt.figure(figsize=(14, 10))  # Increased figure size for better readability
+        sns.heatmap(scenario_avg, annot=True, cmap='YlOrRd', fmt='.2f')
+        plt.title('Average Scores by Scenario and Metric')
+        plt.ylabel('Scenario (Type)')
+        plt.xlabel('Metric')
+        plt.tight_layout()
+        plt.savefig(self.output_dir / "scenario_metric_heatmap.png", bbox_inches='tight')
+        plt.close()
+        
+        # Plot model performance by scenario
+        plt.figure(figsize=(15, 8))
+        scenario_model_overall = self.df.groupby(['scenario_id', 'model_id'])['overall_score'].mean().unstack()
+        sns.heatmap(scenario_model_overall, annot=True, cmap='YlOrRd', fmt='.2f')
+        plt.title('Model Performance by Scenario')
+        plt.ylabel('Scenario')
+        plt.xlabel('Model')
+        plt.tight_layout()
+        plt.savefig(self.output_dir / "scenario_model_heatmap.png")
+        plt.close()
+        
+        # Create line charts for each metric
+        metrics = {
+            'relevance_score': 'Relevance',
+            'correctness_score': 'Correctness',
+            'fluency_score': 'Fluency',
+            'coherence_score': 'Coherence',
+            'overall_score': 'Overall'
+        }
+        
+        for metric, metric_name in metrics.items():
+            # Calculate mean scores by scenario and vendor
+            vendor_scenario_scores = self.df.pivot_table(
+                index='vendor',
+                columns='scenario_id',
+                values=metric,
+                aggfunc='mean'
+            )
+            
+            # Create the line plot
+            plt.figure(figsize=(15, 8))
+            for vendor in vendor_scenario_scores.index:
+                plt.plot(
+                    range(len(vendor_scenario_scores.columns)),
+                    vendor_scenario_scores.loc[vendor],
+                    marker='o',
+                    label=vendor,
+                    linewidth=2
+                )
+            
+            plt.title(f'{metric_name} Scores by Scenario and Vendor')
+            plt.xlabel('Scenario ID')
+            plt.ylabel(f'{metric_name} Score (1-5)')
+            # Create descriptive labels for scenarios
+            scenario_labels = []
+            for col in vendor_scenario_scores.columns:
+                case_num = col.split('-')[0]  # Get the case number from scenario_id
+                desc = self.scenario_details.get(case_num, 'Unknown')
+                scenario_labels.append(f"Case {case_num}\n({desc})")
+                
+            plt.xticks(
+                range(len(vendor_scenario_scores.columns)),
+                scenario_labels,
+                rotation=45,
+                ha='right'
+            )
+            plt.grid(True, linestyle='--', alpha=0.7)
+            plt.legend(title='Vendor', bbox_to_anchor=(1.05, 1), loc='upper left')
+            plt.ylim(1, 5)
+            
+            # Adjust layout to prevent label cutoff
+            plt.tight_layout()
+            plt.savefig(self.output_dir / f"scenario_{metric.lower()}_line_chart.png", 
+                       bbox_inches='tight',
+                       dpi=300)
+            plt.close()
+            
+            # Also save the data used for the plot
+            vendor_scenario_scores.to_csv(
+                self.output_dir / f"scenario_{metric.lower()}_by_vendor.csv"
+            )
+        
+        logger.info("Scenario analysis and line charts completed and saved")
+        
+        return {
+            'scenario_metrics': scenario_metrics,
+            'scenario_model_metrics': scenario_model_metrics
+        }
+
     def generate_comprehensive_report(self):
         """Generate a comprehensive analysis report"""
         if self.df.empty:
@@ -355,6 +617,8 @@ class EvaluationAnalyzer:
         self.plot_vendor_comparisons()
         self.plot_model_comparisons()
         iteration_analysis = self.analyze_by_iteration()
+        scenario_analysis = self.analyze_by_scenario()
+        scenario_analysis = self.analyze_by_scenario()
         
         # Get unique vendors and models
         vendors = sorted(self.df['vendor'].unique())
@@ -452,9 +716,79 @@ class EvaluationAnalyzer:
             </div>
             
             <div class="section">
+                <h2>Scenario Analysis</h2>
+                <h3>Scores by Scenario</h3>
+                {scenario_analysis['scenario_metrics'].to_html()}
+                
+                <h3>Model Performance by Scenario</h3>
+                {scenario_analysis['scenario_model_metrics'].to_html()}
+                
+                <p>Visual comparisons of scores by scenario:</p>
+                <img src="scenario_overall_scores.png" alt="Scenario Overall Scores">
+                <img src="scenario_metric_heatmap.png" alt="Scenario Metric Heatmap">
+                <img src="scenario_model_heatmap.png" alt="Model Performance by Scenario">
+            </div>
+            
+            <div class="section">
                 <h2>Evaluator Participation</h2>
                 <p>Number of evaluations by evaluator ID:</p>
                 {basic_stats['evaluator_counts'].to_frame().to_html()}
+            </div>
+
+            <div class="section">
+                <h2>Detailed Scenario Analysis</h2>
+                
+                <h3>Scenario Types</h3>
+                <table class="scenario-types">
+                    <tr>
+                        <th>Case Number</th>
+                        <th>Type</th>
+                    </tr>
+                    {"".join([f"<tr><td>Case {k}</td><td>{v}</td></tr>" for k, v in self.scenario_details.items()])}
+                </table>
+                
+                <h3>Overall Metrics by Scenario</h3>
+                {scenario_analysis['scenario_metrics'].to_html()}
+                
+                <h3>Model Performance by Scenario</h3>
+                {scenario_analysis['scenario_model_metrics'].to_html()}
+                
+                <h3>Visual Analysis</h3>
+                <h4>Overall Performance</h4>
+                <img src="scenario_overall_scores.png" alt="Scenario Overall Scores">
+                <img src="scenario_metric_heatmap.png" alt="Scenario Metric Heatmap">
+                <img src="scenario_model_heatmap.png" alt="Scenario Model Performance Heatmap">
+                
+                <h4>Detailed Metric Analysis by Scenario</h4>
+                <p>The following charts show how each vendor performed across different scenarios for each evaluation metric:</p>
+                
+                <div class="metric-charts">
+                    <h5>Relevance Scores</h5>
+                    <img src="scenario_relevance_score_line_chart.png" alt="Relevance Scores by Scenario and Vendor">
+                    
+                    <h5>Correctness Scores</h5>
+                    <img src="scenario_correctness_score_line_chart.png" alt="Correctness Scores by Scenario and Vendor">
+                    
+                    <h5>Fluency Scores</h5>
+                    <img src="scenario_fluency_score_line_chart.png" alt="Fluency Scores by Scenario and Vendor">
+                    
+                    <h5>Coherence Scores</h5>
+                    <img src="scenario_coherence_score_line_chart.png" alt="Coherence Scores by Scenario and Vendor">
+                    
+                    <h5>Overall Scores</h5>
+                    <img src="scenario_overall_score_line_chart.png" alt="Overall Scores by Scenario and Vendor">
+                </div>
+                
+                <p>This section provides a detailed breakdown of how different models performed across various scenarios,
+                allowing us to identify patterns in model performance across different types of cases. The line charts
+                above show the progression of scores across scenarios for each vendor, making it easy to identify:
+                <ul>
+                    <li>Which vendors consistently perform better for specific metrics</li>
+                    <li>How performance varies across different scenarios</li>
+                    <li>Where there are significant gaps in performance between vendors</li>
+                    <li>Which scenarios are particularly challenging or easy for specific vendors</li>
+                </ul>
+                </p>
             </div>
         </body>
         </html>"""

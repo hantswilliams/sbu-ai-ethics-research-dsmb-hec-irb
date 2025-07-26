@@ -1,2 +1,6 @@
 case_id,scenario_filename,iteration,0
-1,1_case.md,1,2
+1,1_case.md,1,171
+2,2_case.md,1,171
+3,3_case.md,1,170
+4,4_case.md,1,170
+5,5_case.md,1,175

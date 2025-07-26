@@ -358,6 +358,29 @@ class ResultsAnalyzer:
         
         if consistency_df.empty:
             logger.warning("No consistency data available - need multiple iterations per model")
+            # Create a dummy plot with a message
+            plt.figure(figsize=(10, 6))
+            plt.text(0.5, 0.5, "Insufficient data for consistency analysis.\nRequires multiple iterations of the same case-vendor-model.", 
+                     horizontalalignment='center', verticalalignment='center', transform=plt.gca().transAxes)
+            plt.axis('off')
+            plt.savefig(self.output_dir / "recommendation_consistency.png")
+            plt.close()
+            
+            # Create empty dummy plots for the other visualizations too
+            plt.figure(figsize=(12, 6))
+            plt.text(0.5, 0.5, "Insufficient data for vendor consistency analysis", 
+                     horizontalalignment='center', verticalalignment='center', transform=plt.gca().transAxes)
+            plt.axis('off')
+            plt.savefig(self.output_dir / "recommendation_consistency_by_vendor.png")
+            plt.close()
+            
+            plt.figure(figsize=(16, 10))
+            plt.text(0.5, 0.5, "Insufficient data for model consistency analysis", 
+                     horizontalalignment='center', verticalalignment='center', transform=plt.gca().transAxes)
+            plt.axis('off')
+            plt.savefig(self.output_dir / "recommendation_consistency_by_model.png")
+            plt.close()
+            
             return None
             
         # Calculate overall consistency by vendor
@@ -376,8 +399,28 @@ class ResultsAnalyzer:
             'all_consistent': 'mean'
         })
         
+        # Calculate overall consistency by case
+        case_consistency = consistency_df.groupby('case_id').agg({
+            'rec_consistent': 'mean',
+            'alt_consistent': 'mean',
+            'least_consistent': 'mean',
+            'all_consistent': 'mean'
+        })
+        
         logger.info(f"Recommendation consistency by vendor:\n{vendor_consistency}")
         logger.info(f"Recommendation consistency by model:\n{model_consistency}")
+        logger.info(f"Recommendation consistency by case:\n{case_consistency}")
+        
+        # Create a scenario-specific plot (this was missing)
+        plt.figure(figsize=(12, 6))
+        sns.barplot(x=case_consistency.index, y='all_consistent', data=case_consistency.reset_index())
+        plt.title('Overall Recommendation Consistency by Scenario')
+        plt.ylabel('Consistency Rate')
+        plt.xlabel('Scenario ID')
+        plt.ylim(0, 1)
+        plt.tight_layout()
+        plt.savefig(self.output_dir / "recommendation_consistency.png")
+        plt.close()
         
         # Plot by vendor
         consistency_melted_vendor = pd.melt(
@@ -427,10 +470,12 @@ class ResultsAnalyzer:
         consistency_df.to_csv(self.output_dir / "recommendation_consistency.csv")
         vendor_consistency.to_csv(self.output_dir / "vendor_consistency_summary.csv")
         model_consistency.to_csv(self.output_dir / "model_consistency_summary.csv")
+        case_consistency.to_csv(self.output_dir / "case_consistency_summary.csv")  # New
         
         return {
             'vendor_consistency': vendor_consistency,
             'model_consistency': model_consistency,
+            'case_consistency': case_consistency,  # New
             'consistency_df': consistency_df
         }
 
